@@ -118,6 +118,8 @@ body {
 /* Review card styles */
 .review-scroll-container {
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
 }
 
 /* Card animations */
@@ -277,8 +279,8 @@ body {
 /* Modern UI Components */
 .glass-card {
   background: var(--gradient-glass);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: var(--shadow-glass);
   border-radius: 1rem;

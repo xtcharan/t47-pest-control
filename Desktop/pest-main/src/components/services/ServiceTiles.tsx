@@ -11,7 +11,7 @@ interface ServiceTileProps {
 
 const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: ServiceTileProps) => {
   return (
-    <div className="min-w-[280px] h-[220px] rounded-xl shadow-xl overflow-hidden relative mx-3 flex flex-col modern-card group transform transition-all duration-300 hover:-translate-y-2">
+    <div className="min-w-[280px] h-[250px] rounded-xl shadow-xl overflow-hidden relative flex flex-col modern-card group transform transition-all duration-300 hover:-translate-y-2 snap-start">
       {/* Gradient background with subtle pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-light to-red-dark opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
       <div className="absolute inset-0 diagonal-pattern-bg opacity-5"></div>
@@ -38,12 +38,12 @@ const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: 
         </div>
 
         {/* Offer text */}
-        <p className="text-white/70 text-xs mt-auto mb-3 italic">Limited time offer - Includes full inspection</p>
+        <p className="text-white/70 text-xs mt-auto mb-4 italic">Limited time offer - Includes full inspection</p>
 
         {/* Enhanced button with hover effect */}
         <button
           type="button"
-          className="bg-black/80 text-white py-2 px-4 rounded-lg text-sm font-bold group-hover:bg-black transition-all duration-300 relative overflow-hidden"
+          className="bg-black/80 text-white py-2.5 px-4 rounded-lg text-sm font-bold group-hover:bg-black transition-all duration-300 relative overflow-hidden w-full"
         >
           <span className="relative z-10">REDEEM OFFER</span>
           <div className="absolute inset-0 h-full w-full bg-white/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
@@ -64,14 +64,14 @@ export default function ServiceTiles() {
 
   // Services data
   const services = [
-    { title: 'General Pest Control', price: '189', startingFrom: true },
-    { title: 'Termite Pest Inspection Reports', price: '145', reportOnly: true, startingFrom: false },
-    { title: 'Cockroach Control', price: '149', startingFrom: true },
-    { title: 'Ant Control', price: '129', startingFrom: true },
+    { title: 'Complete Pest Protection', price: '189', startingFrom: true },
+    { title: 'Termite Inspection', price: '145', reportOnly: true, startingFrom: false },
+    { title: 'Cockroach Elimination', price: '149', startingFrom: true },
+    { title: 'Ant Infestation Control', price: '129', startingFrom: true },
     { title: 'Spider Control', price: '159', startingFrom: true },
     { title: 'Rodent Control', price: '175', startingFrom: true },
     { title: 'Bed Bug Treatment', price: '199', startingFrom: true },
-    { title: 'Flea Treatment', price: '169', startingFrom: true },
+    { title: 'Flea Extermination', price: '169', startingFrom: true },
     { title: 'Wasp & Bee Removal', price: '135', startingFrom: true },
     { title: 'Termite Treatment', price: '299', startingFrom: true },
   ];
@@ -82,7 +82,7 @@ export default function ServiceTiles() {
 
     const scrollContainer = scrollContainerRef.current;
     let animationFrameId: number;
-    const scrollSpeed = 0.5; // pixels per frame
+    const scrollSpeed = 1; // pixels per frame - increased for better visibility
 
     const scroll = () => {
       if (scrollContainer) {
@@ -174,7 +174,7 @@ export default function ServiceTiles() {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="flex space-x-6 px-4 justify-start min-w-max">
+            <div className="flex space-x-6 px-4 overflow-x-auto pb-4 snap-x snap-mandatory w-full hide-scrollbar">
               {services.map((service, index) => (
                 <ServiceTile
                   key={index}
@@ -188,13 +188,27 @@ export default function ServiceTiles() {
           </div>
 
           {/* Scroll indicators */}
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-r-lg shadow-md hidden md:block">
-            <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/90 p-3 rounded-r-lg shadow-md hidden md:flex items-center justify-center z-10 cursor-pointer hover:bg-white transition-colors duration-300"
+            onClick={() => {
+              if (scrollContainerRef.current) {
+                scrollContainerRef.current.scrollLeft -= 300;
+              }
+            }}
+          >
+            <svg className="w-6 h-6 text-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </div>
-          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 rounded-l-lg shadow-md hidden md:block">
-            <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/90 p-3 rounded-l-lg shadow-md hidden md:flex items-center justify-center z-10 cursor-pointer hover:bg-white transition-colors duration-300"
+            onClick={() => {
+              if (scrollContainerRef.current) {
+                scrollContainerRef.current.scrollLeft += 300;
+              }
+            }}
+          >
+            <svg className="w-6 h-6 text-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </div>

@@ -168,13 +168,7 @@ export default function MainHeader() {
             {COMPANY_INFO.name}
           </h1>
 
-          {/* Tagline with enhanced styling */}
-          <div className="relative">
-            <h2 className="text-subheading text-accent tracking-wide text-sm translate-x-2 font-medium">
-              {COMPANY_INFO.tagline}
-            </h2>
-            <div className="absolute -bottom-1 left-2 w-16 h-0.5 bg-accent/50 rounded-full"></div>
-          </div>
+
         </div>
       </div>
     </header>
