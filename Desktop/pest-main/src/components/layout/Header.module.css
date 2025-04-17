@@ -1,0 +1,31 @@
+.hoverIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  /* hover indicator size */
+  height: 4px;
+  background-color: #8BC34A;
+  transform: scaleX(0);
+  transform-origin: var(--indicator-origin, left);
+  transition: transform 300ms ease-in-out;
+}
+
+.hoverIndicatorVisible {
+  transform: scaleX(1);
+}
+
+.hoverIndicatorHidden {
+  transform: scaleX(0);
+}
+
+.dropdownOverlay {
+  position: fixed;
+  top: 8rem; /* Adjusted to match the new navbar height */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 40;
+}
+
