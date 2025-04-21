@@ -2,6 +2,7 @@
 
 import Image, { ImageProps } from 'next/image';
 import { useState } from 'react';
+import styles from './ImageStyles.module.css';
 
 interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
   src: string;
@@ -21,16 +22,16 @@ export default function OptimizedImage({
   ...props
 }: OptimizedImageProps) {
   const [isLoading, setIsLoading] = useState(true);
-  
+
   // If the src is already a WebP, use it directly
   // Otherwise, try to use the WebP version if available
-  const webpSrc = src.endsWith('.webp') 
-    ? src 
+  const webpSrc = src.endsWith('.webp')
+    ? src
     : src.replace(/\.(jpe?g|png)$/i, '.webp');
-  
+
   // Use the provided fallback or default to the original src
-  const jpgSrc = fallbackSrc || (src.endsWith('.webp') 
-    ? src.replace('.webp', '.jpg') 
+  const jpgSrc = fallbackSrc || (src.endsWith('.webp')
+    ? src.replace('.webp', '.jpg')
     : src);
 
   const handleLoad = () => {
@@ -48,15 +49,10 @@ export default function OptimizedImage({
         {...props}
       />
       <noscript>
-        <img 
-          src={jpgSrc} 
-          alt={alt} 
-          className={props.className || ''}
-          style={{ 
-            objectFit: props.objectFit as any || 'cover',
-            width: '100%',
-            height: '100%'
-          }} 
+        <img
+          src={jpgSrc}
+          alt={alt}
+          className={`${props.className || ''} ${props.objectFit === 'contain' ? styles.fallbackImageContain : styles.fallbackImage}`}
         />
       </noscript>
     </>

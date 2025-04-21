@@ -1,0 +1,11 @@
+.fallbackImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.fallbackImageContain {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}

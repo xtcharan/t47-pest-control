@@ -2,6 +2,7 @@
 
 import Image, { ImageProps } from 'next/image';
 import { useState } from 'react';
+import styles from './ImageStyles.module.css';
 
 interface ServiceImageProps extends Omit<ImageProps, 'src'> {
   serviceName: 'residential-pest-control' | 'commercial-pest-control' | 'termite-solutions';
@@ -54,12 +55,7 @@ export default function ServiceImage({
         <img
           src={jpgSrc}
           alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
-          className={props.className || ''}
-          style={{
-            objectFit: props.objectFit as any || 'cover',
-            width: '100%',
-            height: '100%'
-          }}
+          className={`${props.className || ''} ${props.objectFit === 'contain' ? styles.fallbackImageContain : styles.fallbackImage}`}
         />
       </noscript>
     </>
