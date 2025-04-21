@@ -1,10 +1,11 @@
 "use client";
 import Image from 'next/image';
 import { COMPANY_INFO } from '../../lib/constants';
-import styles from '../Header.module.css';
 import { useHoverPosition } from '../../hooks/useHoverPosition';
 import NavigationBar from './NavigationBar';
 import DropdownMenu from './DropdownMenu';
+// Logo controls removed
+import styles from './MainHeader.module.css';
 
 export default function MainHeader() {
   const {
@@ -26,26 +27,33 @@ export default function MainHeader() {
   return (
     <header className="w-full bg-gradient-to-r from-green-light to-green-dark relative z-50 shadow-lg">
       {/* Top bar with contact info and social media */}
-      <div className="h-10 flex justify-between items-center px-8 bg-black/10 backdrop-blur-xs">
+      <div className={styles.topBar}>
+        {/* Slanting cut on the left side */}
+        <div className={styles.slantingCut}></div>
+        {/* Additional white overlay to ensure no red shows on the left */}
+        <div className="absolute top-0 left-0 h-full w-[150px] bg-white z-[1]"></div>
+
         {/* Contact info */}
-        <div className="flex items-center space-x-4 text-white/90 text-sm">
-          <a href={`tel:${COMPANY_INFO.phone}`} className="flex items-center hover:text-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-            </svg>
+        <div className="flex items-center relative z-10">
+          <a href={`tel:${COMPANY_INFO.phone}`} className="text-white text-sm font-medium flex items-center mr-4 hover:text-white/90 transition-colors">
+            <span className={styles.phoneIcon}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </span>
             {COMPANY_INFO.phone}
           </a>
-          <a href={`mailto:${COMPANY_INFO.email}`} className="flex items-center hover:text-white transition-colors">
+          <a href={`mailto:${COMPANY_INFO.email}`} className="text-white text-sm font-medium flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
             {COMPANY_INFO.email}
           </a>
         </div>
 
         {/* Social media icons */}
-        <div className="flex space-x-4">
+        <div className="flex space-x-3 relative z-10">
           {/* Facebook */}
           <a
             href={COMPANY_INFO.social.facebook}
@@ -134,43 +142,39 @@ export default function MainHeader() {
             onMouseLeave={handleDropdownMouseLeave}
           />
         )}
-
-        {/* Dropdown background overlay - appears when any dropdown is active */}
-        {activeDropdown && (
-          <div
-            className={styles.dropdownOverlay}
-            onClick={handleDropdownMouseLeave}
-            onMouseLeave={handleDropdownMouseLeave}
-          ></div>
-        )}
       </div>
 
       {/* Logo and branding container */}
-      <div className="flex items-center absolute left-0 top-[60%] -translate-y-1/2 z-[100] pl-8">
+      <div className="absolute left-10 top-[65%] -translate-y-1/2 z-[100] flex items-start">
         {/* Logo with subtle animation */}
-        <div className="mr-4 translate-y-3.5 translate-x-17 relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-green-light/20 to-green-dark/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="relative group pl-2 mt-6">
           <Image
-            src={'/images/logo.png'}
+            src="/logo.png"
             alt="Company Logo"
             width={0}
             height={0}
-            sizes="10vw"
-            className="w-auto h-[120px] object-contain relative z-10 drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+            sizes="15vw"
+            className="object-contain relative z-10 drop-shadow-lg"
+            style={{ width: 'auto', height: '150px' }}
             priority
           />
         </div>
 
-        {/* Text branding with enhanced styling */}
-        <div className="flex flex-col justify-center translate-x-20 translate-y-4">
+        {/* To move the company name*/}
+        <div className="flex flex-col justify-center ml-6 mr-8 mt-8">
           {/* Company name with gradient text */}
-          <h1 className="text-5xl mb-1 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-800 drop-shadow-sm">
+          <h1 className="text-5xl font-extrabold text-black whitespace-nowrap overflow-hidden">
             {COMPANY_INFO.name}
           </h1>
 
-
+          {/* Company tagline positioned under the company name */}
+          <p className="text-lg font-medium text-green-600 tracking-wide text-right whitespace-nowrap ml-auto">
+            {COMPANY_INFO.tagline}
+          </p>
         </div>
       </div>
+
+      {/* Logo Controls Component removed */}
     </header>
   );
 }

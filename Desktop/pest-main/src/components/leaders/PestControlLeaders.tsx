@@ -1,7 +1,7 @@
 "use client";
 
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function PestControlLeaders() {
   return (
@@ -23,13 +23,16 @@ export default function PestControlLeaders() {
           {/* Residential Pest Control */}
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
-              <Image
-                src="/images/services/residential-pest-control.jpg" // Updated image
-                alt="Residential Pest Control"
-                fill
-                style={{ objectFit: 'cover' }}
-                className="transition-transform duration-200 group-hover:scale-105"
-              />
+              <picture>
+                <source srcSet="/images/services/optimized/residential-pest-control.webp" type="image/webp" />
+                <Image
+                  src="/images/services/optimized/residential-pest-control.jpg"
+                  alt="Residential Pest Control"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-200 group-hover:scale-105"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70"></div>
               <div className="absolute bottom-0 left-0 w-full p-4">
                 <div className="flex items-center space-x-2">
@@ -58,13 +61,16 @@ export default function PestControlLeaders() {
           {/* Commercial Pest Control */}
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
-              <Image
-                src="/images/services/commercial-pest-control.jpg" // Updated image
-                alt="Commercial Pest Control"
-                fill
-                style={{ objectFit: 'cover' }}
-                className="transition-transform duration-200 group-hover:scale-105"
-              />
+              <picture>
+                <source srcSet="/images/services/optimized/commercial-pest-control.webp" type="image/webp" />
+                <Image
+                  src="/images/services/optimized/commercial-pest-control.jpg"
+                  alt="Commercial Pest Control"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-200 group-hover:scale-105"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70"></div>
               <div className="absolute bottom-0 left-0 w-full p-4">
                 <div className="flex items-center space-x-2">
@@ -79,8 +85,8 @@ export default function PestControlLeaders() {
             </div>
             <div className="p-6">
               <p className="text-gray-700 mb-5 leading-relaxed">
-                From creepy crawlies, stored product and flying insects to rodents and bed bugs, 
-                we analyze each site, the environment and risks before developing a tailored pest control plan. 
+                From creepy crawlies, stored product and flying insects to rodents and bed bugs,
+                we analyze each site, the environment and risks before developing a tailored pest control plan.
                 Our integrated pest control services use the latest technology and tailored solutions.
               </p>
               <Link href="/services/commercial" className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg transition-colors duration-200 hover:bg-red-700">
@@ -95,13 +101,16 @@ export default function PestControlLeaders() {
           {/* Termite Solutions */}
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
-              <Image
-                src="/images/services/termite-solutions.jpg" // Updated image
-                alt="Termite Solutions"
-                fill
-                style={{ objectFit: 'cover' }}
-                className="transition-transform duration-200 group-hover:scale-105"
-              />
+              <picture>
+                <source srcSet="/images/services/optimized/termite-solutions.webp" type="image/webp" />
+                <Image
+                  src="/images/services/optimized/termite-solutions.jpg"
+                  alt="Termite Solutions"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-200 group-hover:scale-105"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70"></div>
               <div className="absolute bottom-0 left-0 w-full p-4">
                 <div className="flex items-center space-x-2">

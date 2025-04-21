@@ -30,7 +30,7 @@ export default function QuoteForm() {
   };
 
   return (
-    <div className="bg-[#1a1a1a] p-4 rounded-lg max-w-xs mx-auto">
+    <div className="bg-[#1a1a1a] p-4 rounded-lg max-w-xs mx-auto shadow-xl">
       <h2 className="text-xl font-bold text-white mb-4 text-center">GET A FAST QUOTE NOW</h2>
 
       <form onSubmit={handleSubmit} className="space-y-2">
@@ -94,6 +94,7 @@ export default function QuoteForm() {
             onChange={handleChange}
             className="w-full p-2 rounded-md bg-white border-none focus:outline-none focus:ring-1 focus:ring-accent appearance-none text-black"
             required
+            aria-label="Interested In"
           >
             <option value="" disabled>Interested In</option>
             <option value="residential">Residential Pest Control</option>
@@ -110,6 +111,7 @@ export default function QuoteForm() {
             onChange={handleChange}
             className="w-full p-2 rounded-md bg-white border-none focus:outline-none focus:ring-1 focus:ring-accent appearance-none text-black"
             required
+            aria-label="Size of house"
           >
             <option value="" disabled>Size of house</option>
             <option value="small">Small (up to 150m²)</option>
@@ -127,6 +129,7 @@ export default function QuoteForm() {
             onChange={handleChange}
             className="w-full p-2 rounded-md bg-white border-none focus:outline-none focus:ring-1 focus:ring-accent appearance-none text-black"
             required
+            aria-label="How many bedrooms"
           >
             <option value="" disabled>How many bedrooms</option>
             <option value="1">1 Bedroom</option>
@@ -145,13 +148,14 @@ export default function QuoteForm() {
             onChange={handleChange}
             className="w-full p-2 rounded-md bg-white border-none focus:outline-none focus:ring-1 focus:ring-accent appearance-none text-black"
             required
+            aria-label="Construction Type"
           >
             <option value="" disabled>Construction Type</option>
-            <option value="brick">Brick</option>
-            <option value="weatherboard">Weatherboard</option>
-            <option value="fibro">Fibro</option>
-            <option value="rendered">Rendered</option>
-            <option value="mixed">Mixed</option>
+            <option value="single_storey">Single Storey</option>
+            <option value="double_storey">Double Storey</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="commercial">Commercial</option>
           </select>
         </div>
 

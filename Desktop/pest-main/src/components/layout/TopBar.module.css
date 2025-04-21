@@ -1,0 +1,30 @@
+/*
+ * The slantingCut class creates a diagonal cut effect using clip-path
+ *
+ * clip-path: polygon() - Creates a polygon shape with specified points
+ * Each point is defined as X Y coordinates (from top-left corner)
+ *
+ * The four points create this shape:
+ * 1. (0 0)       - Top-left corner
+ * 2. (100% 0)    - Top-right corner
+ * 3. (30% 100%)  - 30% from left at bottom (creates the diagonal)
+ * 4. (0 100%)    - Bottom-left corner
+ */
+.slantingCut {
+  clip-path: polygon(0 0, 100% 0, 40% 100%, 0 100%);
+}
+
+/*
+ * The container that holds the slanting cut element needs:
+ * - position: relative - So the absolute positioned cut is relative to this container
+ * - overflow: hidden - To ensure the cut doesn't extend outside the container
+ * - z-index management - To control what appears above/below the cut
+ */
+.topBarContainer {
+  position: relative;
+  background-color: #4CAF50;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.4rem;
+  overflow: hidden;
+}

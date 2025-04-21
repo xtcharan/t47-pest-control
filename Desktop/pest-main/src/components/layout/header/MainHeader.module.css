@@ -1,0 +1,117 @@
+/*
+ * This creates a slanting cut like the example image
+ * The cut is on the left side, creating a diagonal edge
+ */
+.topBar {
+  position: relative;
+  background-color: #8BC34A; /* Light green color from the website */
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+/* Phone call animation */
+.phoneIcon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* First ring animation */
+.phoneIcon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+/* Second ring animation with delay */
+.phoneIcon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite 0.5s; /* 0.5s delay for second ring */
+  z-index: -1;
+}
+
+/* Special animation for the green call button */
+.callButton {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.callButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/*
+ * The slanting cut on the left side
+ * Uses transform to create the diagonal edge
+ */
+.slantingCut {
+  position: absolute;
+  top: 0;
+  left: 0; /* Positioned on the left side */
+  height: 100%;
+  width: 35%; /* Significantly increased width to ensure full coverage */
+  background-color: white;
+  /*
+   * This polygon creates a shape on the left side
+   * We'll use transform instead of clip-path for the slant
+   */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transform: skewX(50deg); /* Very slight angle for minimal slant */
+  transform-origin: top left; /* Pivot point for the transform */
+  z-index: 1;
+}

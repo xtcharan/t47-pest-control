@@ -1,91 +1,56 @@
 import { DROPDOWN_MENU_ITEMS } from '../../lib/constants';
-import BoxedMenuItem from './BoxedMenuItem';
+import Link from 'next/link';
 
 interface DropdownMenuProps {
   activeDropdown: string | null;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
-  boxSize?: 'small' | 'medium' | 'large';
 }
 
 export default function DropdownMenu({
   activeDropdown,
   onMouseEnter,
-  onMouseLeave,
-  boxSize = 'small'
+  onMouseLeave
 }: DropdownMenuProps) {
   if (!activeDropdown) return null;
-
-  // Map menu keys to icon paths
-  const getIconPath = (menuKey: string, itemName?: string) => {
-    // Default icons for each menu category
-    const defaultIcons: Record<string, string> = {
-      'residential': '/images/icons/home.svg',
-      'commercial': '/images/icons/factory.svg',
-      'termite': '/images/icons/bug.svg',
-      'about': '/images/icons/info.svg',
-      'areas': '/images/icons/map.svg',
-    };
-
-    // Specific icons for individual menu items
-    const specificIcons: Record<string, string> = {
-      // Residential items
-      'Pest Inspections': '/images/icons/search.svg',
-      'Termite Inspections': '/images/icons/bug.svg',
-      'Wasps': '/images/icons/wasp.svg',
-      'Rats': '/images/icons/rat.svg',
-      'Bees': '/images/icons/bee.svg',
-      'Bed Bugs': '/images/icons/bed.svg',
-      'Cockroaches': '/images/icons/cockroach.svg',
-      'Spiders': '/images/icons/spider.svg',
-      'Ants': '/images/icons/ant.svg',
-      'Mice': '/images/icons/mouse.svg',
-      'Flies': '/images/icons/fly.svg',
-
-      // Commercial items
-      'All business sectors': '/images/icons/building.svg',
-      'Food processing': '/images/icons/factory.svg',
-      'Logistics & warehousing': '/images/icons/truck.svg',
-      'Hotels': '/images/icons/hotel.svg',
-      'Food retail': '/images/icons/shopping-cart.svg',
-      'Pharmaceutical': '/images/icons/medicine.svg',
-      'Offices': '/images/icons/office.svg',
-      'Healthcare': '/images/icons/healthcare.svg',
-    };
-
-    // Return specific icon if available, otherwise use default for the menu category
-    return itemName && specificIcons[itemName] ? specificIcons[itemName] : defaultIcons[menuKey] || '/images/icons/building.svg';
-  };
-
-  // Determine icon size based on box size
-  const getIconSize = () => {
-    switch (boxSize) {
-      case 'small': return 24;
-      case 'large': return 64;
-      default: return 48;
-    }
-  };
 
   // All dropdown menus use the same format from constants
   const menuItems = DROPDOWN_MENU_ITEMS[activeDropdown as keyof typeof DROPDOWN_MENU_ITEMS] || [];
 
+  // Group items into rows for better organization
+  // Using 4 items per row for all dropdown menus for better readability and larger font size
+  const itemsPerRow = 4; // Fixed 4 items per row for all dropdown menus
+  const rows = [];
+  for (let i = 0; i < menuItems.length; i += itemsPerRow) {
+    rows.push(menuItems.slice(i, i + itemsPerRow));
+  }
+
   return (
     <div
-      className="absolute top-full left-0 w-full bg-white shadow-lg z-50 transition-all duration-300 ease-in-out overflow-hidden"
+      className="absolute top-full left-0 w-full bg-white shadow-lg z-50 transition-all duration-300 ease-in-out overflow-hidden border-t border-gray-100"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="container mx-auto py-1 px-4 flex justify-center">
-        <div className="grid grid-cols-5 gap-0 justify-center items-start mx-auto max-w-4xl [&>*]:m-0">
-          {menuItems.map((item, index) => (
-            <BoxedMenuItem
-              key={index}
-              name={item.name}
-              href={item.href}
-              iconSrc={getIconPath(activeDropdown, item.name)}
-              boxSize={boxSize}
-              iconSize={getIconSize()}
-            />
+      <div className="container mx-auto py-3 px-4 flex justify-center">
+        <div className="flex flex-col w-full max-w-6xl">
+          {rows.map((row, rowIndex) => (
+            <div key={rowIndex} className="w-full">
+              <div className="grid grid-cols-4 gap-x-1 justify-between items-center w-full py-2">
+                {row.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className="text-gray-700 hover:text-red-dark transition-all duration-200 text-sm md:text-base font-medium py-1 px-2 hover:bg-gray-50 hover:shadow-md rounded-md text-center relative group whitespace-nowrap overflow-hidden text-ellipsis hover:scale-105"
+                  >
+                    <span className="relative z-10 whitespace-nowrap overflow-hidden text-ellipsis block w-full">{item.name}</span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-red-light/10 to-red-dark/10 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  </Link>
+                ))}
+              </div>
+              {rowIndex < rows.length - 1 && (
+                <div className="w-full h-[1px] bg-gray-300 my-2"></div>
+              )}
+            </div>
           ))}
         </div>
       </div>

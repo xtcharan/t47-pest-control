@@ -1,0 +1,136 @@
+.tutorialContainer {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.tutorialTitle {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.example {
+  margin-bottom: 40px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.example h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.demoContainer {
+  height: 120px;
+  background-color: #f0f0f0;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* The top bar with slanting cut */
+.topBar {
+  position: relative;
+  background-color: #d81921; /* Red color like in the example */
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  overflow: hidden;
+  color: white;
+  font-size: 14px;
+}
+
+/* The slanting cut element */
+.slantingCut {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 20%;
+  background-color: white;
+  transform: skewX(20deg);
+  transform-origin: top left;
+  z-index: 1;
+}
+
+/* Content positioned above the slanting cut */
+.leftContent, .rightContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+.leftContent {
+  gap: 10px;
+}
+
+.rightContent {
+  gap: 10px;
+}
+
+.socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Code explanation section */
+.codeExplanation {
+  margin-top: 20px;
+}
+
+.codeExplanation h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.codeExplanation h5 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.codeExplanation p {
+  margin-bottom: 15px;
+}
+
+.code {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.keyPoints {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.keyPoints li {
+  margin-bottom: 8px;
+}

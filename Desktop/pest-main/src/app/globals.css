@@ -47,6 +47,11 @@
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
   --shadow-card-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
   --shadow-button: 0 4px 14px rgba(0, 0, 0, 0.15);
+
+  /* Logo and company name variables - updated to match design */
+  --logo-height: 90px;
+  --company-name-size: 3rem;
+  --company-tagline-size: 1.125rem;
 }
 
 @media (prefers-color-scheme: dark) {

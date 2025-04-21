@@ -235,11 +235,11 @@ export default function QuoteForm() {
                 aria-label="Construction Type"
               >
                 <option value="" disabled></option>
-                <option value="brick">Brick</option>
-                <option value="weatherboard">Weatherboard</option>
-                <option value="fibro">Fibro</option>
-                <option value="rendered">Rendered</option>
-                <option value="mixed">Mixed</option>
+                <option value="single_storey">Single Storey</option>
+                <option value="double_storey">Double Storey</option>
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+                <option value="commercial">Commercial</option>
               </select>
               <label
                 htmlFor="constructionType"

@@ -1,7 +1,7 @@
 "use client";
 import QuoteForm from './NewQuoteForm';
 import AlertBanner from './AlertBanner';
-import Image from 'next/image';
+import OptimizedImage from '../common/OptimizedImage';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
@@ -13,24 +13,27 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="relative min-h-[650px] bg-[#0a0a0a] overflow-hidden">
+    <div className="relative min-h-[600px] md:min-h-[650px] bg-[#0a0a0a] overflow-hidden">
       {/* Alert Banner */}
       <AlertBanner />
 
       {/* Background image with pest control technician */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero/pest-control-hero.jpg"
+        <OptimizedImage
+          src="/images/hero/optimized/pest-control-hero.webp"
+          fallbackSrc="/images/hero/optimized/pest-control-hero.jpg"
           alt="Pest Control Hero"
           fill
           priority
-          className="object-cover object-center scale-105 transition-transform duration-10000 ease-in-out"
-          quality={100}
+          sizes="100vw"
+          className="object-cover scale-105 transition-transform duration-10000 ease-in-out"
+          style={{ objectPosition: '65% 30%' }} /* Adjusted to show more of the people */
+          quality={85}
         />
 
         {/* Enhanced overlay with multiple gradients for depth */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
 
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-10 diagonal-pattern-bg"></div>
@@ -43,7 +46,7 @@ export default function Hero() {
         <div className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-green-dark/50 animate-pulse-slow delay-700"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10 flex flex-col md:flex-row items-center">
+      <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 flex flex-col md:flex-row items-center">
         {/* Left side - Enhanced hero content with animations */}
         <div
           className={`w-full md:w-1/2 flex flex-col justify-center text-white mb-10 md:mb-0 pl-0 md:pl-8 lg:pl-16 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -77,9 +80,9 @@ export default function Hero() {
 
         {/* Right side - Enhanced quote form */}
         <div
-          className={`w-full md:w-1/2 flex justify-center items-center transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          className={`w-full md:w-1/2 flex justify-center items-start md:items-center transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <div className="w-full max-w-xs">
+          <div className="w-full max-w-xs mt-4 md:mt-0">
             <QuoteForm />
           </div>
         </div>

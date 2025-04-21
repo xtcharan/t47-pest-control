@@ -4,6 +4,7 @@ import "./globals.css";
 import "./output.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Head from "./head";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head />
       <body
         className={`${inter.variable} antialiased bg-white text-black`}
       >

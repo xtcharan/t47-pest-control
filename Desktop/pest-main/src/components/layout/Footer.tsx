@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center mb-6 md:mb-0">
             <div className="mr-4">
               <Image
-                src="/images/logo.png"
+                src="/logo.png"
                 alt="T47 Pest Control Logo"
                 width={80}
                 height={80}
