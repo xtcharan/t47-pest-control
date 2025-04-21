@@ -19,20 +19,20 @@ export default function PestSolutions() {
 
   // Pest types data
   const pestTypes: PestType[] = [
-    { name: 'Termites', icon: '/Images/pests/termites.svg' },
-    { name: 'Wasps', icon: '/Images/pests/wasps.svg' },
-    { name: 'Cockroaches', icon: '/Images/pests/cockroaches.svg' },
-    { name: 'Mice & Rats', icon: '/Images/pests/mice.svg' },
-    { name: 'Spiders', icon: '/Images/pests/spiders.svg' },
-    { name: 'Possum', icon: '/Images/pests/possum.svg' },
-    { name: 'Ants', icon: '/Images/pests/ants.svg' },
-    { name: 'Bed bugs', icon: '/Images/pests/bug.svg' },
-    { name: 'Fleas', icon: '/Images/pests/fleas.svg' },
-    { name: 'Mosquitoes', icon: '/Images/pests/mosquitoes.svg' },
-    { name: 'Flies', icon: '/Images/pests/flies.svg' },
-    { name: 'Moths', icon: '/Images/pests/moths.svg' },
-    { name: 'Silverfish', icon: '/Images/pests/silverfish.svg' },
-    { name: 'Bird Control', icon: '/Images/pests/birds.svg' },
+    { name: 'Termites', icon: '/images/pests/termites.svg' },
+    { name: 'Wasps', icon: '/images/pests/wasps.svg' },
+    { name: 'Cockroaches', icon: '/images/pests/cockroaches.svg' },
+    { name: 'Mice & Rats', icon: '/images/pests/mice.svg' },
+    { name: 'Spiders', icon: '/images/pests/spiders.svg' },
+    { name: 'Possum', icon: '/images/pests/possum.svg' },
+    { name: 'Ants', icon: '/images/pests/ants.svg' },
+    { name: 'Bed bugs', icon: '/images/pests/bug.svg' },
+    { name: 'Fleas', icon: '/images/pests/fleas.svg' },
+    { name: 'Mosquitoes', icon: '/images/pests/mosquitoes.svg' },
+    { name: 'Flies', icon: '/images/pests/flies.svg' },
+    { name: 'Moths', icon: '/images/pests/moths.svg' },
+    { name: 'Silverfish', icon: '/images/pests/silverfish.svg' },
+    { name: 'Bird Control', icon: '/images/pests/birds.svg' },
   ];
 
   // Industry types data
