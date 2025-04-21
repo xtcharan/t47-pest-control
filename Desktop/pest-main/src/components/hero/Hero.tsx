@@ -20,8 +20,8 @@ export default function Hero() {
       {/* Background image with pest control technician */}
       <div className="absolute inset-0 z-0">
         <OptimizedImage
-          src="/images/hero/optimized/pest-control-hero.webp"
-          fallbackSrc="/images/hero/optimized/pest-control-hero.jpg"
+          src="/pest-control-hero.webp"
+          fallbackSrc="/pest-control-hero.jpg"
           alt="Pest Control Hero"
           fill
           priority

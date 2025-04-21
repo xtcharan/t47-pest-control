@@ -54,7 +54,7 @@ const ReviewCard = ({ name, text, profileColor, profileInitial, profileImage }: 
           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
         </svg>
       </div>
-      
+
       <div className="flex items-center mb-4">
         {profileImage ? (
           <div className="w-12 h-12 rounded-full overflow-hidden mr-4 border-2 border-green-light/20 shadow-sm">
@@ -81,15 +81,15 @@ const ReviewCard = ({ name, text, profileColor, profileInitial, profileImage }: 
           </div>
         </div>
       </div>
-      
+
       {/* Decorative divider */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-4"></div>
-      
+
       <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-grow">"{text}"</p>
-      
+
       <div className="mt-auto pt-2">
-        <a 
-          href="#" 
+        <a
+          href="#"
           className="inline-flex items-center bg-gray-50 hover:bg-gray-100 rounded-full px-3 py-1.5 transition-all group-hover:shadow-sm"
         >
           <div className="flex items-center">
@@ -121,56 +121,56 @@ export default function ClientReviews() {
       text: "T47 Pest Control did an amazing job eliminating the cockroach infestation in our home. Professional, thorough, and effective service!",
       profileColor: "profile-red",
       profileInitial: "J",
-      profileImage: "/images/reviews/profile1.jpg"
+      profileImage: "/profile1.jpg"
     },
     {
       name: "Sarah Johnson",
       text: "We had a serious termite problem and T47 came to the rescue. Their team was knowledgeable and solved our issue quickly. Highly recommend!",
       profileColor: "profile-blue",
       profileInitial: "S",
-      profileImage: "/images/reviews/profile2.jpg"
+      profileImage: "/profile2.jpg"
     },
     {
       name: "Michael Brown",
       text: "Excellent service from T47 Pest Control! They were prompt, professional, and completely eliminated our ant problem. Will definitely use again.",
       profileColor: "profile-green",
       profileInitial: "M",
-      profileImage: "/images/reviews/profile3.jpg"
+      profileImage: "/profile3.jpg"
     },
     {
       name: "Emily Wilson",
       text: "I had wasps nesting near my front door and T47 took care of it immediately. Great service, fair pricing, and friendly staff. 5 stars!",
       profileColor: "profile-yellow",
       profileInitial: "E",
-      profileImage: "/images/reviews/profile4.jpg"
+      profileImage: "/profile4.jpg"
     },
     {
       name: "David Thompson",
       text: "T47 provided excellent rodent control services for our property. They were thorough, effective, and gave helpful prevention tips. Very satisfied!",
       profileColor: "profile-indigo",
       profileInitial: "D",
-      profileImage: "/images/reviews/profile5.jpg"
+      profileImage: "/profile5.jpg"
     },
     {
       name: "Jennifer Lee",
       text: "Had a spider infestation that was quickly resolved by T47 Pest Control. Their team was professional and the results were immediate. Great job!",
       profileColor: "profile-teal",
       profileInitial: "J",
-      profileImage: "/images/reviews/profile6.jpg"
+      profileImage: "/profile6.jpg"
     },
     {
       name: "Robert Garcia",
       text: "T47 provided exceptional service for our commercial property. Their preventative pest control plan has kept our building pest-free for months!",
       profileColor: "profile-orange",
       profileInitial: "R",
-      profileImage: "/images/reviews/profile7.jpg"
+      profileImage: "/profile7.jpg"
     },
     {
       name: "Lisa Martinez",
       text: "Fantastic service from T47! They eliminated our bed bug problem completely. Professional, thorough, and reasonably priced. Highly recommend!",
       profileColor: "profile-purple",
       profileInitial: "L",
-      profileImage: "/images/reviews/profile8.jpg"
+      profileImage: "/profile8.jpg"
     }
   ];
 
@@ -251,11 +251,11 @@ export default function ClientReviews() {
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-100 to-transparent"></div>
       <div className="absolute -top-20 -right-20 w-64 h-64 bg-green-light/5 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-green-light/5 rounded-full blur-3xl"></div>
-      
+
       {/* Quote marks decoration */}
       <div className="absolute top-20 left-10 text-8xl text-green-light/10 font-serif">"</div>
       <div className="absolute bottom-20 right-10 text-8xl text-green-light/10 font-serif">"</div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <span className="inline-block px-3 py-1 bg-green-light/10 text-green-dark text-sm font-semibold rounded-full mb-3">
@@ -265,7 +265,7 @@ export default function ClientReviews() {
             What Our <span className="text-green-dark">Clients</span> Say
           </h2>
           <div className="w-24 h-1 bg-green-light mx-auto mb-6"></div>
-          
+
           <div className="flex items-center justify-center mb-4">
             <div className="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
               <StarRating rating={5} />
@@ -274,7 +274,7 @@ export default function ClientReviews() {
               <span className="text-green-dark font-medium">100+ Reviews</span>
             </div>
           </div>
-          
+
           <p className="text-gray-600 max-w-2xl mx-auto">
             Our customers trust us to deliver exceptional pest control services. Here's what they have to say about their experiences with T47 Pest Control.
           </p>
@@ -283,7 +283,7 @@ export default function ClientReviews() {
         <div className="relative">
           {/* Left gradient fade */}
           <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
-          
+
           <div
             className="w-full overflow-x-auto hide-scrollbar py-8 relative review-scroll-container"
             ref={scrollContainerRef}
@@ -305,10 +305,10 @@ export default function ClientReviews() {
               ))}
             </div>
           </div>
-          
+
           {/* Right gradient fade */}
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
-          
+
           {/* Scroll indicators */}
           <div className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hidden md:flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors z-20">
             <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -321,7 +321,7 @@ export default function ClientReviews() {
             </svg>
           </div>
         </div>
-        
+
         {/* Call to action */}
         <div className="text-center mt-10">
           <a href="#" className="inline-flex items-center text-green-dark hover:text-green-light transition-colors font-medium">

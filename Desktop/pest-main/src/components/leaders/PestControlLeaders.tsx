@@ -24,9 +24,9 @@ export default function PestControlLeaders() {
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
               <picture>
-                <source srcSet="/images/services/optimized/residential-pest-control.webp" type="image/webp" />
+                <source srcSet="/residential-pest-control.webp" type="image/webp" />
                 <Image
-                  src="/images/services/optimized/residential-pest-control.jpg"
+                  src="/residential-pest-control.jpg"
                   alt="Residential Pest Control"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -62,9 +62,9 @@ export default function PestControlLeaders() {
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
               <picture>
-                <source srcSet="/images/services/optimized/commercial-pest-control.webp" type="image/webp" />
+                <source srcSet="/commercial-pest-control.webp" type="image/webp" />
                 <Image
-                  src="/images/services/optimized/commercial-pest-control.jpg"
+                  src="/commercial-pest-control.jpg"
                   alt="Commercial Pest Control"
                   fill
                   style={{ objectFit: 'cover' }}
@@ -102,9 +102,9 @@ export default function PestControlLeaders() {
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
               <picture>
-                <source srcSet="/images/services/optimized/termite-solutions.webp" type="image/webp" />
+                <source srcSet="/termite-solutions.webp" type="image/webp" />
                 <Image
-                  src="/images/services/optimized/termite-solutions.jpg"
+                  src="/termite-solutions.jpg"
                   alt="Termite Solutions"
                   fill
                   style={{ objectFit: 'cover' }}

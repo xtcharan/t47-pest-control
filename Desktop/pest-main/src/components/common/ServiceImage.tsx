@@ -22,8 +22,8 @@ export default function ServiceImage({
   const [isLoading, setIsLoading] = useState(true);
 
   // Use optimized WebP images with JPG fallback
-  const webpSrc = `/images/services/optimized/${serviceName}.webp`;
-  const jpgSrc = `/images/services/optimized/${serviceName}.jpg`;
+  const webpSrc = `/${serviceName}.webp`;
+  const jpgSrc = `/${serviceName}.jpg`;
 
   const handleLoad = () => {
     setIsLoading(false);
@@ -31,7 +31,7 @@ export default function ServiceImage({
   };
 
   // Fallback to original image paths if optimized images don't exist
-  const fallbackSrc = `/images/services/${serviceName}.jpg`;
+  const fallbackSrc = `/${serviceName}.jpg`;
 
   return (
     <>
