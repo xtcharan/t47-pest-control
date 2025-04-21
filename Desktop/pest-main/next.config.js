@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  distDir: 'out',
+  output: 'standalone',
   images: {
     domains: [],
     unoptimized: true,
@@ -17,30 +16,7 @@ const nextConfig = {
     ]
   },
   swcMinify: true,
-  reactStrictMode: true,
-
-  // Add trailing slashes to URLs
-  trailingSlash: true,
-
-  // Configure webpack to handle static assets
-  webpack: (config) => {
-    // Add a rule to handle static assets
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|svg|webp)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            publicPath: '/_next/static/media/',
-            outputPath: 'static/media/',
-            name: '[name].[hash].[ext]',
-          },
-        },
-      ],
-    });
-
-    return config;
-  }
+  reactStrictMode: true
 };
 
 module.exports = nextConfig;

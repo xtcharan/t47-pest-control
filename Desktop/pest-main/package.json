@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next dev",
-    "build": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next build && cp -r public/* out/",
+    "build": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next build",
     "start": "next start",
     "lint": "next lint",
     "css": "npx tailwindcss -i src/app/globals.css -o src/app/output.css --watch"
