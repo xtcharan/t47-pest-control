@@ -149,7 +149,7 @@ export default function MainHeader() {
         {/* Logo with subtle animation */}
         <div className="relative group pl-2 mt-6">
           <Image
-            src="/logo.png"
+            src="/images/logo.png"
             alt="Company Logo"
             width={0}
             height={0}
