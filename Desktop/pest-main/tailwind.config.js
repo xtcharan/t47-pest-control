@@ -23,7 +23,7 @@ module.exports = {
         'green-gradient': 'linear-gradient(to right, #8BC34A, #4CAF50)',
         'red-gradient': 'linear-gradient(to right, #f05252, #c81e1e)',
         'glass-gradient': 'linear-gradient(to right bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))',
-        'hero-pattern': "url('/images/patterns/subtle-dots.svg')",
+        'hero-pattern': "url('/subtle-dots.svg')",
       },
       boxShadow: {
         'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',

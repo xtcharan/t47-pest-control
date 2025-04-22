@@ -4,13 +4,13 @@ export default function Head() {
       {/* Preload critical hero images */}
       <link
         rel="preload"
-        href="/images/hero/optimized/pest-control-hero.webp"
+        href="/pest-control-hero.webp"
         as="image"
         type="image/webp"
       />
       <link
         rel="preload"
-        href="/images/hero/optimized/pest-control-hero.jpg"
+        href="/pest-control-hero.jpg"
         as="image"
         type="image/jpeg"
       />
@@ -18,19 +18,19 @@ export default function Head() {
       {/* Preload technology section images */}
       <link
         rel="preload"
-        href="/images/technology/optimized/safe-home-business.webp"
+        href="/safe-home-business.webp"
         as="image"
         type="image/webp"
       />
       <link
         rel="preload"
-        href="/images/technology/optimized/latest-technology.webp"
+        href="/latest-technology.webp"
         as="image"
         type="image/webp"
       />
       <link
         rel="preload"
-        href="/images/technology/optimized/find-us.webp"
+        href="/find-us.webp"
         as="image"
         type="image/webp"
       />

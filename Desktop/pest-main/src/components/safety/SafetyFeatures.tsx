@@ -61,7 +61,7 @@ export default function SafetyFeatures() {
   return (
     <section className="py-16 bg-white relative" id="safety-features">
       {/* Background pattern - using a subtle dot pattern */}
-      <div className="absolute inset-0 opacity-5 bg-[url('/images/safety/dot-pattern.svg')] bg-[length:20px_20px]"></div>
+      <div className="absolute inset-0 opacity-5 bg-[url('/dot-pattern.svg')] bg-[length:20px_20px]"></div>
 
       {/* Structured data for SEO */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{
@@ -117,9 +117,9 @@ export default function SafetyFeatures() {
             <div className="relative w-72 h-72 md:w-96 md:h-96">
               <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white shadow-xl transform transition-transform duration-500 hover:scale-105">
                 <picture>
-                  <source srcSet="/images/technology/optimized/safe-home-business.webp" type="image/webp" />
+                  <source srcSet="/safe-home-business.webp" type="image/webp" />
                   <Image
-                    src="/images/technology/optimized/safe-home-business.jpg"
+                    src="/safe-home-business.jpg"
                     alt="Professional pest control technician wearing safety equipment while applying eco-friendly treatments"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -172,9 +172,9 @@ export default function SafetyFeatures() {
             <div className="relative w-72 h-72 md:w-96 md:h-96">
               <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white shadow-xl transform transition-transform duration-500 hover:scale-105">
                 <picture>
-                  <source srcSet="/images/technology/optimized/latest-technology.webp" type="image/webp" />
+                  <source srcSet="/latest-technology.webp" type="image/webp" />
                   <Image
-                    src="/images/technology/optimized/latest-technology.jpg"
+                    src="/latest-technology.jpg"
                     alt="Advanced pest control equipment and eco-friendly products used by T47 technicians"
                     fill
                     style={{ objectFit: 'cover' }}
@@ -234,9 +234,9 @@ export default function SafetyFeatures() {
             <div className="relative w-72 h-72 md:w-96 md:h-96">
               <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-white shadow-xl transform transition-transform duration-500 hover:scale-105">
                 <picture>
-                  <source srcSet="/images/technology/optimized/find-us.webp" type="image/webp" />
+                  <source srcSet="/find-us.webp" type="image/webp" />
                   <Image
-                    src="/images/technology/optimized/find-us.jpg"
+                    src="/find-us.jpg"
                     alt="T47 Pest Control service van ready to serve customers across Victoria"
                     fill
                     style={{ objectFit: 'cover' }}

@@ -6,14 +6,6 @@
   "public": false,
   "routes": [
     {
-      "src": "/images/(.*)",
-      "dest": "/images/$1"
-    },
-    {
-      "src": "/logo.png",
-      "dest": "/logo.png"
-    },
-    {
       "src": "/(.*)",
       "dest": "/$1"
     }

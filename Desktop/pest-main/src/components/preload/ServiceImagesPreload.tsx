@@ -16,16 +16,16 @@ export default function ServiceImagesPreload() {
     try {
       // Preload WebP images
       const preloadWebP = [
-        '/images/services/optimized/residential-pest-control.webp',
-        '/images/services/optimized/commercial-pest-control.webp',
-        '/images/services/optimized/termite-solutions.webp'
+        '/residential-pest-control.webp',
+        '/commercial-pest-control.webp',
+        '/termite-solutions.webp'
       ];
 
       // Preload JPG fallback images
       const preloadJPG = [
-        '/images/services/optimized/residential-pest-control.jpg',
-        '/images/services/optimized/commercial-pest-control.jpg',
-        '/images/services/optimized/termite-solutions.jpg'
+        '/residential-pest-control.jpg',
+        '/commercial-pest-control.jpg',
+        '/termite-solutions.jpg'
       ];
 
       // Create link elements for WebP images
