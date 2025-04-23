@@ -41,6 +41,8 @@ module.exports = {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'fade-in': 'fadeIn 0.5s ease-out',
         'slide-up': 'slideUp 0.5s ease-out',
+        'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'bounce-gentle': 'bounceGentle 2s infinite',
       },
       keyframes: {
         float: {
@@ -55,6 +57,10 @@ module.exports = {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        bounceGentle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-3px)' },
+        },
       },
       backdropBlur: {
         'xs': '2px',
@@ -66,6 +72,12 @@ module.exports = {
     'bg-gradient-to-r',
     'from-[#8BC34A]',
     'to-[#4CAF50]',
+    'from-blue-500',
+    'to-blue-700',
+    'from-blue-600',
+    'to-blue-800',
+    'from-green-500',
+    'to-green-700',
     'text-white',
     'text-black',
     'bg-white',
@@ -76,6 +88,8 @@ module.exports = {
     'animate-pulse-slow',
     'animate-fade-in',
     'animate-slide-up',
+    'animate-ping-slow',
+    'animate-bounce-gentle',
   ],
   corePlugins: {
     preflight: true,

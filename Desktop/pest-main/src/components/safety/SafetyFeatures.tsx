@@ -59,7 +59,7 @@ export default function SafetyFeatures() {
   }, [isPaused]);
 
   return (
-    <section className="py-16 bg-white relative" id="safety-features">
+    <section className="py-10 bg-white relative" id="safety-features">
       {/* Background pattern - using a subtle dot pattern */}
       <div className="absolute inset-0 opacity-5 bg-[url('/dot-pattern.svg')] bg-[length:20px_20px]"></div>
 
@@ -73,10 +73,21 @@ export default function SafetyFeatures() {
           "provider": {
             "@type": "LocalBusiness",
             "name": "T47 Pest Control",
-            "telephone": "08 8334 1000",
-            "areaServed": "Victoria, Australia"
+            "telephone": "+61 434300216",
+            "areaServed": "Victoria, Australia",
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": "https://t47pestcontrol.com.au",
+              "servicePhone": "+61 434300216",
+              "availableLanguage": "English"
+            }
           },
-          "serviceType": "Pest Control"
+          "serviceType": "Pest Control",
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "name": "24/7 Pest Control Assistance",
+            "servicePhone": "+61 434300216"
+          }
         })
       }} />
 
@@ -101,7 +112,7 @@ export default function SafetyFeatures() {
           }}
         >
           <div className="w-full md:w-1/2 p-8">
-            <h2 className="text-4xl font-bold text-red-600 mb-4 leading-tight tracking-tight">Safe For Your Home & Business</h2>
+            <h2 className="text-4xl font-bold text-blue-600 mb-4 leading-tight tracking-tight">Safe For Your Home & Business</h2>
             <p className="text-gray-700 mb-6 leading-relaxed text-lg">
               We are committed to ensuring our treatments are <span className="font-semibold">safe for your home and business</span>;
               in fact, our slogan &ldquo;safe for your family and the environment&rdquo; is of paramount
@@ -109,8 +120,13 @@ export default function SafetyFeatures() {
             </p>
             <p className="text-gray-700 leading-relaxed text-lg">
               For more information please refer to our
-              <Link href="/safety-resources" className="text-red-600 hover:underline mx-1 font-medium">SDS/MSDS online resources</Link>
-              or contact us on <a href="tel:0883341000" className="text-red-600 hover:underline font-medium">08 8334 1000</a>.
+              <Link href="/safety-resources" className="text-blue-600 hover:underline mx-1 font-medium">SDS/MSDS online resources</Link>
+              or <a href="tel:+61434300216" className="text-blue-600 hover:underline font-medium inline-flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                call us at +61 434300216
+              </a> for 24/7 pest control assistance.
             </p>
           </div>
           <div className="w-full md:w-1/2 flex justify-center p-6">
@@ -152,7 +168,7 @@ export default function SafetyFeatures() {
           }}
         >
           <div className="w-full md:w-1/2 p-8">
-            <h2 className="text-4xl font-bold text-red-600 mb-4 leading-tight tracking-tight">We Use the Latest Technology</h2>
+            <h2 className="text-4xl font-bold text-blue-600 mb-4 leading-tight tracking-tight">We Use the Latest Technology</h2>
             <p className="text-gray-700 mb-6 leading-relaxed text-lg">
               All T47&apos;s Victoria pest services use only the <span className="font-semibold">latest, safest products and eco-friendly techniques</span> to
               protect homes & businesses from:
@@ -206,9 +222,9 @@ export default function SafetyFeatures() {
           }}
         >
           <div className="w-full md:w-1/2 p-8">
-            <h2 className="text-4xl font-bold text-red-600 mb-4 leading-tight tracking-tight">Easily Find Us</h2>
+            <h2 className="text-4xl font-bold text-blue-600 mb-4 leading-tight tracking-tight">Easily Find Us</h2>
             <p className="text-gray-700 mb-6 leading-relaxed text-lg">
-              Check our <Link href="/locations" className="text-red-600 hover:underline font-medium">Locations</Link> page
+              Check our <Link href="/locations" className="text-blue-600 hover:underline font-medium">Locations</Link> page
               or simply enter your postcode to find your local T47 Pest Control Branch serving Victoria and surrounding areas.
             </p>
             <p className="text-gray-700 mb-6 leading-relaxed text-lg">
@@ -218,15 +234,21 @@ export default function SafetyFeatures() {
             <div className="flex flex-col sm:flex-row gap-4 mt-6">
               <Link
                 href="/contact"
-                className="bg-red-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors text-center"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors text-center inline-flex items-center justify-center"
               >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
                 Get a Free Quote
               </Link>
               <a
-                href="tel:0883341000"
-                className="border border-red-600 text-red-600 px-6 py-3 rounded-lg font-medium hover:bg-red-50 transition-colors text-center"
+                href="tel:+61434300216"
+                className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors text-center inline-flex items-center justify-center"
               >
-                Call Us: 08 8334 1000
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                Call Us: +61 434300216
               </a>
             </div>
           </div>

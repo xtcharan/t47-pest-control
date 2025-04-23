@@ -1,5 +1,7 @@
 import { DROPDOWN_MENU_ITEMS } from '../../lib/constants';
 import Link from 'next/link';
+import { useEffect, useState, useMemo } from 'react';
+import styles from './MainHeader.module.css';
 
 interface DropdownMenuProps {
   activeDropdown: string | null;
@@ -12,22 +14,78 @@ export default function DropdownMenu({
   onMouseEnter,
   onMouseLeave
 }: DropdownMenuProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the screen is mobile size
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkIfMobile();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIfMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
   if (!activeDropdown) return null;
 
-  // All dropdown menus use the same format from constants
-  const menuItems = DROPDOWN_MENU_ITEMS[activeDropdown as keyof typeof DROPDOWN_MENU_ITEMS] || [];
+  // All dropdown menus use the same format from constants - memoize for performance
+  const menuItems = useMemo(() => {
+    return DROPDOWN_MENU_ITEMS[activeDropdown as keyof typeof DROPDOWN_MENU_ITEMS] || [];
+  }, [activeDropdown]);
 
-  // Group items into rows for better organization
-  // Using 4 items per row for all dropdown menus for better readability and larger font size
-  const itemsPerRow = 4; // Fixed 4 items per row for all dropdown menus
-  const rows = [];
-  for (let i = 0; i < menuItems.length; i += itemsPerRow) {
-    rows.push(menuItems.slice(i, i + itemsPerRow));
+  // Group items into rows for better organization - memoize for performance
+  const rows = useMemo(() => {
+    // Using 4 items per row for desktop and 2 items per row for mobile
+    const itemsPerRow = isMobile ? 2 : 4;
+    const result = [];
+    for (let i = 0; i < menuItems.length; i += itemsPerRow) {
+      result.push(menuItems.slice(i, i + itemsPerRow));
+    }
+    return result;
+  }, [menuItems, isMobile]);
+
+  // For mobile, we render a performance-optimized layout
+  if (isMobile) {
+    return (
+      <div className="w-full bg-white">
+        <div className="py-2 px-3">
+          <div className="flex flex-col w-full">
+            {rows.map((row, rowIndex) => (
+              <div key={rowIndex} className="w-full">
+                <div className="grid grid-cols-2 gap-2 w-full py-2">
+                  {row.map((item, index) => (
+                    <Link
+                      key={index}
+                      href={item.href}
+                      className="text-gray-700 hover:text-blue-600 text-sm font-medium py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md text-center relative"
+                      style={{ willChange: 'auto' }}
+                      prefetch={false}
+                    >
+                      <span className="block w-full">{item.name}</span>
+                    </Link>
+                  ))}
+                </div>
+                {rowIndex < rows.length - 1 && (
+                  <div className="w-full h-[1px] bg-gray-200 my-1"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 
+  // Desktop layout - optimized for performance
   return (
     <div
-      className="absolute top-full left-0 w-full bg-white shadow-lg z-50 transition-all duration-300 ease-in-out overflow-hidden border-t border-gray-100"
+      className={styles.desktopDropdown}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -40,10 +98,10 @@ export default function DropdownMenu({
                   <Link
                     key={index}
                     href={item.href}
-                    className="text-gray-700 hover:text-red-dark transition-all duration-200 text-sm md:text-base font-medium py-1 px-2 hover:bg-gray-50 hover:shadow-md rounded-md text-center relative group whitespace-nowrap overflow-hidden text-ellipsis hover:scale-105"
+                    className="text-gray-700 hover:text-blue-600 text-sm md:text-base font-medium py-1 px-2 hover:bg-gray-50 rounded-md text-center relative whitespace-nowrap overflow-hidden text-ellipsis"
+                    prefetch={false}
                   >
-                    <span className="relative z-10 whitespace-nowrap overflow-hidden text-ellipsis block w-full">{item.name}</span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-red-light/10 to-red-dark/10 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                    <span className="whitespace-nowrap overflow-hidden text-ellipsis block w-full">{item.name}</span>
                   </Link>
                 ))}
               </div>

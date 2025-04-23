@@ -1,20 +1,100 @@
 /*
- * This creates a slanting cut like the example image
- * The cut is on the left side, creating a diagonal edge
+ * Modern top bar with glass effect
  */
 .topBar {
   position: relative;
-  background-color: #8BC34A; /* Light green color from the website */
-  height: 40px;
+  background-color: rgba(139, 195, 74, 0.95); /* Light green with transparency */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  min-height: 40px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 10px;
   overflow: hidden;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 }
 
-/* Phone call animation */
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .topBar {
+    padding: 0 20px;
+    height: 45px;
+  }
+}
+
+/* Mobile specific styles */
+@media (max-width: 767px) {
+  .topBar {
+    min-height: 50px;
+    padding: 8px 15px;
+  }
+}
+
+/* Modern contact buttons styling */
+.contactButton {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .contactButton {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.contactButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.contactButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Modern glow effect */
+.contactButton::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: rgba(49, 130, 206, 0.3);
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contactButton:hover::before {
+  opacity: 0.8;
+}
+
+/* Phone button specific styling */
+.phoneButton {
+  background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  animation: pulse 2s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Modern phone call animation */
 .phoneIcon {
   position: relative;
   display: inline-flex;
@@ -33,7 +113,7 @@
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: pulse 2s infinite;
+  animation: phoneRing 2s infinite;
   z-index: -1;
 }
 
@@ -48,15 +128,18 @@
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: pulse 2s infinite 0.5s; /* 0.5s delay for second ring */
+  animation: phoneRing 2s infinite 0.5s; /* 0.5s delay for second ring */
   z-index: -1;
 }
 
-/* Special animation for the green call button */
+/* Modern call button with shimmer effect */
 .callButton {
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: white;
+  color: #3182ce;
+  border: 1px solid #3182ce;
 }
 
 .callButton::before {
@@ -66,12 +149,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
+  background: linear-gradient(90deg, transparent, rgba(49, 130, 206, 0.2), transparent);
+  animation: shimmer 2.5s infinite;
   z-index: 1;
 }
 
-@keyframes pulse {
+@keyframes phoneRing {
   0% {
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0.8;
@@ -86,6 +169,21 @@
   }
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(49, 130, 206, 0.7);
+  }
+  70% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 10px rgba(49, 130, 206, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(49, 130, 206, 0);
+  }
+}
+
 @keyframes shimmer {
   0% {
     left: -100%;
@@ -95,23 +193,223 @@
   }
 }
 
-/*
- * The slanting cut on the left side
- * Uses transform to create the diagonal edge
- */
-.slantingCut {
+/* Modern logo animation */
+.logoAnimation {
+  position: relative;
+  overflow: visible;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.logoAnimation:hover {
+  transform: scale(1.05);
+}
+
+/* Subtle glowing effect */
+.logoAnimation::before {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0; /* Positioned on the left side */
-  height: 100%;
-  width: 35%; /* Significantly increased width to ensure full coverage */
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle at center, rgba(139, 195, 74, 0.4) 0%, transparent 70%);
+  filter: blur(10px);
+  z-index: -1;
+  opacity: 0;
+  animation: pulsate 3s ease-in-out infinite;
+}
+
+/* Modern highlight effect */
+.logoAnimation img {
+  filter: drop-shadow(0 0 10px rgba(139, 195, 74, 0.6));
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.logoAnimation:hover img {
+  filter: drop-shadow(0 0 15px rgba(139, 195, 74, 0.8));
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* Mobile menu styles - optimized for performance */
+.mobileMenu {
   background-color: white;
-  /*
-   * This polygon creates a shape on the left side
-   * We'll use transform instead of clip-path for the slant
-   */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  transform: skewX(50deg); /* Very slight angle for minimal slant */
-  transform-origin: top left; /* Pivot point for the transform */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform-origin: top center;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.mobileMenuContainer {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  will-change: contents;
+  transform: translateZ(0);
+}
+
+/* Mobile dropdown menu styles - optimized for performance */
+.mobileDropdown {
+  background-color: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  overflow: hidden;
+  transform: translateY(-10px);
+  opacity: 0;
+  height: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out, height 0s 0.15s;
+}
+
+.mobileDropdownOpen {
+  transform: translateY(0);
+  opacity: 1;
+  height: auto;
+  pointer-events: auto;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+}
+
+/* Desktop dropdown menu styles - optimized for performance */
+.desktopDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  z-index: 50;
+  transition: opacity 0.15s ease-out;
+  overflow: hidden;
+  border-top: 1px solid #f3f4f6;
+  will-change: opacity;
+}
+
+/* Menu button - optimized for performance */
+.hamburgerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  height: 36px;
+  padding: 0 12px;
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile navigation item - optimized for performance */
+.mobileNavItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  background-color: white;
+  will-change: contents;
+  transform: translateZ(0);
+}
+
+/* Hardware-accelerated animations for mobile menu */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+
+/*
+ * Modern header with main navigation
+ */
+.mainNav {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 12px 12px;
+  margin: 0 10px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@media (max-width: 767px) {
+  .mainNav {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+/* Modern header container */
+.headerContainer {
+  background: linear-gradient(135deg, #8BC34A, #4CAF50);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative elements */
+.headerDecoration {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
   z-index: 1;
+}
+
+.headerDecoration1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  right: -100px;
+}
+
+.headerDecoration2 {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  left: 10%;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Logo container */
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .logoContainer {
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
 }

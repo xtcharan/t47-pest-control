@@ -5,11 +5,11 @@ import Image from 'next/image';
 
 export default function PestControlLeaders() {
   return (
-    <section className="py-20 bg-white text-gray-800 relative">
+    <section className="py-12 bg-white text-gray-800 relative">
       {/* Background pattern - using a subtle dot pattern */}
       <div className="absolute inset-0 opacity-5 bg-[url('/dot-pattern.svg')] bg-[length:20px_20px]"></div>
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-4xl font-bold mb-3 relative inline-block text-gray-900">
             Victoria&apos;s Pest Control Leaders
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-red-600"></span>

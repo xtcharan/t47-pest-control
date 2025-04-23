@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 interface ServiceTileProps {
   title: string;
@@ -11,7 +11,7 @@ interface ServiceTileProps {
 
 const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: ServiceTileProps) => {
   return (
-    <div className="min-w-[280px] h-[250px] rounded-xl shadow-xl overflow-hidden relative flex flex-col modern-card group transform transition-all duration-300 hover:-translate-y-2 snap-start">
+    <div className="min-w-[300px] h-[250px] rounded-xl shadow-xl overflow-hidden relative flex flex-col modern-card group transform transition-all duration-300 hover:-translate-y-2">
       {/* Gradient background with subtle pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-light to-red-dark opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
       <div className="absolute inset-0 diagonal-pattern-bg opacity-5"></div>
@@ -55,12 +55,14 @@ const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: 
 
 export default function ServiceTiles() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
-  const [isHovering, setIsHovering] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState(-1); // 1 for right, -1 for left
+  const animationRef = useRef<number>();
+  const scrollPosition = useRef(0);
+  const scrollDirection = useRef(1); // 1 for right, -1 for left
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+  const isPaused = useRef(false);
+  const isHovering = useRef(false);
 
   // Services data
   const services = [
@@ -76,70 +78,120 @@ export default function ServiceTiles() {
     { title: 'Termite Treatment', price: '299', startingFrom: true },
   ];
 
-  // Auto-scroll functionality with hover pause
-  useEffect(() => {
-    if (!autoScrollEnabled || !scrollContainerRef.current || isHovering) return;
-
-    const scrollContainer = scrollContainerRef.current;
-    let animationFrameId: number;
-    const scrollSpeed = 1; // pixels per frame - increased for better visibility
-
-    const scroll = () => {
-      if (scrollContainer) {
-        // Check if we need to change direction
-        if (
-          (scrollDirection > 0 && scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 5) ||
-          (scrollDirection < 0 && scrollContainer.scrollLeft <= 5)
-        ) {
-          setScrollDirection(prev => prev * -1);
-        }
-
-        scrollContainer.scrollLeft += scrollSpeed * scrollDirection;
-        animationFrameId = requestAnimationFrame(scroll);
-      }
-    };
-
-    animationFrameId = requestAnimationFrame(scroll);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, [autoScrollEnabled, scrollDirection, isHovering]);
-
-  // Mouse controls
+  // Mouse and touch event handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
 
-    setIsDragging(true);
-    setAutoScrollEnabled(false);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    isDragging.current = true;
+    isPaused.current = true; // Pause auto-scrolling
+    startX.current = e.pageX - scrollContainerRef.current.offsetLeft;
+    scrollLeft.current = scrollContainerRef.current.scrollLeft;
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!scrollContainerRef.current || e.touches.length !== 1) return;
+
+    isDragging.current = true;
+    isPaused.current = true; // Pause auto-scrolling
+    startX.current = e.touches[0].clientX - scrollContainerRef.current.offsetLeft;
+    scrollLeft.current = scrollContainerRef.current.scrollLeft;
   };
 
   const handleMouseUp = () => {
-    setIsDragging(false);
-    setTimeout(() => setAutoScrollEnabled(true), 3000); // Resume auto-scroll after 3 seconds
+    isDragging.current = false;
+    // Resume auto-scrolling after a delay
+    setTimeout(() => {
+      isPaused.current = false;
+      // Update the scroll position to match the current scroll position
+      if (scrollContainerRef.current) {
+        scrollPosition.current = scrollContainerRef.current.scrollLeft;
+      }
+    }, 1000);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
+    if (!isDragging.current || !scrollContainerRef.current) return;
 
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    const walk = (x - startX.current) * 2; // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
+    // Update the scroll position for auto-scrolling
+    scrollPosition.current = scrollContainerRef.current.scrollLeft;
   };
 
-  const handleMouseEnter = () => {
-    setIsHovering(true);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging.current || !scrollContainerRef.current || e.touches.length !== 1) return;
+    // Note: We're not calling preventDefault() to avoid issues with passive event listeners
+
+    const x = e.touches[0].clientX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX.current) * 2; // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
+    // Update the scroll position for auto-scrolling
+    scrollPosition.current = scrollContainerRef.current.scrollLeft;
   };
 
   const handleMouseLeave = () => {
-    setIsHovering(false);
-    if (isDragging) {
-      setIsDragging(false);
-      setTimeout(() => setAutoScrollEnabled(true), 3000);
+    isHovering.current = false;
+    if (isDragging.current) {
+      isDragging.current = false;
     }
+    // Resume auto-scrolling after a short delay
+    setTimeout(() => {
+      if (!isHovering.current) { // Only resume if still not hovering
+        isPaused.current = false;
+        // Update the scroll position to match the current scroll position
+        if (scrollContainerRef.current) {
+          scrollPosition.current = scrollContainerRef.current.scrollLeft;
+        }
+      }
+    }, 500);
   };
+
+  const handleMouseEnter = () => {
+    isHovering.current = true;
+    isPaused.current = true; // Pause auto-scrolling when mouse enters
+  };
+
+  // Auto-scroll animation
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    const scrollWidth = scrollContainer.scrollWidth;
+    const clientWidth = scrollContainer.clientWidth;
+
+    const animate = () => {
+      if (!scrollContainer || isPaused.current) {
+        // If paused, just continue the animation loop without scrolling
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      // Change direction when reaching the end or beginning
+      if (scrollPosition.current >= scrollWidth - clientWidth) {
+        scrollDirection.current = -1; // scroll left
+      } else if (scrollPosition.current <= 0) {
+        scrollDirection.current = 1; // scroll right
+      }
+
+      // Update scroll position
+      scrollPosition.current += scrollDirection.current * 1.0;
+      scrollContainer.scrollLeft = scrollPosition.current;
+
+      // Continue animation
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    // Start animation
+    animationRef.current = requestAnimationFrame(animate);
+
+    // Cleanup
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [])
 
   return (
     <section className="py-16 bg-gradient-to-b from-gray-100 to-white relative overflow-hidden">
@@ -148,7 +200,7 @@ export default function ServiceTiles() {
       <div className="absolute -top-10 -right-10 w-40 h-40 bg-red-light/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-green-light/10 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Enhanced section header */}
         <div className="text-center mb-12">
           <span className="inline-block px-3 py-1 bg-red-light/10 text-red-dark text-sm font-semibold rounded-full mb-3">
@@ -163,54 +215,30 @@ export default function ServiceTiles() {
           </p>
         </div>
 
-        {/* Enhanced scroll container with indicators */}
-        <div className="relative">
+        {/* Horizontal scrolling container */}
+        <div className="w-full py-6 overflow-hidden relative">
           <div
-            className="w-full overflow-x-auto hide-scrollbar py-6 relative review-scroll-container"
+            className="flex space-x-8 overflow-x-auto hide-scrollbar py-2 horizontal-scroll-container cursor-grab active:cursor-grabbing"
             ref={scrollContainerRef}
-            onMouseEnter={handleMouseEnter}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleMouseUp}
+            onTouchCancel={handleMouseLeave}
           >
-            <div className="flex space-x-6 px-4 overflow-x-auto pb-4 snap-x snap-mandatory w-full hide-scrollbar">
-              {services.map((service, index) => (
-                <ServiceTile
-                  key={index}
-                  title={service.title}
-                  price={service.price}
-                  startingFrom={service.startingFrom}
-                  reportOnly={service.reportOnly}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Scroll indicators */}
-          <div
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white/90 p-3 rounded-r-lg shadow-md hidden md:flex items-center justify-center z-10 cursor-pointer hover:bg-white transition-colors duration-300"
-            onClick={() => {
-              if (scrollContainerRef.current) {
-                scrollContainerRef.current.scrollLeft -= 300;
-              }
-            }}
-          >
-            <svg className="w-6 h-6 text-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </div>
-          <div
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white/90 p-3 rounded-l-lg shadow-md hidden md:flex items-center justify-center z-10 cursor-pointer hover:bg-white transition-colors duration-300"
-            onClick={() => {
-              if (scrollContainerRef.current) {
-                scrollContainerRef.current.scrollLeft += 300;
-              }
-            }}
-          >
-            <svg className="w-6 h-6 text-red-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
+            {services.map((service, index) => (
+              <ServiceTile
+                key={index}
+                title={service.title}
+                price={service.price}
+                startingFrom={service.startingFrom}
+                reportOnly={service.reportOnly}
+              />
+            ))}
           </div>
         </div>
 

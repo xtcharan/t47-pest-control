@@ -123,8 +123,75 @@ body {
 /* Review card styles */
 .review-scroll-container {
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
   padding-bottom: 20px;
+  overflow: visible;
+}
+
+.review-scroll-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: pan-x;
+  cursor: grab;
+}
+
+.review-scroll-track {
+  display: flex;
+  width: max-content;
+  min-width: 200%;
+  will-change: transform;
+  touch-action: pan-x;
+  -webkit-user-select: none;
+  user-select: none;
+  gap: 1rem;
+  padding: 1rem 0;
+  cursor: grab;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.5s ease-out;
+  pointer-events: auto;
+}
+
+.review-scroll-track:active,
+.review-scroll-track.grabbing {
+  cursor: grabbing !important;
+  transition: none !important;
+}
+
+.review-scroll-track.animate-left {
+  animation: slowScrollLeft 80s linear infinite;
+}
+
+.review-scroll-track.animate-right {
+  animation: slowScrollRight 60s linear infinite;
+}
+
+.review-scroll-track:hover,
+.review-scroll-track.paused {
+  animation-play-state: paused;
+}
+
+/* Improved review card interaction */
+.review-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 5;
+}
+
+.review-scroll-track.grabbing .review-card {
+  transform: scale(0.98);
+  transition: transform 0.2s ease;
+}
+
+.review-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 20;
 }
 
 /* Card animations */
@@ -162,9 +229,30 @@ body {
   }
 }
 
+@keyframes slowScrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slowScrollRight {
+  from {
+    transform: translateX(-20%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 /* Review card animations */
 .review-card {
   animation: fadeInUp 0.6s ease-out forwards, floatEffect 4s ease-in-out infinite;
+  position: relative;
+  overflow: visible;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .review-card:nth-child(odd) {
@@ -335,6 +423,14 @@ body {
   margin: 0 auto;
   background: var(--gradient-green);
   border-radius: 2px;
+}
+
+/* Horizontal scrolling container */
+.horizontal-scroll-container {
+  width: calc(100% + 300px);
+  margin-left: -150px;
+  padding-left: 150px;
+  position: relative;
 }
 
 .fancy-border {

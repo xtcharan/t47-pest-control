@@ -26,14 +26,14 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover scale-105 transition-transform duration-10000 ease-in-out"
-          style={{ objectPosition: '65% 30%' }} /* Adjusted to show more of the people */
+          className="object-cover scale-85 transition-transform duration-10000 ease-in-out"
+          style={{ objectPosition: '65% 10%' }} /* Adjusted to show more of the people */
           quality={85}
         />
 
         {/* Enhanced overlay with multiple gradients for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/15 to-transparent"></div>
 
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-10 diagonal-pattern-bg"></div>
@@ -82,7 +82,8 @@ export default function Hero() {
         <div
           className={`w-full md:w-1/2 flex justify-center items-start md:items-center transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <div className="w-full max-w-xs mt-4 md:mt-0">
+         {/* to move the quote form from left to right  */}
+          <div className="w-full max-w-xs mt-4 md:mt-0 ml-5 md:ml-80">
             <QuoteForm />
           </div>
         </div>

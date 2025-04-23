@@ -110,7 +110,7 @@ export default function Footer() {
               <Link href="/areas/shepparton" className="text-gray-400 hover:text-white transition-colors">Perth</Link>
               <Link href="/areas/mildura" className="text-gray-400 hover:text-white transition-colors">Adelaide</Link>
               <Link href="/areas/warrnambool" className="text-gray-400 hover:text-white transition-colors">Canberra</Link>
-              <Link href="/areas/wodonga" className="text-gray-400 hover:text-white transition-colors">Biradar</Link>
+              <Link href="/areas/wodonga" className="text-gray-400 hover:text-white transition-colors">Wodonga</Link>
             </div>
           </div>
 
