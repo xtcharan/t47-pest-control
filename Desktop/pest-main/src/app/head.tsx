@@ -1,39 +1,28 @@
 export default function Head() {
   return (
     <>
-      {/* Preload critical hero images */}
+      {/* Only preload critical above-the-fold hero image */}
       <link
         rel="preload"
         href="/pest-control-hero.webp"
         as="image"
         type="image/webp"
+        fetchPriority="high"
       />
       <link
         rel="preload"
         href="/pest-control-hero.jpg"
         as="image"
         type="image/jpeg"
+        fetchPriority="high"
       />
 
-      {/* Preload technology section images */}
-      <link
-        rel="preload"
-        href="/safe-home-business.webp"
-        as="image"
-        type="image/webp"
-      />
-      <link
-        rel="preload"
-        href="/latest-technology.webp"
-        as="image"
-        type="image/webp"
-      />
-      <link
-        rel="preload"
-        href="/find-us.webp"
-        as="image"
-        type="image/webp"
-      />
+      {/* Add preconnect for faster resource loading */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+      {/* Add lazy loading hint */}
+      <link rel="preload" as="script" href="/lazy-load-polyfill.js" />
     </>
   );
 }
