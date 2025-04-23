@@ -142,26 +142,26 @@ export default function MainHeader() {
         </a>
       </div>
 
-      <div className="container mx-auto px-4 flex flex-wrap items-center">
+      <div className="container mx-auto px-2.5 md:px-4 flex items-center justify-between py-1.5 md:py-2">
         {/* Logo and company name */}
-        <div className="flex items-center py-2 mr-6">
-          <div className="mr-3">
+        <div className="flex items-center">
+          <div className="mr-2">
             <Image
               src="/logo.png"
               alt="Company Logo"
               width={0}
               height={0}
-              sizes="(max-width: 768px) 70px, 100px"
+              sizes="(max-width: 768px) 60px, 100px"
               className="object-contain"
-              style={{ width: 'auto', height: isMobile ? '70px' : '100px' }}
+              style={{ width: 'auto', height: isMobile ? '60px' : '100px' }}
               priority
             />
           </div>
           <div>
-            <h1 className="text-xl md:text-3xl font-extrabold text-white whitespace-nowrap">
+            <h1 className="text-sm md:text-3xl font-extrabold text-white whitespace-nowrap">
               T47 PEST CONTROL
             </h1>
-            <p className="text-xs md:text-sm font-medium text-white/80 whitespace-nowrap">
+            <p className="text-[10px] md:text-sm font-medium text-white/80 whitespace-nowrap">
               24/7 ROUND THE CLOCK
             </p>
           </div>
@@ -214,22 +214,52 @@ export default function MainHeader() {
           </div>
         </div>
 
-        {/* Mobile menu button - optimized for performance */}
-        <div className="md:hidden ml-auto mr-2">
+        {/* Mobile navigation buttons - right side */}
+        <div className="md:hidden flex items-center space-x-1.5">
+          {/* Phone button with animation */}
+          <button
+            type="button"
+            onClick={() => window.location.href = `tel:${COMPANY_INFO.phone}`}
+            className={`p-2 rounded-full bg-blue-600 shadow-md focus:outline-none flex items-center justify-center ${styles.phoneButton}`}
+            aria-label="Call us"
+          >
+            <div className={styles.phoneIcon}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+          </button>
+
+          {/* Book Now button */}
+          <button
+            type="button"
+            onClick={() => window.location.href = '/contact'}
+            className="py-1.5 px-3.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold text-xs shadow-md focus:outline-none transition-transform hover:scale-105 active:scale-95"
+            aria-label="Book Now"
+          >
+            BOOK NOW
+          </button>
+
+          {/* Mobile hamburger menu button - right side */}
           <button
             type="button"
             onClick={() => {
-              // Use requestAnimationFrame for smoother toggling
               requestAnimationFrame(() => {
                 setMobileMenuOpen(!mobileMenuOpen);
               });
             }}
-            className={`${styles.hamburgerButton} ${mobileMenuOpen ? 'bg-blue-50' : ''}`}
+            className="p-2 focus:outline-none"
             aria-label="Toggle mobile menu"
           >
-            <span className="font-bold text-blue-600">
-              {mobileMenuOpen ? 'CLOSE' : 'MENU'}
-            </span>
+            {mobileMenuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
       </div>
@@ -286,7 +316,7 @@ export default function MainHeader() {
         </div>
 
         {/* Bottom navigation bar */}
-        <div className="fixed bottom-0 left-0 right-0 bg-gray-50 border-t border-gray-200 grid grid-cols-4 py-2 z-50">
+        <div className="fixed bottom-0 left-0 right-0 bg-gray-50 border-t border-gray-200 grid grid-cols-5 py-2 z-50">
           {/* Locations */}
           <a href="/areas" className="flex flex-col items-center justify-center text-gray-600 hover:text-blue-600">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -305,10 +335,20 @@ export default function MainHeader() {
             <span className="text-xs mt-1">Search</span>
           </button>
 
+          {/* Phone - Call Us */}
+          <a href={`tel:${COMPANY_INFO.phone}`} className="flex flex-col items-center justify-center text-blue-600 hover:text-blue-800">
+            <div className={`${styles.phoneIcon} relative`}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <span className="text-xs mt-1">Call Us</span>
+          </a>
+
           {/* Contact */}
           <a href="/contact" className="flex flex-col items-center justify-center text-gray-600 hover:text-blue-600">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
             </svg>
             <span className="text-xs mt-1">Contact</span>
           </a>
