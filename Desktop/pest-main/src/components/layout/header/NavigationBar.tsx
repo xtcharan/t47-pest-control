@@ -58,9 +58,9 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
   ], []);
 
   return (
-    <nav ref={ref} className={`${isMobile ? 'flex-col w-full' : 'flex'}`}>
+    <nav ref={ref} className={`${isMobile ? 'flex-col w-full' : 'flex'} ${styles.navContainer}`}>
       {/* Main navigation items */}
-      <div className={`flex ${isMobile ? 'flex-col w-full gap-2' : 'items-center gap-2'}`}>
+      <div className={`flex ${isMobile ? 'flex-col w-full gap-2' : 'items-center gap-2 pl-4'}`}>
         {/* Line before first item - only on desktop */}
         {!isMobile && <div className="h-6 w-[1px] bg-white/30 mx-1"></div>}
 
@@ -77,7 +77,7 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
                 ) : (
                   <Link
                     href={item.href}
-                    className={`relative inline-block px-3 py-2 rounded-md whitespace-nowrap`}
+                    className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap`}
                     prefetch={false}
                   >
                     <span className="font-medium text-gray-700">

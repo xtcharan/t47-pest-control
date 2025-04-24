@@ -55,7 +55,7 @@ export default function NavigationItem({
       ) : (
         <Link
           href={href}
-          className={`relative inline-block px-3 py-2 rounded-md whitespace-nowrap ${isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-50'}`}
+          className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap ${isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-50'}`}
           prefetch={false}
         >
           <span className={`font-medium ${isActive ? 'text-white' : 'text-gray-700'}`}>

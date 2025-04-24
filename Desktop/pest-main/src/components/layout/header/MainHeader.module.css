@@ -300,6 +300,37 @@
   will-change: opacity;
 }
 
+/* Navigation container with right padding */
+.navContainer {
+  padding-left: 1rem;
+}
+
+/* Logo hover effect */
+.logoHover {
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+
+.logoHover:hover {
+  transform: translateY(-2px);
+}
+
+.logoHover::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: width 0.3s ease;
+}
+
+.logoHover:hover::after {
+  width: 100%;
+}
+
 /* Menu button - optimized for performance */
 .hamburgerButton {
   display: flex;

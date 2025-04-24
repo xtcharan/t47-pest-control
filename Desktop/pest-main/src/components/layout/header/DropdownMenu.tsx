@@ -90,7 +90,7 @@ export default function DropdownMenu({
       onMouseLeave={onMouseLeave}
     >
       <div className="container mx-auto py-3 px-4 flex justify-center">
-        <div className="flex flex-col w-full max-w-6xl">
+        <div className="flex flex-col w-full max-w-6xl pl-6">
           {rows.map((row, rowIndex) => (
             <div key={rowIndex} className="w-full">
               <div className="grid grid-cols-4 gap-x-1 justify-between items-center w-full py-2">

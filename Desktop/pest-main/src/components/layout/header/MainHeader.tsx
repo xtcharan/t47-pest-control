@@ -1,5 +1,6 @@
 "use client";
 import Image from 'next/image';
+import Link from 'next/link';
 import { COMPANY_INFO } from '../../lib/constants';
 import { useHoverPosition } from '../../hooks/useHoverPosition';
 import NavigationBar from './NavigationBar';
@@ -31,7 +32,7 @@ export default function MainHeader() {
   return (
     <header className="w-full relative z-50 bg-green-light">
       {/* Search, Locations and Social media icons in top right */}
-      <div className="hidden md:flex items-center justify-end space-x-2 py-0.5 px-4 bg-gradient-to-r from-green-500 to-green-700 shadow-md">
+      <div className="hidden md:flex items-center justify-end space-x-2 py-0.5 px-4 bg-gradient-to-r from-red-500 to-red-700 shadow-md">
         {/* Search bar */}
         <div className="relative mr-4">
           <input
@@ -143,8 +144,12 @@ export default function MainHeader() {
       </div>
 
       <div className="container mx-auto px-2.5 md:px-4 flex items-center justify-between py-1.5 md:py-2">
-        {/* Logo and company name */}
-        <div className="flex items-center">
+        {/* Logo and company name - clickable to home page */}
+        <Link
+          href="/"
+          className={`flex items-center group cursor-pointer transition-transform hover:scale-105 duration-200 ${styles.logoHover}`}
+          aria-label="Go to homepage"
+        >
           <div className="mr-2">
             <Image
               src="/logo.png"
@@ -158,18 +163,18 @@ export default function MainHeader() {
             />
           </div>
           <div>
-            <h1 className="text-sm md:text-3xl font-extrabold text-white whitespace-nowrap">
+            <h1 className="text-sm md:text-3xl font-extrabold text-white whitespace-nowrap group-hover:text-white/90 transition-colors">
               T47 PEST CONTROL
             </h1>
-            <p className="text-[10px] md:text-sm font-medium text-white/80 whitespace-nowrap">
+            <p className="text-[10px] md:text-sm font-medium text-white/80 whitespace-nowrap group-hover:text-white/70 transition-colors">
               24/7 ROUND THE CLOCK
             </p>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop navigation and contact buttons */}
         <div className="hidden md:flex items-center justify-between flex-1">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 pl-2">
             {/* Navigation items */}
             <nav className="flex items-center">
               <NavigationBar
@@ -437,7 +442,7 @@ export default function MainHeader() {
 
       {/* Dropdown Menus - only shown on desktop */}
       {activeDropdown && !isMobile && (
-        <div className="absolute left-0 right-0 top-[120px] z-50">
+        <div className="absolute left-0 right-0 top-[120px] z-50 pl-2">
           <DropdownMenu
             activeDropdown={activeDropdown}
             onMouseEnter={handleDropdownMouseEnter}
