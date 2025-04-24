@@ -1,6 +1,6 @@
 {
   "name": "pest",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next dev",
