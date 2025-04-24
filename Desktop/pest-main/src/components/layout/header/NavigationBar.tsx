@@ -80,7 +80,7 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
                     className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap`}
                     prefetch={false}
                   >
-                    <span className="font-medium text-gray-700">
+                    <span className="font-medium text-white">
                       {item.name}
                     </span>
                   </Link>

@@ -58,8 +58,11 @@ export default function NavigationItem({
           className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap ${isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-50'}`}
           prefetch={false}
         >
-          <span className={`font-medium ${isActive ? 'text-white' : 'text-gray-700'}`}>
+          <span className="font-medium text-white flex items-center">
             {name}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
           </span>
         </Link>
       )}
