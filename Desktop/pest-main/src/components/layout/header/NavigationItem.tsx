@@ -36,7 +36,7 @@ export default function NavigationItem({
           </Link>
           <button
             type="button"
-            className={`p-2 rounded-md ${isActive ? 'bg-blue-100 text-blue-600' : ''}`}
+            className={`p-2 rounded-md ${isActive ? 'bg-red-100 text-red-600' : ''}`}
             onClick={() => onMouseEnter(menuKey)}
             aria-label={`${isActive ? 'Collapse' : 'Expand'} ${name} menu`}
           >
@@ -55,7 +55,7 @@ export default function NavigationItem({
       ) : (
         <Link
           href={href}
-          className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap ${isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-50'}`}
+          className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap ${isActive ? 'bg-red-600 text-white' : 'hover:bg-gray-50'}`}
           prefetch={false}
         >
           <span className="font-medium text-white flex items-center">

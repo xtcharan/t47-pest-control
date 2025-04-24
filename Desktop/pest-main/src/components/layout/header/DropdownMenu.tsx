@@ -63,7 +63,7 @@ export default function DropdownMenu({
                     <Link
                       key={index}
                       href={item.href}
-                      className="text-gray-700 hover:text-blue-600 text-sm font-medium py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md text-center relative"
+                      className="text-gray-700 hover:text-red-600 text-sm font-medium py-2 px-3 bg-gray-50 hover:bg-gray-100 rounded-md text-center relative"
                       style={{ willChange: 'auto' }}
                       prefetch={false}
                     >
@@ -85,20 +85,20 @@ export default function DropdownMenu({
   // Desktop layout - optimized for performance
   return (
     <div
-      className={styles.desktopDropdown}
+      className={`${styles.desktopDropdown} border-t border-gray-200`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="container mx-auto py-3 px-4 flex justify-center">
-        <div className="flex flex-col w-full max-w-6xl pl-6">
+      <div className="container mx-auto py-0 px-2 flex justify-center">
+        <div className="flex flex-col w-full max-w-6xl pl-4">
           {rows.map((row, rowIndex) => (
             <div key={rowIndex} className="w-full">
-              <div className="grid grid-cols-4 gap-x-1 justify-between items-center w-full py-2">
+              <div className="grid grid-cols-4 gap-x-1 justify-between items-center w-full py-0.5">
                 {row.map((item, index) => (
                   <Link
                     key={index}
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-600 text-sm md:text-base font-medium py-1 px-2 hover:bg-gray-50 rounded-md text-center relative whitespace-nowrap overflow-hidden text-ellipsis"
+                    className="text-gray-700 hover:text-red-600 text-sm font-medium py-0.5 px-2 hover:bg-gray-50 rounded-md text-center relative whitespace-nowrap overflow-hidden text-ellipsis"
                     prefetch={false}
                   >
                     <span className="whitespace-nowrap overflow-hidden text-ellipsis block w-full">{item.name}</span>
@@ -106,7 +106,7 @@ export default function DropdownMenu({
                 ))}
               </div>
               {rowIndex < rows.length - 1 && (
-                <div className="w-full h-[1px] bg-gray-300 my-2"></div>
+                <div className="w-full h-[1px] bg-gray-300 my-0.5"></div>
               )}
             </div>
           ))}
