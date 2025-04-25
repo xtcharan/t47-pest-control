@@ -1,15 +1,21 @@
+"use client";
+
+import SpiderControlHero from "@/components/hero/SpiderControlHero";
+import SpiderControlBanner from "@/components/banner/SpiderControlBanner";
 import SpiderControlContent from "@/components/content/SpiderControlContent";
-import ResidentialLayout from "@/components/layout/ResidentialLayout";
+import SpiderExterminationProcedure from "@/components/procedure/SpiderExterminationProcedure";
+import SpiderSpeciesGallery from "@/components/species/SpiderSpeciesGallery";
+import SpiderControlFAQ from "@/components/faq/SpiderControlFAQ";
 
-export const metadata = {
-  title: "Professional Spider Control Services | T47 Pest Control",
-  description: "Safe and effective spider control services for your home. Our professional treatments eliminate dangerous spiders and prevent future infestations.",
-};
-
-export default function SpiderControlPage() {
+export default function SpidersPage() {
   return (
-    <ResidentialLayout>
+    <main className="min-h-screen">
+      <SpiderControlHero />
+      <SpiderControlBanner />
       <SpiderControlContent />
-    </ResidentialLayout>
+      <SpiderExterminationProcedure />
+      <SpiderSpeciesGallery />
+      <SpiderControlFAQ />
+    </main>
   );
 }

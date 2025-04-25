@@ -30,9 +30,9 @@ export default function MainHeader() {
   };
 
   return (
-    <header className="w-full relative z-50 bg-gradient-to-r from-red-500 to-red-700 text-white">
+    <header className="w-full relative z-50">
       {/* Search, Locations and Social media icons in top right */}
-      <div className="hidden md:flex items-center justify-end space-x-1 py-0.5 px-3 bg-gradient-to-r from-gray-700 to-gray-800 shadow-sm text-[10px]">
+      <div className="hidden md:flex items-center justify-end space-x-1 py-0.5 px-3 bg-gradient-to-r from-red-500 to-red-700 shadow-sm text-[10px] text-white">
         {/* Search bar */}
         <div className="relative mr-2">
           <input
@@ -146,7 +146,7 @@ export default function MainHeader() {
         </div>
       </div>
 
-      <div className="container mx-auto px-2 md:px-3 flex items-center justify-between py-0.5 md:py-1">
+      <div className="container mx-auto px-2 md:px-3 flex items-center justify-between py-0.5 md:py-1 bg-white shadow-md">
         {/* Logo and company name - clickable to home page */}
         <Link
           href="/"
@@ -166,10 +166,10 @@ export default function MainHeader() {
             />
           </div>
           <div>
-            <h1 className="text-sm md:text-2xl font-extrabold text-white whitespace-nowrap group-hover:text-white/90 transition-colors">
+            <h1 className="text-sm md:text-2xl font-extrabold text-red-600 whitespace-nowrap group-hover:text-red-700 transition-colors">
               T47 PEST CONTROL
             </h1>
-            <p className="text-[9px] md:text-xs font-medium text-white/90 whitespace-nowrap group-hover:text-white/80 transition-colors">
+            <p className="text-[9px] md:text-xs font-medium text-gray-600 whitespace-nowrap group-hover:text-gray-700 transition-colors">
               24/7 ROUND THE CLOCK
             </p>
           </div>
@@ -192,7 +192,7 @@ export default function MainHeader() {
             </nav>
 
             {/* Vertical divider */}
-            <div className="h-8 w-[1px] bg-white/50 mx-2"></div>
+            <div className="h-8 w-[1px] bg-gray-300 mx-2"></div>
 
             {/* Contact buttons */}
             <div className="flex items-center space-x-2">
@@ -260,11 +260,11 @@ export default function MainHeader() {
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}

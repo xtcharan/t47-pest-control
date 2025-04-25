@@ -1,15 +1,21 @@
+"use client";
+
+import TermiteControlHero from "@/components/hero/TermiteControlHero";
+import TermiteControlBanner from "@/components/banner/TermiteControlBanner";
 import TermiteControlContent from "@/components/content/TermiteControlContent";
-import ResidentialLayout from "@/components/layout/ResidentialLayout";
+import TermiteExterminationProcedure from "@/components/procedure/TermiteExterminationProcedure";
+import TermiteSpeciesGallery from "@/components/species/TermiteSpeciesGallery";
+import TermiteControlFAQ from "@/components/faq/TermiteControlFAQ";
 
-export const metadata = {
-  title: "Professional Termite Control Services | T47 Pest Control",
-  description: "Protect your home from termite damage with our professional termite control services. Comprehensive inspections, treatments, and prevention.",
-};
-
-export default function TermiteControlPage() {
+export default function TermitesPage() {
   return (
-    <ResidentialLayout>
+    <main className="min-h-screen">
+      <TermiteControlHero />
+      <TermiteControlBanner />
       <TermiteControlContent />
-    </ResidentialLayout>
+      <TermiteExterminationProcedure />
+      <TermiteSpeciesGallery />
+      <TermiteControlFAQ />
+    </main>
   );
 }

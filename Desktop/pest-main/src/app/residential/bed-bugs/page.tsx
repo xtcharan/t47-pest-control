@@ -1,15 +1,21 @@
+"use client";
+
+import BedBugControlHero from "@/components/hero/BedBugControlHero";
+import BedBugControlBanner from "@/components/banner/BedBugControlBanner";
 import BedBugControlContent from "@/components/content/BedBugControlContent";
-import ResidentialLayout from "@/components/layout/ResidentialLayout";
+import BedBugExterminationProcedure from "@/components/procedure/BedBugExterminationProcedure";
+import BedBugLifecycleGallery from "@/components/species/BedBugLifecycleGallery";
+import BedBugControlFAQ from "@/components/faq/BedBugControlFAQ";
 
-export const metadata = {
-  title: "Professional Bed Bug Control Services | T47 Pest Control",
-  description: "Effective bed bug control services for your home. Our professional treatments eliminate bed bugs and prevent future infestations.",
-};
-
-export default function BedBugControlPage() {
+export default function BedBugsPage() {
   return (
-    <ResidentialLayout>
+    <main className="min-h-screen">
+      <BedBugControlHero />
+      <BedBugControlBanner />
       <BedBugControlContent />
-    </ResidentialLayout>
+      <BedBugExterminationProcedure />
+      <BedBugLifecycleGallery />
+      <BedBugControlFAQ />
+    </main>
   );
 }

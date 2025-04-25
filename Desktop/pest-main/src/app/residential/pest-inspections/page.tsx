@@ -3,7 +3,7 @@
 import PestInspectionHero from "@/components/hero/PestInspectionHero";
 import PestInspectionBanner from "@/components/banner/PestInspectionBanner";
 import PestInspectionContent from "@/components/content/PestInspectionContent";
-
+import PestInspectionProcedure from "@/components/procedure/PestInspectionProcedure";
 import PestInspectionFAQ from "@/components/faq/PestInspectionFAQ";
 
 export default function PestInspectionsPage() {
@@ -12,6 +12,7 @@ export default function PestInspectionsPage() {
       <PestInspectionHero />
       <PestInspectionBanner />
       <PestInspectionContent />
+      <PestInspectionProcedure />
       <PestInspectionFAQ />
     </main>
   );

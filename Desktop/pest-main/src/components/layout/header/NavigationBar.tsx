@@ -62,7 +62,7 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
       {/* Main navigation items */}
       <div className={`flex ${isMobile ? 'flex-col w-full gap-2' : 'items-center gap-2 pl-4'}`}>
         {/* Line before first item - only on desktop */}
-        {!isMobile && <div className="h-6 w-[1px] bg-white/30 mx-1"></div>}
+        {!isMobile && <div className="h-6 w-[1px] bg-gray-300 mx-1"></div>}
 
         {navItems.map((item, index) => (
           <React.Fragment key={item.key}>
@@ -77,10 +77,10 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
                 ) : (
                   <Link
                     href={item.href}
-                    className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap`}
+                    className={`relative inline-block px-4 py-2 rounded-md whitespace-nowrap text-gray-700 hover:bg-gray-50 hover:text-red-600 border border-transparent hover:border-red-200 transition-all duration-200`}
                     prefetch={false}
                   >
-                    <span className="font-medium text-white">
+                    <span className="font-medium">
                       {item.name}
                     </span>
                   </Link>
@@ -102,7 +102,7 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
 
             {/* Add divider after specified items - only on desktop */}
             {!isMobile && item.addDivider && (
-              <div className="h-6 w-[1px] bg-white/30 mx-1"></div>
+              <div className="h-6 w-[1px] bg-gray-300 mx-1"></div>
             )}
 
             {/* Add horizontal divider after specified items - only on mobile */}

@@ -1,15 +1,21 @@
+"use client";
+
+import WaspControlHero from "@/components/hero/WaspControlHero";
+import WaspControlBanner from "@/components/banner/WaspControlBanner";
 import WaspControlContent from "@/components/content/WaspControlContent";
-import ResidentialLayout from "@/components/layout/ResidentialLayout";
+import WaspExterminationProcedure from "@/components/procedure/WaspExterminationProcedure";
+import WaspSpeciesGallery from "@/components/species/WaspSpeciesGallery";
+import WaspControlFAQ from "@/components/faq/WaspControlFAQ";
 
-export const metadata = {
-  title: "Professional Wasp Control Services | T47 Pest Control",
-  description: "Safe and effective wasp control services for your home. Our professional treatments remove wasp nests and prevent future infestations.",
-};
-
-export default function WaspControlPage() {
+export default function WaspsPage() {
   return (
-    <ResidentialLayout>
+    <main className="min-h-screen">
+      <WaspControlHero />
+      <WaspControlBanner />
       <WaspControlContent />
-    </ResidentialLayout>
+      <WaspExterminationProcedure />
+      <WaspSpeciesGallery />
+      <WaspControlFAQ />
+    </main>
   );
 }
