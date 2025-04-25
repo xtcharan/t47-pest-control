@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import Head from "./head";
 import LazyLoadInit from "@/components/LazyLoadInit";
 import Script from "next/script";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
         <Footer />
         <LazyLoadInit />
         <Script src="/lazy-load-polyfill.js" strategy="lazyOnload" />
+        <SpeedInsights />
       </body>
     </html>
   );
