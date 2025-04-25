@@ -37,12 +37,19 @@ const AntSpecies = ({ name, image, description }: AntSpeciesProps) => {
 
         {/* Description panel that slides up on hover */}
         <div
-          className={`absolute inset-0 bg-blue-600/90 p-4 flex flex-col justify-center transition-all duration-500 ease-in-out ${
+          className={`absolute inset-0 bg-gradient-to-br from-blue-600/90 to-red-600/90 p-4 flex flex-col justify-center transition-all duration-500 ease-in-out ${
             isHovered ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
           }`}
         >
+          <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/20 rounded-full blur-xl -mr-5 -mt-5"></div>
           <h3 className="text-white font-bold text-lg mb-2">{name}</h3>
-          <p className="text-blue-100 text-sm leading-relaxed">{description}</p>
+          <p className="text-white/90 text-sm leading-relaxed">{description}</p>
+          <div className="absolute bottom-2 right-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-200" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -93,18 +100,21 @@ export default function AntSpeciesGallery() {
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute -top-20 right-20 w-64 h-64 bg-blue-100/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 -left-20 w-72 h-72 bg-blue-100/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 -left-20 w-72 h-72 bg-red-100/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/2 w-40 h-40 bg-red-100/10 rounded-full blur-2xl"></div>
+        <div className="absolute top-20 left-20 w-6 h-6 bg-red-400 rounded-full animate-pulse-slow"></div>
+        <div className="absolute bottom-20 right-20 w-4 h-4 bg-blue-400 rounded-full animate-pulse-slow"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-3">
+          <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-100 to-red-100 text-blue-700 text-sm font-semibold rounded-full mb-3">
             IDENTIFICATION GUIDE
           </span>
           <h2 className="text-4xl font-bold mb-4 text-gray-900">
-            Common Ant <span className="text-blue-600">Species</span>
+            Common Ant <span className="bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">Species</span>
           </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-red-600 mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-3xl mx-auto">
             Hover over or tap on each ant species to learn more about their characteristics, behaviors, and the threats they pose to your home or business.
           </p>
@@ -136,12 +146,32 @@ export default function AntSpeciesGallery() {
 
         {/* Call to action */}
         <div className="mt-12 text-center">
-          <div className="bg-white p-6 rounded-xl shadow-lg max-w-2xl mx-auto border border-blue-100 transform hover:shadow-xl transition-all duration-300">
-            <h3 className="text-xl font-semibold mb-3 text-gray-900">Not sure what type of ants you have?</h3>
-            <p className="text-gray-600 mb-4">Our expert technicians can identify any ant species and provide targeted treatment solutions.</p>
-            <a href="/contact" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors">
-              Schedule an Inspection
-            </a>
+          <div className="bg-white p-6 rounded-xl shadow-lg max-w-2xl mx-auto border border-blue-100 transform hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+            {/* Decorative corner accents */}
+            <div className="absolute top-0 left-0 w-16 h-16">
+              <div className="absolute top-0 left-0 w-16 h-2 bg-gradient-to-r from-red-500 to-red-400"></div>
+              <div className="absolute top-0 left-0 w-2 h-16 bg-gradient-to-b from-red-500 to-red-400"></div>
+            </div>
+            <div className="absolute top-0 right-0 w-16 h-16">
+              <div className="absolute top-0 right-0 w-16 h-2 bg-gradient-to-l from-blue-500 to-blue-400"></div>
+              <div className="absolute top-0 right-0 w-2 h-16 bg-gradient-to-b from-blue-500 to-blue-400"></div>
+            </div>
+            <div className="absolute bottom-0 left-0 w-16 h-16">
+              <div className="absolute bottom-0 left-0 w-16 h-2 bg-gradient-to-r from-blue-500 to-blue-400"></div>
+              <div className="absolute bottom-0 left-0 w-2 h-16 bg-gradient-to-t from-blue-500 to-blue-400"></div>
+            </div>
+            <div className="absolute bottom-0 right-0 w-16 h-16">
+              <div className="absolute bottom-0 right-0 w-16 h-2 bg-gradient-to-l from-red-500 to-red-400"></div>
+              <div className="absolute bottom-0 right-0 w-2 h-16 bg-gradient-to-t from-red-500 to-red-400"></div>
+            </div>
+
+            <div className="relative z-10 py-2">
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Not sure what type of ants you have?</h3>
+              <p className="text-gray-600 mb-4">Our expert technicians can identify any ant species and provide targeted treatment solutions.</p>
+              <a href="/contact" className="inline-block bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                Schedule an Inspection
+              </a>
+            </div>
           </div>
         </div>
       </div>

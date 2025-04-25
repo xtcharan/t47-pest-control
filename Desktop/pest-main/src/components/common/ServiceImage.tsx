@@ -3,20 +3,30 @@
 import Image, { ImageProps } from 'next/image';
 import { useState } from 'react';
 import styles from './ImageStyles.module.css';
+import LazyImage from './LazyImage';
 
 interface ServiceImageProps extends Omit<ImageProps, 'src'> {
   serviceName: 'residential-pest-control' | 'commercial-pest-control' | 'termite-solutions';
   onLoad?: () => void;
+  lazyLoad?: boolean;
+  threshold?: number;
+  rootMargin?: string;
+  placeholderColor?: string;
 }
 
 /**
  * ServiceImage component that provides optimized images for service cards
  * with WebP format and JPEG fallback
+ * Now supports lazy loading for non-critical images
  */
 export default function ServiceImage({
   serviceName,
   alt,
   onLoad,
+  lazyLoad = false,
+  threshold,
+  rootMargin,
+  placeholderColor,
   ...props
 }: ServiceImageProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +43,23 @@ export default function ServiceImage({
   // Fallback to original image paths if optimized images don't exist
   const fallbackSrc = `/${serviceName}.jpg`;
 
+  // Use LazyImage for non-critical images
+  if (lazyLoad) {
+    return (
+      <LazyImage
+        src={webpSrc}
+        fallbackSrc={jpgSrc}
+        alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
+        onLoad={handleLoad}
+        threshold={threshold}
+        rootMargin={rootMargin}
+        placeholderColor={placeholderColor}
+        {...props}
+      />
+    );
+  }
+
+  // Use regular Image for critical above-the-fold images
   return (
     <>
       <Image

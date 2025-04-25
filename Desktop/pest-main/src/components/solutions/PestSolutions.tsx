@@ -1,16 +1,20 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import OptimizedSvgIcon from '../common/OptimizedSvgIcon';
+import Link from 'next/link';
 
 // Define the pest and industry types
 interface PestType {
   name: string;
   icon: string;
+  href: string;
 }
 
 interface IndustryType {
   name: string;
   icon: string;
+  href: string;
 }
 
 export default function PestSolutions() {
@@ -19,38 +23,42 @@ export default function PestSolutions() {
 
   // Pest types data
   const pestTypes: PestType[] = [
-    { name: 'Termites', icon: '/termites.svg' },
-    { name: 'Wasps', icon: '/wasps.svg' },
-    { name: 'Cockroaches', icon: '/cockroaches.svg' },
-    { name: 'Mice & Rats', icon: '/mice.svg' },
-    { name: 'Spiders', icon: '/spiders.svg' },
-    { name: 'Possum', icon: '/possum.svg' },
-    { name: 'Ants', icon: '/ants.svg' },
-    { name: 'Bed bugs', icon: '/bug.svg' },
-    { name: 'Fleas', icon: '/fleas.svg' },
-    { name: 'Mosquitoes', icon: '/mosquitoes.svg' },
-    { name: 'Flies', icon: '/flies.svg' },
-    { name: 'Moths', icon: '/moths.svg' },
-    { name: 'Silverfish', icon: '/silverfish.svg' },
-    { name: 'Bird Control', icon: '/birds.svg' },
+    { name: 'Termites', icon: '/termites.svg', href: '/residential/termites' },
+    { name: 'Wasps', icon: '/wasps.svg', href: '/residential/wasps' },
+    { name: 'Cockroaches', icon: '/cockroaches.svg', href: '/residential/cockroaches' },
+    { name: 'Mice & Rats', icon: '/mice.svg', href: '/residential/rats-mice' },
+    { name: 'Rodents', icon: '/rodents.svg', href: '/residential/rodents' },
+    { name: 'Spiders', icon: '/spiders.svg', href: '/residential/spiders' },
+    { name: 'Possum', icon: '/possum.svg', href: '/residential/possums' },
+    { name: 'Ants', icon: '/ants.svg', href: '/residential/ants' },
+    { name: 'Bed bugs', icon: '/bug.svg', href: '/residential/bed-bugs' },
+    { name: 'Fleas', icon: '/fleas.svg', href: '/residential/fleas' },
+    { name: 'Mosquitoes', icon: '/mosquitoes.svg', href: '/residential/mosquitoes' },
+    { name: 'Flies', icon: '/flies.svg', href: '/residential/flies' },
+    { name: 'Moths', icon: '/moths.svg', href: '/residential/moths' },
+    { name: 'Silverfish', icon: '/silverfish.svg', href: '/residential/silverfish' },
+    { name: 'Bird Control', icon: '/birds.svg', href: '/residential/bird-control' },
+    { name: 'Bees', icon: '/bees.svg', href: '/residential/bees' },
+    { name: 'Pest Inspections', icon: '/pest-inspection.svg', href: '/residential/pest-inspections' },
+    { name: 'Termite Inspections', icon: '/termite-inspection.svg', href: '/residential/termite-inspections' },
   ];
 
   // Industry types data
   const industryTypes: IndustryType[] = [
-    { name: 'Restaurants', icon: '/restaurants.svg' },
-    { name: 'Schools', icon: '/schools.svg' },
-    { name: 'Hospitals', icon: '/hospitals.svg' },
-    { name: 'Child care', icon: '/childcare.svg' },
-    { name: 'Food processing', icon: '/food-processing.svg' },
-    { name: 'Retail', icon: '/retail.svg' },
-    { name: 'Hotels', icon: '/hotels.svg' },
-    { name: 'Offices', icon: '/offices.svg' },
-    { name: 'Warehouses', icon: '/warehouses.svg' },
-    { name: 'IT Centers', icon: '/it.svg' },
-    { name: 'Residential', icon: '/residential.svg' },
-    { name: 'Elderly Care Homes', icon: '/elderly.svg' },
-    { name: 'Gym & Fitness', icon: '/gym.svg' },
-    { name: 'Construction Sites', icon: '/construction.svg' },
+    { name: 'Restaurants', icon: '/restaurants.svg', href: '/commercial/restaurants' },
+    { name: 'Schools', icon: '/schools.svg', href: '/commercial/schools' },
+    { name: 'Hospitals', icon: '/hospitals.svg', href: '/commercial/healthcare' },
+    { name: 'Child care', icon: '/childcare.svg', href: '/commercial/childcare' },
+    { name: 'Food processing', icon: '/food-processing.svg', href: '/commercial/food-processing' },
+    { name: 'Retail', icon: '/retail.svg', href: '/commercial/retail' },
+    { name: 'Hotels', icon: '/hotels.svg', href: '/commercial/hotels' },
+    { name: 'Offices', icon: '/offices.svg', href: '/commercial/offices' },
+    { name: 'Warehouses', icon: '/warehouses.svg', href: '/commercial/logistics' },
+    { name: 'IT Centers', icon: '/it.svg', href: '/commercial/it' },
+    { name: 'Residential', icon: '/residential.svg', href: '/residential' },
+    { name: 'Elderly Care Homes', icon: '/elderly.svg', href: '/commercial/elderly-care' },
+    { name: 'Gym & Fitness', icon: '/gym.svg', href: '/commercial/fitness' },
+    { name: 'Construction Sites', icon: '/construction.svg', href: '/commercial/construction' },
   ];
 
   // Function to display pests in a grid, 5 per row
@@ -60,14 +68,23 @@ export default function PestSolutions() {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {pestsToShow.map((pest, index) => (
-          <div key={index} className="bg-white p-4 rounded-md shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow h-40 w-full">
-            <div className="w-24 h-24 relative mb-2">
-              <div className="w-24 h-24 flex items-center justify-center">
-                <img src={pest.icon} alt={pest.name} className="w-20 h-20 object-contain" />
+          <Link
+            href={pest.href}
+            key={index}
+            className="bg-white p-4 rounded-md shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow h-40 w-full cursor-pointer"
+          >
+            <div className="w-24 h-24 relative mb-2 bg-transparent">
+              <div className="w-24 h-24 flex items-center justify-center bg-transparent">
+                <OptimizedSvgIcon
+                  src={pest.icon}
+                  alt={pest.name}
+                  className="w-20 h-20 hover:scale-110 transition-transform duration-300"
+                  rootMargin="200px"
+                />
               </div>
             </div>
             <p className="text-sm font-medium text-gray-700">{pest.name}</p>
-          </div>
+          </Link>
         ))}
 
         {/* Show all/less pests button */}
@@ -107,14 +124,23 @@ export default function PestSolutions() {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {industriesToShow.map((industry, index) => (
-          <div key={index} className="bg-white p-4 rounded-md shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow h-40 w-full">
-            <div className="w-24 h-24 relative mb-2">
-              <div className="w-24 h-24 flex items-center justify-center">
-                <img src={industry.icon} alt={industry.name} className="w-20 h-20 object-contain" />
+          <Link
+            href={industry.href}
+            key={index}
+            className="bg-white p-4 rounded-md shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow h-40 w-full cursor-pointer"
+          >
+            <div className="w-24 h-24 relative mb-2 bg-transparent">
+              <div className="w-24 h-24 flex items-center justify-center bg-transparent">
+                <OptimizedSvgIcon
+                  src={industry.icon}
+                  alt={industry.name}
+                  className="w-20 h-20 hover:scale-110 transition-transform duration-300"
+                  rootMargin="200px"
+                />
               </div>
             </div>
             <p className="text-sm font-medium text-gray-700">{industry.name}</p>
-          </div>
+          </Link>
         ))}
 
         {/* Show all/less industries button */}

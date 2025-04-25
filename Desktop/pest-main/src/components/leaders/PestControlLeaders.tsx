@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import ServiceImage from '../common/ServiceImage';
 
 export default function PestControlLeaders() {
   return (
@@ -23,16 +24,15 @@ export default function PestControlLeaders() {
           {/* Residential Pest Control */}
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
-              <picture>
-                <source srcSet="/residential-pest-control.webp" type="image/webp" />
-                <Image
-                  src="/residential-pest-control.jpg"
-                  alt="Residential Pest Control"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-200 group-hover:scale-105"
-                />
-              </picture>
+              <ServiceImage
+                serviceName="residential-pest-control"
+                alt="Residential Pest Control"
+                fill
+                style={{ objectFit: 'cover' }}
+                className="transition-transform duration-200 group-hover:scale-105"
+                lazyLoad={true}
+                rootMargin="200px"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70"></div>
               <div className="absolute bottom-0 left-0 w-full p-4">
                 <div className="flex items-center space-x-2">
@@ -61,16 +61,15 @@ export default function PestControlLeaders() {
           {/* Commercial Pest Control */}
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
-              <picture>
-                <source srcSet="/commercial-pest-control.webp" type="image/webp" />
-                <Image
-                  src="/commercial-pest-control.jpg"
-                  alt="Commercial Pest Control"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-200 group-hover:scale-105"
-                />
-              </picture>
+              <ServiceImage
+                serviceName="commercial-pest-control"
+                alt="Commercial Pest Control"
+                fill
+                style={{ objectFit: 'cover' }}
+                className="transition-transform duration-200 group-hover:scale-105"
+                lazyLoad={true}
+                rootMargin="200px"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70"></div>
               <div className="absolute bottom-0 left-0 w-full p-4">
                 <div className="flex items-center space-x-2">
@@ -101,16 +100,15 @@ export default function PestControlLeaders() {
           {/* Termite Solutions */}
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200 group">
             <div className="relative h-64 w-full">
-              <picture>
-                <source srcSet="/termite-solutions.webp" type="image/webp" />
-                <Image
-                  src="/termite-solutions.jpg"
-                  alt="Termite Solutions"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-200 group-hover:scale-105"
-                />
-              </picture>
+              <ServiceImage
+                serviceName="termite-solutions"
+                alt="Termite Solutions"
+                fill
+                style={{ objectFit: 'cover' }}
+                className="transition-transform duration-200 group-hover:scale-105"
+                lazyLoad={true}
+                rootMargin="200px"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70"></div>
               <div className="absolute bottom-0 left-0 w-full p-4">
                 <div className="flex items-center space-x-2">

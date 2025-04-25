@@ -425,6 +425,88 @@ body {
   border-radius: 2px;
 }
 
+/* Lazy loading styles */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  background-color: transparent;
+}
+
+.lazy-loaded {
+  opacity: 1;
+}
+
+/* SVG icon optimization styles */
+.svg-icon-container {
+  background-color: transparent !important;
+  transition: transform 0.3s ease-in-out;
+}
+
+.svg-icon-container:hover {
+  transform: scale(1.05);
+}
+
+.svg-icon-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Remove any background from SVG icons */
+.svg-icon-container svg rect[fill="#f3f4f6"],
+.svg-icon-container svg rect[fill="#F3F4F6"],
+.svg-icon-container svg path[fill="#f3f4f6"],
+.svg-icon-container svg path[fill="#F3F4F6"] {
+  fill: transparent !important;
+}
+
+/* Placeholder styles for lazy loading images */
+.lazy-placeholder {
+  background-color: #f3f4f6;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Profile image styles */
+.review-card img.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Profile color classes */
+.profile-red { background-color: #ef4444; }
+.profile-blue { background-color: #3b82f6; }
+.profile-green { background-color: #10b981; }
+.profile-yellow { background-color: #f59e0b; }
+.profile-indigo { background-color: #6366f1; }
+.profile-teal { background-color: #14b8a6; }
+.profile-orange { background-color: #f97316; }
+.profile-purple { background-color: #8b5cf6; }
+
+.lazy-placeholder::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(to right, transparent 0%, #e5e7eb 50%, transparent 100%);
+  animation: shimmer 1.5s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  will-change: transform;
+  transform: translateX(-150px);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150px);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* Horizontal scrolling container */
 .horizontal-scroll-container {
   width: calc(100% + 300px);

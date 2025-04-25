@@ -5,6 +5,8 @@ import "./output.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Head from "./head";
+import LazyLoadInit from "@/components/LazyLoadInit";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,6 +41,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <LazyLoadInit />
+        <Script src="/lazy-load-polyfill.js" strategy="lazyOnload" />
       </body>
     </html>
   );

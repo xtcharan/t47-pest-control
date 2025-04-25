@@ -63,7 +63,18 @@ const ReviewCard = ({ name, text, profileColor, profileInitial, profileImage }: 
               alt={`${name}'s profile`}
               width={48}
               height={48}
-              className="object-cover"
+              className="object-cover profile-image"
+              loading="lazy"
+              unoptimized={true}
+              onError={(e) => {
+                // Fallback to initial if image fails to load
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                if (target.parentElement) {
+                  target.parentElement.classList.add(profileColor);
+                  target.parentElement.innerHTML = `<span class="text-lg font-medium text-white">${profileInitial}</span>`;
+                }
+              }}
             />
           </div>
         ) : (
@@ -110,7 +121,7 @@ export default function ClientReviews() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  // Track scroll position for animation
   const [isPaused, setIsPaused] = useState(false);
   const [trackPosition, setTrackPosition] = useState({ x: 0, y: 0 });
   const [autoScrollPaused, setAutoScrollPaused] = useState(false);
