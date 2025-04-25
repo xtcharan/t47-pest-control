@@ -119,6 +119,7 @@ export default function RestaurantPestGallery() {
               name={pest.name}
               image={pest.image}
               description={pest.description}
+              link={pest.link}
             />
           ))}
         </div>
