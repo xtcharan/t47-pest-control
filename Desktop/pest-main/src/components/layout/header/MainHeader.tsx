@@ -5,8 +5,11 @@ import { COMPANY_INFO } from '../../lib/constants';
 import { useHoverPosition } from '../../hooks/useHoverPosition';
 import NavigationBar from './NavigationBar';
 import DropdownMenu from './DropdownMenu';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './MainHeader.module.css';
+import SearchResults from '../../search/SearchResults';
+import SearchModal from '../../search/SearchModal';
+import { SearchItem } from '@/data/searchData';
 
 export default function MainHeader() {
   const {
@@ -24,6 +27,64 @@ export default function MainHeader() {
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Search states
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<SearchItem[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Handle search
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery.trim().length > 1) {
+        performSearch();
+      } else {
+        setSearchResults([]);
+        setShowSearchResults(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
+
+  // Search function
+  const performSearch = async () => {
+    if (searchQuery.trim().length < 2) return;
+
+    setIsSearching(true);
+    setShowSearchResults(true);
+
+    try {
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
+      const data = await response.json();
+      setSearchResults(data.results);
+    } catch (error) {
+      console.error('Search error:', error);
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  // Handle search form submission
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim().length > 1) {
+      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
+    }
+  };
+
+  // Handle mobile search button click
+  const handleMobileSearchClick = () => {
+    setShowMobileSearch(true);
+  };
+
   // Helper function to set menu item refs
   const setMenuItemRef = (el: HTMLDivElement | null, key: string) => {
     if (el) menuItemRefs.current[key] = el;
@@ -35,15 +96,39 @@ export default function MainHeader() {
       <div className="hidden md:flex items-center justify-end space-x-1 py-0.5 px-3 bg-gradient-to-r from-red-500 to-red-700 shadow-sm text-[10px] text-white">
         {/* Search bar */}
         <div className="relative mr-2">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-white/10 text-white placeholder-white/70 text-xs rounded-full py-0.5 pl-5 pr-2 w-24 focus:w-32 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all duration-300"
-          />
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 text-white/70 absolute left-2 top-1/2 transform -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
+          <form onSubmit={handleSearchSubmit}>
+            <input
+              ref={searchInputRef}
+              type="text"
+              placeholder="Search..."
+              className="bg-white/10 text-white placeholder-white/70 text-xs rounded-full py-0.5 pl-5 pr-2 w-24 focus:w-32 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all duration-300"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              onFocus={() => {
+                if (searchQuery.trim().length > 1) {
+                  setShowSearchResults(true);
+                }
+              }}
+            />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 text-white/70 absolute left-2 top-1/2 transform -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </form>
+
+          {/* Search Results Dropdown */}
+          {showSearchResults && (
+            <SearchResults
+              results={searchResults}
+              query={searchQuery}
+              isLoading={isSearching}
+              onClose={() => setShowSearchResults(false)}
+              onResultClick={() => {
+                setSearchQuery('');
+                setShowSearchResults(false);
+              }}
+            />
+          )}
         </div>
         {/* Divider */}
         <div className="h-3 w-[1px] bg-white/30 mr-1.5"></div>
@@ -166,10 +251,10 @@ export default function MainHeader() {
             />
           </div>
           <div>
-            <h1 className="text-sm md:text-2xl font-extrabold text-red-600 whitespace-nowrap group-hover:text-red-700 transition-colors">
+            <h1 className="text-sm md:text-2xl font-extrabold whitespace-nowrap transition-colors bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
               T47 PEST CONTROL
             </h1>
-            <p className="text-[9px] md:text-xs font-medium text-gray-600 whitespace-nowrap group-hover:text-gray-700 transition-colors">
+            <p className="text-[9px] md:text-xs font-medium whitespace-nowrap transition-colors bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent">
               24/7 ROUND THE CLOCK
             </p>
           </div>
@@ -283,18 +368,8 @@ export default function MainHeader() {
             handleMouseLeave={handleMouseLeave}
             setMenuItemRef={setMenuItemRef}
             isMobile={true}
+            closeMobileMenu={() => setMobileMenuOpen(false)}
           />
-        </div>
-
-        {/* Mobile dropdown menu - optimized for performance */}
-        <div className={`${styles.mobileDropdown} ${activeDropdown && isMobile ? styles.mobileDropdownOpen : ''}`}>
-          {activeDropdown && (
-            <DropdownMenu
-              activeDropdown={activeDropdown}
-              onMouseEnter={handleDropdownMouseEnter}
-              onMouseLeave={handleDropdownMouseLeave}
-            />
-          )}
         </div>
 
         {/* Call buttons */}
@@ -335,7 +410,11 @@ export default function MainHeader() {
           </a>
 
           {/* Search */}
-          <button type="button" className="flex flex-col items-center justify-center text-gray-600 hover:text-red-600">
+          <button
+            type="button"
+            className="flex flex-col items-center justify-center text-gray-600 hover:text-red-600"
+            onClick={handleMobileSearchClick}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -453,6 +532,12 @@ export default function MainHeader() {
           />
         </div>
       )}
+
+      {/* Mobile Search Modal */}
+      <SearchModal
+        isOpen={showMobileSearch}
+        onClose={() => setShowMobileSearch(false)}
+      />
     </header>
   );
 }
