@@ -4,7 +4,7 @@ import NavigationItem from './NavigationItem';
 import HoverIndicator from '../HoverIndicator';
 import styles from './MainHeader.module.css';
 
-interface NavigationBarProps {
+export interface NavigationBarProps {
   activeDropdown: string | null;
   hoverPosition: { left: number; width: number };
   navRef: RefObject<HTMLElement>;
@@ -12,6 +12,7 @@ interface NavigationBarProps {
   handleMouseLeave: () => void;
   setMenuItemRef: (el: HTMLDivElement | null, key: string) => void;
   isMobile?: boolean;
+  closeMobileMenu?: () => void;
 }
 
 const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function NavigationBar({
@@ -21,7 +22,8 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
   handleMouseEnter,
   handleMouseLeave,
   setMenuItemRef,
-  isMobile = false
+  isMobile = false,
+  closeMobileMenu
 }, ref) {
   // Navigation items configuration - memoized for performance
   const navItems = useMemo(() => [
@@ -70,7 +72,7 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
               <div className="relative w-full">
                 {isMobile ? (
                   <div className={styles.mobileNavItem}>
-                    <Link href={item.href} className="font-medium text-gray-800">
+                    <Link href={item.href} className="font-medium text-gray-800" onClick={closeMobileMenu}>
                       {item.name}
                     </Link>
                   </div>
@@ -96,7 +98,7 @@ const NavigationBar = forwardRef<HTMLElement, NavigationBarProps>(function Navig
                 onMouseLeave={handleMouseLeave}
                 setRef={setMenuItemRef}
                 isMobile={isMobile}
-
+                closeMobileMenu={closeMobileMenu}
               />
             )}
 
