@@ -1,12 +1,31 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { SearchItem } from '@/data/searchData';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function SearchPage() {
+// Loading fallback component
+function SearchLoading() {
+  return (
+    <main className="min-h-screen bg-gray-50 py-12">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Search Results</h1>
+          <p className="text-gray-600 mb-8">Loading search results...</p>
+          <div className="text-center py-12">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+            <p className="mt-4 text-gray-600">Searching for results...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+// Search content component that uses useSearchParams
+function SearchContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   const [results, setResults] = useState<SearchItem[]>([]);
@@ -27,7 +46,7 @@ export default function SearchPage() {
         const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
         const data = await response.json();
         setResults(data.results);
-        
+
         // Count results by category
         const categoryCounts: Record<string, number> = {};
         data.results.forEach((item: SearchItem) => {
@@ -45,7 +64,7 @@ export default function SearchPage() {
   }, [query]);
 
   // Filter results by active category
-  const filteredResults = activeCategory 
+  const filteredResults = activeCategory
     ? results.filter(item => item.category === activeCategory)
     : results;
 
@@ -55,16 +74,16 @@ export default function SearchPage() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Search Results</h1>
           <p className="text-gray-600 mb-8">
-            {isLoading ? 'Searching...' : 
-              results.length > 0 
-                ? `Found ${results.length} results for "${query}"` 
+            {isLoading ? 'Searching...' :
+              results.length > 0
+                ? `Found ${results.length} results for "${query}"`
                 : `No results found for "${query}"`
             }
           </p>
 
           {/* Search form */}
           <div className="bg-white rounded-lg shadow-md p-4 mb-8">
-            <form 
+            <form
               className="flex items-center"
               onSubmit={(e) => {
                 e.preventDefault();
@@ -83,10 +102,10 @@ export default function SearchPage() {
                   placeholder="Search for pests, services..."
                   className="w-full pl-10 pr-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 />
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-5 w-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" 
-                  viewBox="0 0 20 20" 
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"
+                  viewBox="0 0 20 20"
                   fill="currentColor"
                 >
                   <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
@@ -115,9 +134,10 @@ export default function SearchPage() {
                   <ul className="space-y-2">
                     <li>
                       <button
+                        type="button"
                         className={`w-full text-left px-3 py-2 rounded-md ${
-                          activeCategory === null 
-                            ? 'bg-red-50 text-red-700 font-medium' 
+                          activeCategory === null
+                            ? 'bg-red-50 text-red-700 font-medium'
                             : 'text-gray-700 hover:bg-gray-50'
                         }`}
                         onClick={() => setActiveCategory(null)}
@@ -128,9 +148,10 @@ export default function SearchPage() {
                     {Object.entries(categories).map(([category, count]) => (
                       <li key={category}>
                         <button
+                          type="button"
                           className={`w-full text-left px-3 py-2 rounded-md ${
-                            activeCategory === category 
-                              ? 'bg-red-50 text-red-700 font-medium' 
+                            activeCategory === category
+                              ? 'bg-red-50 text-red-700 font-medium'
                               : 'text-gray-700 hover:bg-gray-50'
                           }`}
                           onClick={() => setActiveCategory(category)}
@@ -222,5 +243,14 @@ export default function SearchPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+// Main export with Suspense boundary
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchLoading />}>
+      <SearchContent />
+    </Suspense>
   );
 }
