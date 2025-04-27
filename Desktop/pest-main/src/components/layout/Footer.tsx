@@ -51,6 +51,7 @@ export default function Footer() {
                 width={80}
                 height={80}
                 className="object-contain"
+                style={{ width: '80px', height: '80px' }}
               />
             </div>
             <div className="text-center md:text-left">

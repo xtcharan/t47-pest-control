@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Import additional Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
@@ -110,7 +110,9 @@
   --tw-contain-style:  ;
 }
 
-/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+/*
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -4818,12 +4820,12 @@ video {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-/* NES Controller Font */
+/* NES Controller Font - Using Press Start 2P as a reliable alternative */
 
 @font-face {
   font-family: 'NES Controller';
 
-  src: url('/fonts/nes_controller_mrshrike.woff') format('woff');
+  src: local('Press Start 2P');
 
   font-weight: normal;
 

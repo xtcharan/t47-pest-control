@@ -175,6 +175,8 @@ export default function MainHeader() {
             <input
               ref={searchInputRef}
               type="text"
+              name="search"
+              id="header-search"
               placeholder="Search..."
               className="bg-white/10 text-white placeholder-white/70 text-xs rounded-full py-1 pl-8 pr-3 w-60 focus:w-72 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all duration-300"
               value={searchQuery}
@@ -184,6 +186,7 @@ export default function MainHeader() {
                   setShowSearchResults(true);
                 }
               }}
+              autoComplete="off"
             />
             <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-white/70 absolute left-2.5 top-1/2 transform -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
@@ -254,11 +257,11 @@ export default function MainHeader() {
             <Image
               src="/logo.png"
               alt="Company Logo"
-              width={0}
-              height={0}
-              sizes="(max-width: 768px) 60px, 100px"
+              width={isMobile ? 50 : 70}
+              height={isMobile ? 50 : 70}
+              sizes="(max-width: 768px) 50px, 70px"
               className="object-contain"
-              style={{ width: 'auto', height: isMobile ? '50px' : '70px' }}
+              style={{ width: isMobile ? '50px' : '70px', height: isMobile ? '50px' : '70px' }}
               priority
             />
           </div>

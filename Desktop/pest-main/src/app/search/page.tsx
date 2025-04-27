@@ -115,9 +115,11 @@ function SearchContent() {
                 <input
                   type="text"
                   name="q"
+                  id="search-page-query"
                   defaultValue={query}
                   placeholder="Search for pests, services..."
                   className="w-full pl-10 pr-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  autoComplete="off"
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

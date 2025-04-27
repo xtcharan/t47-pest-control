@@ -4,7 +4,6 @@ import "./globals.css";
 import "./output.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Head from "./head";
 import LazyLoadInit from "@/components/LazyLoadInit";
 import Script from "next/script";
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -35,7 +34,49 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head />
+      <head>
+        <link
+          rel="preload"
+          href="/pest-control-hero.webp"
+          as="image"
+          imageSrcSet="/pest-control-hero.webp"
+          imageSizes="100vw"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          href="/pest-control-hero.jpg"
+          as="image"
+          imageSrcSet="/pest-control-hero.jpg"
+          imageSizes="100vw"
+          type="image/jpeg"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          href="/safe-home-business.jpg"
+          as="image"
+          imageSrcSet="/safe-home-business.jpg"
+          imageSizes="100vw"
+          type="image/jpeg"
+          fetchPriority="high"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          as="style"
+          precedence="default"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          precedence="default"
+        />
+        <link rel="preload" as="script" href="/lazy-load-polyfill.js" />
+      </head>
       <body
         className={`${inter.variable} antialiased bg-white text-black`}
       >

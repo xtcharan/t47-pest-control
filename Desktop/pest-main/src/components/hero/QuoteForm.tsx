@@ -50,6 +50,7 @@ export default function QuoteForm() {
                 placeholder=" "
                 className="peer w-full p-3 pt-5 rounded-lg bg-gray-800 border border-gray-700 focus:border-green-light focus:outline-none focus:ring-0 text-white text-sm transition-colors"
                 required
+                autoComplete="name"
               />
               <label
                 htmlFor="name"
@@ -72,6 +73,7 @@ export default function QuoteForm() {
                 placeholder=" "
                 className="peer w-full p-3 pt-5 rounded-lg bg-gray-800 border border-gray-700 focus:border-green-light focus:outline-none focus:ring-0 text-white text-sm transition-colors"
                 required
+                autoComplete="tel"
               />
               <label
                 htmlFor="mobile"
@@ -94,6 +96,7 @@ export default function QuoteForm() {
             placeholder=" "
             className="peer w-full p-3 pt-5 rounded-lg bg-gray-800 border border-gray-700 focus:border-green-light focus:outline-none focus:ring-0 text-white text-sm transition-colors"
             required
+            autoComplete="email"
           />
           <label
             htmlFor="email"
@@ -114,6 +117,7 @@ export default function QuoteForm() {
             placeholder=" "
             className="peer w-full p-3 pt-5 rounded-lg bg-gray-800 border border-gray-700 focus:border-green-light focus:outline-none focus:ring-0 text-white text-sm transition-colors"
             required
+            autoComplete="address-level2"
           />
           <label
             htmlFor="suburb"
@@ -135,6 +139,7 @@ export default function QuoteForm() {
                 className="peer w-full p-3 pt-5 rounded-lg bg-white/10 border border-white/20 focus:border-green-light focus:outline-none focus:ring-0 text-white text-sm transition-colors appearance-none"
                 required
                 aria-label="Interested In"
+                autoComplete="off"
               >
                 <option value="" disabled></option>
                 <option value="residential">Residential Pest Control</option>
@@ -166,6 +171,7 @@ export default function QuoteForm() {
                 className="peer w-full p-3 pt-5 rounded-lg bg-white/10 border border-white/20 focus:border-green-light focus:outline-none focus:ring-0 text-white text-sm transition-colors appearance-none"
                 required
                 aria-label="Size of house"
+                autoComplete="off"
               >
                 <option value="" disabled></option>
                 <option value="small">Small (up to 150m²)</option>
