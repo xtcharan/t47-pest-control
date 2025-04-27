@@ -246,14 +246,14 @@ export default function MainHeader() {
         </div>
       </div>
 
-      <div className="container mx-auto px-2 md:px-3 flex items-center justify-between py-0.5 md:py-1 bg-white shadow-md">
+      <div className="container mx-auto px-1 sm:px-2 md:px-3 flex items-center justify-between py-1 md:py-2 bg-white shadow-md">
         {/* Logo and company name - clickable to home page */}
         <Link
           href="/"
           className={`flex items-center group cursor-pointer transition-transform hover:scale-105 duration-200 ${styles.logoHover}`}
           aria-label="Go to homepage"
         >
-          <div className="mr-2">
+          <div className="mr-2 flex-shrink-0">
             <Image
               src="/logo.png"
               alt="Company Logo"
@@ -265,12 +265,12 @@ export default function MainHeader() {
               priority
             />
           </div>
-          <div className="leading-tight">
-            <h1 className="text-base md:text-3xl whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-[-5px] font-extrabold">
+          <div className="leading-tight flex-shrink">
+            <h1 className={`${isMobile ? 'text-lg' : 'text-3xl'} whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-[-5px] font-extrabold`} style={{ maxWidth: isMobile ? '100%' : 'auto', overflow: 'visible' }}>
               T47 PEST CONTROL
             </h1>
             <div className="flex justify-end">
-              <p className="text-[8px] md:text-[10px] whitespace-nowrap font-extrabold bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent">
+              <p className={`${isMobile ? 'text-[9px]' : 'text-[10px]'} whitespace-nowrap font-extrabold bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent`}>
                 24/7 ROUND THE CLOCK
               </p>
             </div>

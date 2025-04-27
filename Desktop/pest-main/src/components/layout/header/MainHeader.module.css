@@ -324,6 +324,9 @@
   position: relative;
   overflow: visible;
   transition: all 0.3s ease;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .logoHover:hover {
@@ -343,6 +346,17 @@
 
 .logoHover:hover::after {
   width: 100%;
+}
+
+/* Mobile logo and company name styles */
+@media (max-width: 767px) {
+  .logoHover {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    max-width: 70%;
+  }
 }
 
 /* Menu button - optimized for performance */
