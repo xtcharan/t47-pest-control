@@ -2,9 +2,41 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import { COMPANY_INFO } from '../lib/constants';
 
 export default function Footer() {
+  const [openSection, setOpenSection] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if we're on the client side
+    if (typeof window !== 'undefined') {
+      // Set initial state
+      setIsMobile(window.innerWidth < 768);
+
+      // Add event listener for window resize
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+
+      window.addEventListener('resize', handleResize);
+
+      // Clean up event listener
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
+  }, []);
+
+  const toggleSection = (section: string) => {
+    if (openSection === section) {
+      setOpenSection(null);
+    } else {
+      setOpenSection(section);
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white pt-10 pb-6">
       <div className="container mx-auto px-4">
@@ -87,8 +119,18 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-            <ul className="space-y-2">
+            <div className="flex justify-between items-center mb-3 md:block">
+              <h3 className="text-lg font-semibold">Quick Links</h3>
+              <button
+                type="button"
+                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full"
+                onClick={() => toggleSection('quickLinks')}
+                aria-label="Toggle Quick Links"
+              >
+                {openSection === 'quickLinks' ? '-' : '+'}
+              </button>
+            </div>
+            <ul className={`space-y-2 ${openSection === 'quickLinks' || !isMobile ? 'block' : 'hidden md:block'}`}>
               <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
               <li><Link href="/residential" className="text-gray-400 hover:text-white transition-colors">Residential</Link></li>
               <li><Link href="/commercial" className="text-gray-400 hover:text-white transition-colors">Commercial</Link></li>
@@ -101,8 +143,18 @@ export default function Footer() {
 
           {/* Service locations */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">Service Locations</h3>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+            <div className="flex justify-between items-center mb-3 md:block">
+              <h3 className="text-lg font-semibold">Service Locations</h3>
+              <button
+                type="button"
+                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full"
+                onClick={() => toggleSection('locations')}
+                aria-label="Toggle Service Locations"
+              >
+                {openSection === 'locations' ? '-' : '+'}
+              </button>
+            </div>
+            <div className={`grid grid-cols-2 gap-x-2 gap-y-1 ${openSection === 'locations' || !isMobile ? 'block' : 'hidden md:block'}`}>
               <Link href="/areas/melbourne" className="text-gray-400 hover:text-white transition-colors">Melbourne</Link>
               <Link href="/areas/geelong" className="text-gray-400 hover:text-white transition-colors">Sydney</Link>
               <Link href="/areas/ballarat" className="text-gray-400 hover:text-white transition-colors">Brisbane</Link>
@@ -116,8 +168,18 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">Our Services</h3>
-            <ul className="space-y-2">
+            <div className="flex justify-between items-center mb-3 md:block">
+              <h3 className="text-lg font-semibold">Our Services</h3>
+              <button
+                type="button"
+                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full"
+                onClick={() => toggleSection('services')}
+                aria-label="Toggle Our Services"
+              >
+                {openSection === 'services' ? '-' : '+'}
+              </button>
+            </div>
+            <ul className={`space-y-2 ${openSection === 'services' || !isMobile ? 'block' : 'hidden md:block'}`}>
               <li><Link href="/services/general-pest-control" className="text-gray-400 hover:text-white transition-colors">General Pest Control</Link></li>
               <li><Link href="/services/termite-control" className="text-gray-400 hover:text-white transition-colors">Termite Control</Link></li>
               <li><Link href="/services/cockroach-control" className="text-gray-400 hover:text-white transition-colors">Cockroach Control</Link></li>

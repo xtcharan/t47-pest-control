@@ -2,6 +2,7 @@ import { DROPDOWN_MENU_ITEMS } from '../../lib/constants';
 import Link from 'next/link';
 import { useEffect, useState, useMemo } from 'react';
 import styles from './MainHeader.module.css';
+import HorizontalDropdownMenu from './HorizontalDropdownMenu';
 
 interface DropdownMenuProps {
   activeDropdown: string | null;
@@ -32,10 +33,10 @@ export default function DropdownMenu({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  if (!activeDropdown) return null;
-
   // All dropdown menus use the same format from constants - memoize for performance
+  // Use empty array as fallback when activeDropdown is null
   const menuItems = useMemo(() => {
+    if (!activeDropdown) return [];
     return DROPDOWN_MENU_ITEMS[activeDropdown as keyof typeof DROPDOWN_MENU_ITEMS] || [];
   }, [activeDropdown]);
 
@@ -49,6 +50,21 @@ export default function DropdownMenu({
     }
     return result;
   }, [menuItems, isMobile]);
+
+  // Early return after all hooks have been called
+  if (!activeDropdown) return null;
+
+  // Use horizontal dropdown for About Us section
+  if (activeDropdown === 'about') {
+    return (
+      <HorizontalDropdownMenu
+        activeDropdown={activeDropdown}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        isMobile={isMobile}
+      />
+    );
+  }
 
   // For mobile, we render a performance-optimized layout
   if (isMobile) {

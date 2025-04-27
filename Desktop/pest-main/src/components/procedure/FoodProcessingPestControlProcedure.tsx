@@ -18,16 +18,16 @@ const ProcedureStep = ({ icon, title, description, isOpen, toggleStep, stepNumbe
         className={`flex items-center justify-between p-4 cursor-pointer transition-all duration-300 ${isOpen ? 'bg-green-50/50' : 'bg-white'}`}
         onClick={toggleStep}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-1">
           <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-green-600 text-white' : 'bg-green-100 text-green-600'}`}>
             {icon}
           </div>
-          <h3 className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? 'text-green-700' : 'text-gray-800'}`}>
+          <h3 className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? 'text-green-700' : 'text-gray-800'} flex-1`}>
             {title}
           </h3>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-500">Step {stepNumber}</span>
+          <span className="text-sm font-medium text-gray-500 w-16 text-right inline-block">Step {stepNumber}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
@@ -45,7 +45,7 @@ const ProcedureStep = ({ icon, title, description, isOpen, toggleStep, stepNumbe
         }`}
       >
         <div className="p-4 bg-green-50/30">
-          <p className="text-gray-700 leading-relaxed">{description}</p>
+          <p className="text-gray-700 leading-relaxed text-justify">{description}</p>
         </div>
       </div>
     </div>

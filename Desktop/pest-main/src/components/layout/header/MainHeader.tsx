@@ -5,6 +5,7 @@ import { COMPANY_INFO } from '../../lib/constants';
 import { useHoverPosition } from '../../hooks/useHoverPosition';
 import NavigationBar from './NavigationBar';
 import DropdownMenu from './DropdownMenu';
+import LocationsDropdown from './LocationsDropdown';
 import { useState, useEffect, useRef } from 'react';
 import styles from './MainHeader.module.css';
 import SearchResults from '../../search/SearchResults';
@@ -26,6 +27,9 @@ export default function MainHeader() {
 
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Locations dropdown state
+  const [showLocationsDropdown, setShowLocationsDropdown] = useState(false);
 
   // Search states
   const [searchQuery, setSearchQuery] = useState('');
@@ -92,16 +96,87 @@ export default function MainHeader() {
 
   return (
     <header className="w-full relative z-50">
-      {/* Search, Locations and Social media icons in top right */}
-      <div className="hidden md:flex items-center justify-end space-x-1 py-0.5 px-3 bg-gradient-to-r from-red-500 to-red-700 shadow-sm text-[10px] text-white">
-        {/* Search bar */}
-        <div className="relative mr-2">
-          <form onSubmit={handleSearchSubmit}>
+      {/* Top header with search, locations and social media icons */}
+      <div className="hidden md:flex items-center justify-between py-1.5 px-5 bg-gradient-to-r from-red-500 to-red-700 shadow-sm text-xs text-white">
+        {/* Left section with social media icons */}
+        <div className="flex items-center space-x-3">
+          {/* Facebook */}
+          <a
+            href={COMPANY_INFO.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="text-white hover:text-white/80 transition-colors transform hover:scale-110 duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+
+          {/* Instagram */}
+          <a
+            href={COMPANY_INFO.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-white hover:text-white/80 transition-colors transform hover:scale-110 duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+
+          {/* LinkedIn */}
+          <a
+            href={COMPANY_INFO.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-white hover:text-white/80 transition-colors transform hover:scale-110 duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+
+          {/* YouTube */}
+          <a
+            href={COMPANY_INFO.social.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            className="text-white hover:text-white/80 transition-colors transform hover:scale-110 duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+            </svg>
+          </a>
+
+          {/* Email */}
+          <a
+            href={`mailto:${COMPANY_INFO.email}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Email"
+            className="text-white hover:text-white/80 transition-colors transform hover:scale-110 duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        {/* Center section with search bar */}
+        <div className="relative mx-auto">
+          <form onSubmit={handleSearchSubmit} className="flex items-center">
             <input
               ref={searchInputRef}
               type="text"
               placeholder="Search..."
-              className="bg-white/10 text-white placeholder-white/70 text-xs rounded-full py-0.5 pl-5 pr-2 w-24 focus:w-32 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all duration-300"
+              className="bg-white/10 text-white placeholder-white/70 text-xs rounded-full py-1 pl-8 pr-3 w-60 focus:w-72 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all duration-300"
               value={searchQuery}
               onChange={handleSearchChange}
               onFocus={() => {
@@ -110,7 +185,7 @@ export default function MainHeader() {
                 }
               }}
             />
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 text-white/70 absolute left-2 top-1/2 transform -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-white/70 absolute left-2.5 top-1/2 transform -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
@@ -130,103 +205,40 @@ export default function MainHeader() {
             />
           )}
         </div>
-        {/* Divider */}
-        <div className="h-3 w-[1px] bg-white/30 mr-1.5"></div>
 
-        {/* Locations link */}
-        <a
-          href="/areas"
-          className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200 font-medium mr-1.5 flex items-center text-[10px]"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 mr-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          Locations
-        </a>
-        {/* Divider */}
-        <div className="h-3 w-[1px] bg-white/30 mr-1.5"></div>
-
-        {/* Contact link */}
-        <a
-          href="/contact"
-          className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200 font-medium mr-1.5 flex items-center text-[10px]"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 mr-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-          </svg>
-          Contact
-        </a>
-        {/* Divider */}
-        <div className="h-3 w-[1px] bg-white/30 mr-1.5"></div>
-        {/* Social media icons in a group */}
-        <div className="flex items-center space-x-2">
-          {/* Facebook */}
-          <a
-            href={COMPANY_INFO.social.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200"
+        {/* Right section with locations and contact */}
+        <div className="flex items-center space-x-4">
+          {/* Locations link with dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setShowLocationsDropdown(true)}
+            onMouseLeave={() => setShowLocationsDropdown(false)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-            </svg>
-          </a>
+            <a
+              href="/areas"
+              className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200 font-medium flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Locations
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </a>
+            <LocationsDropdown isVisible={showLocationsDropdown} />
+          </div>
 
-          {/* Instagram */}
+          {/* Contact link */}
           <a
-            href={COMPANY_INFO.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200"
+            href="/contact"
+            className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200 font-medium flex items-center"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
-          </a>
-
-          {/* LinkedIn */}
-          <a
-            href={COMPANY_INFO.social.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
-
-          {/* YouTube */}
-          <a
-            href={COMPANY_INFO.social.youtube}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-            className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-            </svg>
-          </a>
-
-          {/* Email */}
-          <a
-            href={`mailto:${COMPANY_INFO.email}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Email"
-            className="text-white hover:text-white/80 transition-colors transform hover:scale-105 duration-200"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
+            Contact
           </a>
         </div>
       </div>
@@ -250,13 +262,15 @@ export default function MainHeader() {
               priority
             />
           </div>
-          <div>
-            <h1 className="text-sm md:text-2xl font-extrabold whitespace-nowrap transition-colors bg-gradient-to-r from-blue-400 to-blue-700 bg-clip-text text-transparent">
+          <div className="leading-tight">
+            <h1 className="text-base md:text-3xl whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-[-5px] font-extrabold">
               T47 PEST CONTROL
             </h1>
-            <p className="text-[9px] md:text-xs font-medium whitespace-nowrap transition-colors bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent">
-              24/7 ROUND THE CLOCK
-            </p>
+            <div className="flex justify-end">
+              <p className="text-[8px] md:text-[10px] whitespace-nowrap font-extrabold bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent">
+                24/7 ROUND THE CLOCK
+              </p>
+            </div>
           </div>
         </Link>
 

@@ -50,8 +50,8 @@
 
   /* Logo and company name variables - updated to match design */
   --logo-height: 90px;
-  --company-name-size: 3rem;
-  --company-tagline-size: 1.125rem;
+  --company-name-size: 3.5rem;
+  --company-tagline-size: 0.9rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -304,6 +304,16 @@ body {
   font-stretch: normal;
   line-height: 1.2;
   color: var(--color-primary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.t47-header-font {
+  font-family: 'NES Controller', 'Arial Black', Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: bold;
+  font-stretch: normal;
+  line-height: 1.2;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 

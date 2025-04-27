@@ -6,6 +6,17 @@ import { SearchItem } from '@/data/searchData';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Custom hook to safely use search params
+function useSafeSearchParams() {
+  // Use try-catch to handle potential errors with useSearchParams
+  try {
+    return useSearchParams();
+  } catch (error) {
+    console.error('Error using search params:', error);
+    return null;
+  }
+}
+
 // Loading fallback component
 function SearchLoading() {
   return (
@@ -26,8 +37,9 @@ function SearchLoading() {
 
 // Search content component that uses useSearchParams
 function SearchContent() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get('q') || '';
+  // Always initialize hooks at the top level
+  const searchParams = useSafeSearchParams();
+  const query = searchParams ? searchParams.get('q') || '' : '';
   const [results, setResults] = useState<SearchItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<Record<string, number>>({});
@@ -60,8 +72,13 @@ function SearchContent() {
       }
     }
 
-    fetchResults();
-  }, [query]);
+    // Only fetch if searchParams is available
+    if (searchParams) {
+      fetchResults();
+    } else {
+      setIsLoading(false);
+    }
+  }, [query, searchParams]);
 
   // Filter results by active category
   const filteredResults = activeCategory

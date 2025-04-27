@@ -247,7 +247,7 @@
 .mobileMenu {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: visible;
   transform-origin: top center;
   will-change: opacity, transform;
   transform: translateZ(0);
@@ -286,6 +286,21 @@
 
 /* Desktop dropdown menu styles - optimized for performance */
 .desktopDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  transition: opacity 0.15s ease-out;
+  overflow: hidden;
+  will-change: opacity;
+  margin-top: 0;
+}
+
+/* Horizontal dropdown menu styles - for About Us section */
+.horizontalDropdown {
   position: absolute;
   top: 100%;
   left: 0;
@@ -360,7 +375,7 @@
   align-items: center;
   width: 100%;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
   background-color: white;
   will-change: contents;
   transform: translateZ(0);

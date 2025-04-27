@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import CockroachLifecycleGallery from '@/components/lifecycle/CockroachLifecycleGallery';
 
 interface ProcedureStepProps {
   icon: React.ReactNode;
@@ -19,11 +20,11 @@ const ProcedureStep = ({ icon, title, description, isOpen, toggleStep, stepNumbe
         className={`flex items-center justify-between p-4 cursor-pointer transition-all duration-300 ${isOpen ? 'bg-blue-50/50' : 'bg-white'}`}
         onClick={toggleStep}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-1">
           <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-blue-600 text-white' : 'bg-blue-100 text-blue-600'}`}>
             {icon}
           </div>
-          <h3 className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? 'text-blue-700' : 'text-gray-800'}`}>
+          <h3 className={`font-semibold text-lg transition-colors duration-300 ${isOpen ? 'text-blue-700' : 'text-gray-800'} flex-1`}>
             {title}
           </h3>
         </div>
@@ -35,7 +36,7 @@ const ProcedureStep = ({ icon, title, description, isOpen, toggleStep, stepNumbe
       </div>
       <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
         <div className="p-4 bg-white">
-          <p className="text-gray-700 leading-relaxed">{description}</p>
+          <p className="text-gray-700 leading-relaxed text-justify">{description}</p>
         </div>
       </div>
     </div>
@@ -167,33 +168,140 @@ export default function CockroachExterminationProcedure() {
           </div>
         </div>
 
-        {/* Call to action */}
-        <div className="mt-12 text-center">
-          <div className="bg-blue-600 text-white p-6 rounded-xl shadow-lg max-w-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl -mr-20 -mt-20"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/5 rounded-full blur-2xl -ml-20 -mb-20"></div>
+        {/* Cockroach Prevention Tips Section */}
+        <div className="mt-16 mb-12">
+          <div className="text-center mb-8">
+            <span className="inline-block px-3 py-1 bg-red-100 text-red-700 text-sm font-semibold rounded-full mb-3">
+              PREVENTION STRATEGIES
+            </span>
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">
+              Effective <span className="text-red-600">Cockroach Prevention</span> Tips
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-red-500 to-red-600 mx-auto mb-6"></div>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Preventing cockroach infestations is easier and more cost-effective than treating established populations.
+              Follow these expert tips to keep your home cockroach-free year-round.
+            </p>
+          </div>
 
-            <div className="relative z-10">
-              <h3 className="text-xl font-semibold mb-3">Ready to eliminate your cockroach problem?</h3>
-              <p className="text-white/80 mb-4">Our professional cockroach control team is ready to help you get rid of cockroaches for good.</p>
-              <a href="/contact" className="inline-block bg-white text-blue-600 hover:text-blue-700 font-bold py-3 px-8 rounded-full transition-all duration-300 border-2 border-white hover:border-opacity-80 hover:shadow-lg">
-                Schedule Your Treatment
-              </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            {/* Prevention tips side */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="p-6">
+                <div className="space-y-4">
+                  {/* Tip 1 */}
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-full mr-4 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Eliminate Food Sources</h3>
+                      <p className="text-gray-600">Store food in airtight containers, clean spills immediately, and wash dishes promptly to remove cockroach attractants.</p>
+                    </div>
+                  </div>
+
+                  {/* Tip 2 */}
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-full mr-4 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Reduce Moisture</h3>
+                      <p className="text-gray-600">Fix leaky pipes, eliminate standing water, and use dehumidifiers in damp areas to create an inhospitable environment.</p>
+                    </div>
+                  </div>
+
+                  {/* Tip 3 */}
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-full mr-4 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Seal Entry Points</h3>
+                      <p className="text-gray-600">Caulk cracks around baseboards, windows, and doors, and install door sweeps to block cockroach access points.</p>
+                    </div>
+                  </div>
+
+                  {/* Tip 4 */}
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-full mr-4 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Declutter Regularly</h3>
+                      <p className="text-gray-600">Remove cardboard boxes, newspapers, and clutter that provide hiding spots and harborage for cockroach populations.</p>
+                    </div>
+                  </div>
+
+                  {/* Tip 5 */}
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-full mr-4 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Maintain Clean Garbage Areas</h3>
+                      <p className="text-gray-600">Use sealed trash containers, empty garbage frequently, and clean bins regularly to eliminate cockroach food sources.</p>
+                    </div>
+                  </div>
+
+                  {/* Tip 6 */}
+                  <div className="flex items-start">
+                    <div className="bg-gradient-to-r from-red-500 to-red-600 p-2 rounded-full mr-4 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Schedule Regular Inspections</h3>
+                      <p className="text-gray-600">Implement quarterly professional pest inspections to catch early signs of cockroach activity before infestations develop.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Animated cockroach silhouettes */}
-            <div className="absolute bottom-2 right-6 opacity-20 animate-float">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M4.39 15.69l-1.03.03c-.55.03-.97.47-.97 1.03 0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.06c0-.55-.45-1-1-1h-.03c-.01.02 0 .03 0 .03l.03-.03z" />
-              </svg>
-            </div>
-            <div className="absolute top-4 left-8 opacity-20 animate-bounce-gentle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M5.59 10.69c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-1c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h1z" />
-              </svg>
+            {/* Image side */}
+            <div className="relative rounded-xl overflow-hidden shadow-xl h-[400px] md:h-[500px] group">
+              {/* Decorative border */}
+              <div className="absolute inset-0 p-0.5 rounded-xl bg-gradient-to-r from-red-500 to-red-600 z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              <div className="absolute inset-0.5 rounded-xl overflow-hidden z-20">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+                <Image
+                  src="/cockroach-prevention.jpg"
+                  alt="Cockroach Prevention Tips"
+                  fill
+                  className="object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+
+              <div className="absolute bottom-4 left-4 z-30 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg transform group-hover:translate-y-[-4px] transition-transform duration-300">
+                Prevent Cockroach Infestations
+              </div>
+
+              {/* Corner accents */}
+              <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-red-400 rounded-tl-lg z-30"></div>
+              <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-red-400 rounded-tr-lg z-30"></div>
+              <div className="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-red-400 rounded-bl-lg z-30"></div>
+              <div className="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-red-400 rounded-br-lg z-30"></div>
             </div>
           </div>
+        </div>
+
+        {/* Cockroach Lifecycle Section */}
+        <div className="mt-16 mb-12">
+          <CockroachLifecycleGallery />
         </div>
       </div>
     </section>

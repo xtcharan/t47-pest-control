@@ -6,7 +6,7 @@ import styles from './ImageStyles.module.css';
 import LazyImage from './LazyImage';
 
 interface ServiceImageProps extends Omit<ImageProps, 'src'> {
-  serviceName: 'residential-pest-control' | 'commercial-pest-control' | 'termite-solutions';
+  serviceName: string;
   onLoad?: () => void;
   lazyLoad?: boolean;
   threshold?: number;
@@ -31,9 +31,9 @@ export default function ServiceImage({
 }: ServiceImageProps) {
   const [isLoading, setIsLoading] = useState(true);
 
-  // Use optimized WebP images with JPG fallback
-  const webpSrc = `/${serviceName}.webp`;
+  // Use JPG images as primary source due to WebP issues
   const jpgSrc = `/${serviceName}.jpg`;
+  const webpSrc = `/${serviceName}.webp`;
 
   const handleLoad = () => {
     setIsLoading(false);
@@ -47,8 +47,8 @@ export default function ServiceImage({
   if (lazyLoad) {
     return (
       <LazyImage
-        src={webpSrc}
-        fallbackSrc={jpgSrc}
+        src={jpgSrc}
+        fallbackSrc={fallbackSrc}
         alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
         onLoad={handleLoad}
         threshold={threshold}
@@ -63,15 +63,13 @@ export default function ServiceImage({
   return (
     <>
       <Image
-        src={webpSrc}
+        src={jpgSrc}
         alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
         onLoad={handleLoad}
         onError={(e) => {
-          // If WebP fails, try JPG, then fallback
+          // If JPG fails, try fallback
           const imgElement = e.currentTarget as HTMLImageElement;
-          if (imgElement.src !== jpgSrc && imgElement.src !== fallbackSrc) {
-            imgElement.src = jpgSrc;
-          } else if (imgElement.src !== fallbackSrc) {
+          if (imgElement.src !== fallbackSrc) {
             imgElement.src = fallbackSrc;
           }
         }}

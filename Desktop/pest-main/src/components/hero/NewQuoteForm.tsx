@@ -32,7 +32,6 @@ export default function QuoteForm() {
   return (
     <div className="bg-[#1a1a1a] p-4 rounded-lg max-w-xs mx-auto shadow-xl">
       <h2 className="text-xl font-bold text-white mb-4 text-center">GET A FAST QUOTE NOW</h2>
-
       <form onSubmit={handleSubmit} className="space-y-2">
         {/* Name */}
         <div>
@@ -129,9 +128,9 @@ export default function QuoteForm() {
             onChange={handleChange}
             className="w-full p-2 rounded-md bg-white border-none focus:outline-none focus:ring-1 focus:ring-accent appearance-none text-black"
             required
-            aria-label="How many bedrooms"
+            aria-label="No of Bedrooms"
           >
-            <option value="" disabled>How many bedrooms</option>
+            <option value="" disabled>No of Bedrooms</option>
             <option value="1">1 Bedroom</option>
             <option value="2">2 Bedrooms</option>
             <option value="3">3 Bedrooms</option>

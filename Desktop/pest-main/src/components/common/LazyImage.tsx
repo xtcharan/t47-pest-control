@@ -33,16 +33,13 @@ export default function LazyImage({
   const [shouldLoad, setShouldLoad] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  // If the src is already a WebP, use it directly
-  // Otherwise, try to use the WebP version if available
+  // Use JPG images as primary source due to WebP issues
+  const jpgSrc = fallbackSrc || src;
+
+  // WebP as secondary option
   const webpSrc = src.endsWith('.webp')
     ? src
     : src.replace(/\.(jpe?g|png)$/i, '.webp');
-
-  // Use the provided fallback or default to the original src
-  const jpgSrc = fallbackSrc || (src.endsWith('.webp')
-    ? src.replace('.webp', '.jpg')
-    : src);
 
   // Set up intersection observer to detect when the image is about to be visible
   useEffect(() => {
@@ -76,10 +73,10 @@ export default function LazyImage({
   };
 
   return (
-    <div 
-      ref={imageRef} 
+    <div
+      ref={imageRef}
       className={`relative overflow-hidden ${props.className || ''}`}
-      style={{ 
+      style={{
         backgroundColor: placeholderColor,
         width: '100%',
         height: '100%',
@@ -89,7 +86,7 @@ export default function LazyImage({
       {shouldLoad ? (
         <>
           <Image
-            src={webpSrc}
+            src={jpgSrc}
             alt={alt || ''}
             onLoad={handleLoad}
             className={`${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
@@ -107,7 +104,7 @@ export default function LazyImage({
         </>
       ) : (
         // Placeholder while image is not yet in viewport
-        <div 
+        <div
           className="w-full h-full flex items-center justify-center"
           style={{ backgroundColor: placeholderColor }}
         >

@@ -15,70 +15,141 @@ export default function FoodProcessingPestControlHero() {
 
   return (
     <div className="relative min-h-[600px] md:min-h-[650px] bg-[#0a0a0a] overflow-hidden">
-      {/* Alert Banner */}
       <AlertBanner />
 
-      {/* Background image with pest control technician */}
-      <div className="absolute inset-0 z-0">
-        <OptimizedImage
-          src="/food-processing-pest-control-hero.webp"
-          fallbackSrc="/pest-control-hero.jpg"
-          alt="Food Processing Pest Control Services"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover scale-85 transition-transform duration-10000 ease-in-out"
-          style={{ objectPosition: '65% 10%' }}
-          quality={85}
-        />
+      {/* Mobile layout - Image first, then content below */}
+      <div className="md:hidden flex flex-col">
+        {/* Full image with subtle overlay for mobile */}
+        <div className="relative h-[480px] w-full overflow-hidden">
+          <OptimizedImage
+            src="/food-processing-pest-control-hero.webp"
+            fallbackSrc="/pest-control-hero.jpg"
+            alt="Food Processing Pest Control Services"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover scale-105 transition-transform duration-10000 ease-in-out"
+            style={{ objectPosition: '65% 10%' }}
+            quality={90}
+          />
+          {/* Very subtle gradient at the bottom for text readability */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/90 to-transparent"></div>
 
-        {/* Enhanced overlay with multiple gradients for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/15 to-transparent"></div>
+          {/* Subtle vignette effect */}
+          <div className="absolute inset-0 box-border border-[20px] border-black/10"></div>
 
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-10 diagonal-pattern-bg"></div>
-      </div>
-
-      <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 flex flex-col md:flex-row items-center">
-        {/* Left side - Enhanced hero content with animations */}
-        <div
-          className={`w-full md:w-1/2 flex flex-col justify-center text-white mb-10 md:mb-0 pl-0 md:pl-8 lg:pl-16 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-        >
-          <div className="mb-6 inline-block">
-            <span className="inline-block px-4 py-1 bg-green-500/90 text-white text-sm font-bold rounded-full mb-4 animate-float">
-              FOOD PROCESSING PEST CONTROL SERVICES
+          {/* Floating badge at the top with improved styling */}
+          <div className="absolute top-6 left-0 right-0 flex justify-center">
+            <span className="px-5 py-2 bg-green-500/95 text-white text-sm font-bold rounded-full shadow-lg animate-float">
+              FOOD PROCESSING PEST CONTROL
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          {/* Small decorative elements */}
+          <div className="absolute bottom-16 left-6 w-2 h-2 rounded-full bg-green-400/70 animate-pulse-slow"></div>
+          <div className="absolute bottom-24 right-8 w-3 h-3 rounded-full bg-green-500/60 animate-pulse-slow delay-300"></div>
+        </div>
+
+        {/* Content below image for mobile - with card-like appearance */}
+        <div className={`w-full bg-[#0a0a0a] px-6 py-10 -mt-10 rounded-t-3xl shadow-lg transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-5 leading-tight text-center">
             <span className="text-green-400 block mb-2">FOOD-GRADE</span>
             <span className="text-white block">PEST MANAGEMENT</span>
           </h1>
 
-          <div className="w-20 h-1 bg-green-500 mb-6"></div>
+          <div className="w-24 h-1 bg-green-500 mb-6 mx-auto"></div>
 
-          <p className="text-xl md:text-2xl mb-8 text-gray-200 max-w-lg">
+          <p className="text-lg mb-8 text-white text-center max-w-md mx-auto">
             Specialized pest control solutions for food processing facilities that ensure product safety and regulatory compliance.
           </p>
 
-          <div className="flex flex-wrap gap-4 mt-2">
-            <Link href="/contact" className="modern-button bg-green-600 hover:bg-green-700 text-white transition-colors">
+          <div className="flex justify-center gap-4 mt-2 mb-12">
+            <Link href="/contact" className="modern-button bg-green-600 hover:bg-green-700 text-white transition-colors shadow-md">
               Book Inspection
             </Link>
-            <Link href="/contact" className="modern-button bg-transparent border-2 border-white hover:bg-white/10 text-white transition-colors">
+            <Link href="/contact" className="modern-button bg-transparent border-2 border-white hover:bg-white/10 text-white transition-colors shadow-md">
               Contact Us
             </Link>
           </div>
+
+          {/* Quote form for mobile - with improved card-like styling */}
+            <div className="w-full max-w-md mx-auto bg-[#111] p-6 rounded-xl shadow-lg border border-green-500/20">
+            <h3 className="text-xl font-semibold text-white mb-5 text-center">Get a Free Quote Now</h3>
+            <QuoteForm />
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop layout - Side by side with overlays */}
+      <div className="hidden md:block">
+        {/* Background image with pest control technician */}
+        <div className="absolute inset-0 z-0">
+          <OptimizedImage
+            src="/food-processing-pest-control-hero.webp"
+            fallbackSrc="/pest-control-hero.jpg"
+            alt="Food Processing Pest Control Services"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover scale-85 transition-transform duration-10000 ease-in-out"
+            style={{ objectPosition: '65% 10%' }}
+            quality={85}
+          />
+
+          {/* Enhanced overlay with multiple gradients for depth */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/15 to-transparent"></div>
+
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-10 diagonal-pattern-bg"></div>
         </div>
 
-        {/* Right side - Enhanced quote form */}
-        <div
-          className={`w-full md:w-1/2 flex justify-center items-start md:items-center transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-        >
-          {/* to move the quote form from left to right  */}
-          <div className="w-full max-w-xs mt-4 md:mt-0 ml-5 md:ml-80">
-            <QuoteForm />
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <div className="absolute top-1/4 left-1/5 w-2 h-2 rounded-full bg-green-400/50 animate-pulse-slow"></div>
+          <div className="absolute top-1/3 right-1/4 w-3 h-3 rounded-full bg-green-500/40 animate-pulse-slow delay-300"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-2 h-2 rounded-full bg-green-600/50 animate-pulse-slow delay-700"></div>
+        </div>
+
+        <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 flex flex-row items-center">
+          {/* Left side - Enhanced hero content with animations */}
+          <div
+            className={`w-1/2 flex flex-col justify-center text-white pl-8 lg:pl-16 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          >
+            <div className="mb-6 inline-block">
+              <span className="inline-block px-4 py-1 bg-green-500/90 text-white text-sm font-bold rounded-full mb-4 animate-float">
+                FOOD PROCESSING PEST CONTROL SERVICES
+              </span>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="text-green-400 block mb-2">FOOD-GRADE</span>
+              <span className="text-white block">PEST MANAGEMENT</span>
+            </h1>
+
+            <div className="w-20 h-1 bg-green-500 mb-6"></div>
+
+            <p className="text-xl md:text-2xl mb-8 text-white max-w-lg">
+              Specialized pest control solutions for food processing facilities that ensure product safety and regulatory compliance.
+            </p>
+
+            <div className="flex flex-wrap gap-4 mt-2">
+              <Link href="/contact" className="modern-button bg-green-600 hover:bg-green-700 text-white transition-colors">
+                Book Inspection
+              </Link>
+              <Link href="/contact" className="modern-button bg-transparent border-2 border-white hover:bg-white/10 text-white transition-colors">
+                Contact Us
+              </Link>
+            </div>
+          </div>
+
+          {/* Right side - Enhanced quote form */}
+          <div
+            className={`w-1/2 flex justify-center items-center transition-all duration-1000 delay-300 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          >
+            {/* to move the quote form from left to right  */}
+            <div className="w-full max-w-xs ml-80">
+              <QuoteForm />
+            </div>
           </div>
         </div>
       </div>
