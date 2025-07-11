@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Test</title>
+    <style>
+        @font-face {
+            font-family: 'NES Controller Custom';
+            src: url('/fonts/nes_controller_mrshrike.ttf') format('truetype');
+            font-display: swap;
+        }
+        
+        .test-font {
+            font-family: 'NES Controller Custom', Arial, sans-serif;
+            font-size: 24px;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+        
+        .fallback-font {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+        
+        .press-start-font {
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            font-size: 16px;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Font Loading Test</h1>
+    
+    <div class="test-font">
+        T47 PEST CONTROL - Custom NES Controller Font
+    </div>
+    
+    <div class="fallback-font">
+        T47 PEST CONTROL - Arial Fallback Font
+    </div>
+    
+    <div class="press-start-font">
+        T47 PEST CONTROL - Press Start 2P Font
+    </div>
+
+    <h2>SVG Icon Test</h2>
+    <div style="width: 100px; height: 100px; border: 2px solid #ccc; margin: 20px; padding: 20px;">
+        <img src="/termites.svg" alt="Termites SVG" style="width: 100%; height: 100%; object-fit: contain;" />
+    </div>
+
+    <script>
+        // Check if font is loaded
+        document.fonts.ready.then(function() {
+            console.log('All fonts loaded');
+            document.fonts.forEach(function(font) {
+                console.log('Loaded font:', font.family, font.style, font.weight);
+            });
+        });
+        
+        // Try to load the custom font explicitly
+        const customFont = new FontFace('NES Controller Custom', 'url(/fonts/nes_controller_mrshrike.ttf)');
+        customFont.load().then(function(loadedFont) {
+            console.log('Custom font loaded successfully:', loadedFont);
+            document.fonts.add(loadedFont);
+        }).catch(function(error) {
+            console.error('Failed to load custom font:', error);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "name": "pest",
+  "version": "0.1.1",
+  "private": true,
+  "scripts": {
+    "dev": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next dev",
+    "build": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "css": "npx tailwindcss -i src/app/globals.css -o src/app/output.css --watch",
+    "optimize-image": "node scripts/optimize-image.js",
+    "strapi:dev": "cd strapi-backend && npm run develop",
+    "strapi:build": "cd strapi-backend && npm run build",
+    "strapi:start": "cd strapi-backend && npm run start"
+  },
+  "dependencies": {
+    "@types/nodemailer": "^6.4.17",
+    "@vercel/speed-insights": "^1.2.0",
+    "framer-motion": "^12.9.2",
+    "next": "14.1.0",
+    "nodemailer": "^7.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "twilio": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.14.1",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "14.1.0",
+    "file-loader": "^6.2.0",
+    "postcss": "^8.4.24",
+    "sharp": "^0.34.1",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.0"
+  }
+}
