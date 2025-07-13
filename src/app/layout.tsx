@@ -9,6 +9,9 @@ import StickyQuoteButton from "@/components/common/StickyQuoteButton";
 import LazyLoadInit from "@/components/LazyLoadInit";
 import Script from "next/script";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import { GA_MEASUREMENT_ID, shouldLoadAnalytics } from "@/lib/analytics";
+import SchemaMarkup from "@/components/seo/SchemaMarkup";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -69,6 +72,17 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          as="style"
+          precedence="default"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          precedence="default"
+        />
+        <link
+          rel="preload"
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
           as="style"
           precedence="default"
@@ -86,10 +100,16 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="preload" as="script" href="/lazy-load-polyfill.js" />
+
+        {/* Schema Markup for SEO */}
+        <SchemaMarkup type="organization" />
       </head>
       <body
         className={`${inter.variable} antialiased bg-white text-black`}
       >
+        {/* Google Analytics */}
+        {shouldLoadAnalytics() && <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />}
+
         <Header />
         {children}
         <StickyQuoteButton />

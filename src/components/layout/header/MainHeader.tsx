@@ -535,9 +535,9 @@ export default function MainHeader() {
                   alt="Company Logo"
                   width={60}
                   height={60}
-                  sizes="80px"
+                  sizes="70px"
                   className="object-contain"
-                  style={{ width: '80px', height: '80px' }}
+                  style={{ width: '70px', height: '70px' }}
                   priority
                 />
               </div>
@@ -546,7 +546,7 @@ export default function MainHeader() {
             {/* Mobile Company Name and Tagline - Center */}
             <div className="absolute inset-0 flex justify-center items-center overflow-visible z-10">
               <div className="leading-tight text-center overflow-visible" style={{ width: 'max-content' }}>
-                <h1 className="whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-1 font-extrabold" style={{ maxWidth: 'none', overflow: 'visible', fontSize: '16rem !important', width: 'max-content', transform: 'scale(1.5)', letterSpacing: '1px' }}>
+                <h1 className="whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-0 font-extrabold" style={{ maxWidth: 'none', overflow: 'visible', fontSize: '16rem !important', width: 'max-content', transform: 'scale(1.5)', letterSpacing: '1px' }}>
                   T47 PEST CONTROL
                 </h1>
                 <div className="flex justify-center">

@@ -94,7 +94,7 @@ export default function ServiceForm() {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: 'Service booking submitted successfully! We\'ll contact you soon.'
+          message: '✅ Success! Your pest control service booking has been submitted. Our professional technicians will contact you within 24 hours to schedule your appointment and confirm service details.'
         });
         // Reset form
         setFormData({
@@ -108,14 +108,14 @@ export default function ServiceForm() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: result.error || 'Failed to submit service booking. Please try again.'
+          message: result.error || '❌ Unable to submit your pest control service booking. Please verify your information and try again, or call us directly for immediate assistance.'
         });
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Network error. Please check your connection and try again.'
+        message: '⚠️ Connection error occurred while submitting your service booking. Please check your internet connection and try again, or contact our pest control experts directly.'
       });
     } finally {
       setIsSubmitting(false);
@@ -295,12 +295,14 @@ export default function ServiceForm() {
             {/* Submit Button */}
             {/* Status Message */}
             {submitStatus.type && (
-              <div className={`p-4 rounded-lg text-sm mb-6 ${
+              <div className={`p-4 rounded-lg text-sm mb-6 font-medium shadow-lg ${
                 submitStatus.type === 'success'
-                  ? 'bg-green-500/20 text-green-100 border border-green-500/30'
-                  : 'bg-red-500/20 text-red-100 border border-red-500/30'
+                  ? 'bg-green-500/20 text-green-100 border border-green-500/40 shadow-green-500/20'
+                  : 'bg-red-500/20 text-red-100 border border-red-500/40 shadow-red-500/20'
               }`}>
-                {submitStatus.message}
+                <div className="leading-relaxed">
+                  {submitStatus.message}
+                </div>
               </div>
             )}
 

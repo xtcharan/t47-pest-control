@@ -47,7 +47,7 @@ export default function QuoteForm() {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: 'Quote request submitted successfully! We\'ll contact you soon.'
+          message: '✅ Success! Your free pest control quote request has been submitted. Our certified technicians will contact you within 24 hours to schedule your property inspection and provide a competitive quote.'
         });
         // Reset form
         setFormData({
@@ -64,14 +64,14 @@ export default function QuoteForm() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: result.error || 'Failed to submit quote request. Please try again.'
+          message: result.error || '❌ Unable to submit your pest control quote request. Please verify your information and try again, or call us directly for immediate assistance.'
         });
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Network error. Please check your connection and try again.'
+        message: '⚠️ Connection error occurred while submitting your quote request. Please check your internet connection and try again, or contact our pest control experts directly.'
       });
     } finally {
       setIsSubmitting(false);
@@ -331,12 +331,16 @@ export default function QuoteForm() {
 
         {/* Status Message */}
         {submitStatus.type && (
-          <div className={`p-3 rounded-lg text-sm ${
+          <div className={`p-4 rounded-lg text-sm font-medium shadow-lg ${
             submitStatus.type === 'success'
-              ? 'bg-green-500/20 text-green-300 border border-green-500/30'
-              : 'bg-red-500/20 text-red-300 border border-red-500/30'
+              ? 'bg-green-500/20 text-green-200 border border-green-500/40 shadow-green-500/20'
+              : 'bg-red-500/20 text-red-200 border border-red-500/40 shadow-red-500/20'
           }`}>
-            {submitStatus.message}
+            <div className="flex items-start gap-2">
+              <div className="flex-1 leading-relaxed">
+                {submitStatus.message}
+              </div>
+            </div>
           </div>
         )}
 

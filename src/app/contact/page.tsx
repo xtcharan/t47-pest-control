@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { COMPANY_INFO } from '@/components/lib/constants';
 import ClientReviews from '@/components/reviews/ClientReviews';
+import ContactQuoteForm from '@/components/forms/ContactQuoteForm';
 
 export default function ContactPage() {
   const locations = [
@@ -164,112 +165,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-light focus:border-transparent"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-light focus:border-transparent"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-light focus:border-transparent"
-                      placeholder="Enter your email address"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="suburb" className="block text-sm font-medium text-gray-700 mb-2">
-                      Suburb *
-                    </label>
-                    <input
-                      type="text"
-                      id="suburb"
-                      name="suburb"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-light focus:border-transparent"
-                      placeholder="Enter your suburb"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Required *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-light focus:border-transparent"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="general-pest-control">General Pest Control</option>
-                    <option value="termite-control">Termite Control</option>
-                    <option value="cockroach-control">Cockroach Control</option>
-                    <option value="rodent-control">Rodent Control</option>
-                    <option value="spider-control">Spider Control</option>
-                    <option value="ant-control">Ant Control</option>
-                    <option value="wasp-control">Wasp Control</option>
-                    <option value="commercial-services">Commercial Services</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Additional Details
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-light focus:border-transparent"
-                    placeholder="Tell us more about your pest problem..."
-                  ></textarea>
-                </div>
-
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    className="bg-green-light text-black px-8 py-3 rounded-lg hover:bg-green-dark hover:text-white transition-colors font-bold text-lg"
-                  >
-                    Get Free Quote
-                  </button>
-                </div>
-              </form>
-            </div>
+            <ContactQuoteForm />
           </div>
         </div>
       </section>

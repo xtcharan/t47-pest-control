@@ -7,19 +7,23 @@ import SafetyFeatures from "@/components/safety/SafetyFeatures";
 import ClientReviews from "@/components/reviews/ClientReviews";
 import ServiceForm from "@/components/forms/ServiceForm";
 import FAQ from "@/components/faq/FAQ";
+import { WebsiteSchema } from "@/components/seo/SchemaMarkup";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <TopBanner />
-      <ServiceTiles />
-      <PestSolutions />
-      <ServiceCategories />
-      <SafetyFeatures />
-      <ClientReviews />
-      <ServiceForm />
-      <FAQ />
-    </main>
+    <>
+      <WebsiteSchema />
+      <main className="min-h-screen">
+        <Hero />
+        <TopBanner />
+        <ServiceTiles />
+        <PestSolutions />
+        <ServiceCategories />
+        <SafetyFeatures />
+        <ClientReviews />
+        <ServiceForm />
+        <FAQ />
+      </main>
+    </>
   );
 }
