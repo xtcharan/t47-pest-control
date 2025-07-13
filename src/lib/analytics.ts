@@ -94,7 +94,8 @@ export const initializeAnalytics = () => {
 // GDPR compliance helper
 export const updateAnalyticsConsent = (hasConsent: boolean) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('consent', 'update', {
+    // Use the proper gtag consent API
+    (window.gtag as any)('consent', 'update', {
       analytics_storage: hasConsent ? 'granted' : 'denied',
       ad_storage: 'denied', // Always deny ad storage for privacy
     });

@@ -138,8 +138,8 @@ export const trackServiceBooking = (serviceDetails: {
 declare global {
   interface Window {
     gtag: (
-      command: 'config' | 'event' | 'js',
-      targetId: string | Date,
+      command: 'config' | 'event' | 'js' | 'consent',
+      targetId: string | Date | 'update',
       config?: Record<string, any>
     ) => void;
   }
