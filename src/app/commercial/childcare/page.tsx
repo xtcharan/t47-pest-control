@@ -5,6 +5,7 @@ import ChildcarePestControlBanner from "@/components/banner/ChildcarePestControl
 import ChildcarePestControlContent from "@/components/content/ChildcarePestControlContent";
 import ChildcarePestControlProcedure from "@/components/procedure/ChildcarePestControlProcedure";
 import ChildcarePestGallery from "@/components/species/ChildcarePestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import ChildcarePestControlFAQ from "@/components/faq/ChildcarePestControlFAQ";
 
 export default function ChildcarePage() {
@@ -15,6 +16,7 @@ export default function ChildcarePage() {
       <ChildcarePestControlContent />
       <ChildcarePestControlProcedure />
       <ChildcarePestGallery />
+      <ServiceForm />
       <ChildcarePestControlFAQ />
     </main>
   );

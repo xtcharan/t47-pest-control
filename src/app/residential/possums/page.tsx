@@ -3,6 +3,7 @@ import PossumControlBanner from "@/components/banner/PossumControlBanner";
 import PossumControlContent from "@/components/content/PossumControlContent";
 import PossumControlProcedure from "@/components/procedure/PossumControlProcedure";
 import PossumBehaviorGuide from "@/components/info/PossumBehaviorGuide";
+import ServiceForm from "@/components/forms/ServiceForm";
 import PossumControlFAQ from "@/components/faq/PossumControlFAQ";
 import type { Metadata } from "next";
 
@@ -20,6 +21,7 @@ export default function PossumsPage() {
       <PossumControlContent />
       <PossumControlProcedure />
       <PossumBehaviorGuide />
+      <ServiceForm />
       <PossumControlFAQ />
     </main>
   );

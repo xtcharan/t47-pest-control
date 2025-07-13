@@ -4,6 +4,7 @@ import TermiteHomesInspectionBanner from "@/components/banner/TermiteHomesInspec
 import TermiteHomesInspectionContent from "@/components/content/TermiteHomesInspectionContent";
 import TermiteHomesInspectionProcedure from "@/components/procedure/TermiteHomesInspectionProcedure";
 import TermiteHomesInfoGraphic from "@/components/info/TermiteHomesInfoGraphic";
+import ServiceForm from "@/components/forms/ServiceForm";
 import TermiteHomesInspectionFAQ from "@/components/faq/TermiteHomesInspectionFAQ";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function TermiteHomesInspectionPage() {
       <TermiteHomesInspectionContent />
       <TermiteHomesInfoGraphic />
       <TermiteHomesInspectionProcedure />
+      <ServiceForm />
       <TermiteHomesInspectionFAQ />
     </main>
   );

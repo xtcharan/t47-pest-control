@@ -57,7 +57,7 @@ export default function NavigationItem({
             {hasDropdown && (
               <button
                 type="button"
-                className={`p-2 rounded-md ${isActive ? 'bg-red-100 text-red-600' : ''}`}
+                className={`p-2 rounded-md border ${isActive ? 'bg-red-100 text-red-600 border-red-300' : 'text-gray-700 border-gray-300 hover:bg-gray-100'}`}
                 onClick={handleToggle}
                 aria-label={`${isActive ? 'Collapse' : 'Expand'} ${name} menu`}
               >

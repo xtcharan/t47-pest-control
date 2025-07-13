@@ -5,6 +5,7 @@ import BedBugControlBanner from "@/components/banner/BedBugControlBanner";
 import BedBugControlContent from "@/components/content/BedBugControlContent";
 import BedBugExterminationProcedure from "@/components/procedure/BedBugExterminationProcedure";
 import BedBugLifecycleGallery from "@/components/species/BedBugLifecycleGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import BedBugControlFAQ from "@/components/faq/BedBugControlFAQ";
 
 export default function BedBugsPage() {
@@ -15,6 +16,7 @@ export default function BedBugsPage() {
       <BedBugControlContent />
       <BedBugExterminationProcedure />
       <BedBugLifecycleGallery />
+      <ServiceForm />
       <BedBugControlFAQ />
     </main>
   );

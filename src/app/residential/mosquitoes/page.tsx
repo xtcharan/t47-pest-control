@@ -16,6 +16,7 @@ export default function MosquitoesPage() {
       <MosquitoControlContent />
       <MosquitoExterminationProcedure />
       <MosquitoSpeciesGallery />
+      <ServiceForm />
       <MosquitoControlFAQ />
     </main>
   );

@@ -5,6 +5,7 @@ import GymFitnessPestControlBanner from "@/components/banner/GymFitnessPestContr
 import GymFitnessPestControlContent from "@/components/content/GymFitnessPestControlContent";
 import GymFitnessPestControlProcedure from "@/components/procedure/GymFitnessPestControlProcedure";
 import GymFitnessPestGallery from "@/components/species/GymFitnessPestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import GymFitnessPestControlFAQ from "@/components/faq/GymFitnessPestControlFAQ";
 
 export default function GymFitnessPage() {
@@ -15,6 +16,7 @@ export default function GymFitnessPage() {
       <GymFitnessPestControlContent />
       <GymFitnessPestControlProcedure />
       <GymFitnessPestGallery />
+      <ServiceForm />
       <GymFitnessPestControlFAQ />
     </main>
   );

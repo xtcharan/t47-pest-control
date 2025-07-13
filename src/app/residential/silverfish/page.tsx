@@ -4,6 +4,7 @@ import SilverfishControlHero from "@/components/hero/SilverfishControlHero";
 import SilverfishControlBanner from "@/components/banner/SilverfishControlBanner";
 import SilverfishControlContent from "@/components/content/SilverfishControlContent";
 import SilverfishControlProcedure from "@/components/procedure/SilverfishControlProcedure";
+import ServiceForm from "@/components/forms/ServiceForm";
 import SilverfishControlFAQ from "@/components/faq/SilverfishControlFAQ";
 
 export default function SilverfishPage() {
@@ -13,6 +14,7 @@ export default function SilverfishPage() {
       <SilverfishControlBanner />
       <SilverfishControlContent />
       <SilverfishControlProcedure />
+      <ServiceForm />
       <SilverfishControlFAQ />
     </main>
   );

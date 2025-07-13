@@ -39,6 +39,31 @@ export default function MainHeader() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  // Mobile banner dropdown state
+  const [showMobileBannerDropdown, setShowMobileBannerDropdown] = useState(false);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  // Banner messages that rotate
+  const bannerMessages = [
+    "Our Purpose: To Prevent and Protect",
+    "Committed to a Sustainable Future",
+    "Eco-Friendly Pest Solutions",
+    "Protecting Wildlife & Biodiversity",
+    "Smart Technology, Green Results",
+    "24/7 Sustainable Pest Control"
+  ];
+
+  // Auto-rotate banner messages
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMessageIndex((prevIndex) =>
+        (prevIndex + 1) % bannerMessages.length
+      );
+    }, 3000); // Change message every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [bannerMessages.length]);
+
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -95,7 +120,256 @@ export default function MainHeader() {
   };
 
   return (
-    <header className="w-full relative z-50">
+    <header className="w-full relative z-50 bg-white">
+      {/* Mobile Call Now Banner - Only visible on mobile */}
+      <div className="md:hidden bg-gradient-to-r from-blue-600 to-blue-800 text-white relative">
+        <div className="py-2 px-4 text-center">
+          <a
+            href={`tel:${COMPANY_INFO.phone}`}
+            className="flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
+          >
+            <div className={`${styles.mobileCallIcon} relative`}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <span className="font-bold text-sm animate-pulse">CALL US NOW {COMPANY_INFO.phone}</span>
+          </a>
+          <button
+            onClick={() => setShowMobileBannerDropdown(!showMobileBannerDropdown)}
+            className="flex items-center justify-center space-x-1 mt-1 mx-auto hover:opacity-90 transition-opacity"
+          >
+            <span className="text-xs opacity-90 transition-all duration-500">
+              {bannerMessages[currentMessageIndex]}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`h-3 w-3 transition-transform duration-200 ${showMobileBannerDropdown ? 'rotate-180' : ''}`}
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Dropdown Content */}
+        {showMobileBannerDropdown && (
+          <div className="absolute top-full left-0 right-0 bg-blue-800 text-white p-4 shadow-lg z-50 max-h-[80vh] overflow-y-auto">
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-bold text-lg mb-2">Our Purpose: To Prevent and Protect</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  Since our establishment, T47 Pest Control has worked tirelessly to keep Australian communities safe from the
+                  threats pests pose to health and wellbeing. We are driven by a vision of a future where homes and businesses are free from
+                  pests and where biodiversity flourishes. Our commitment to preventive pest control, powered by advanced digital
+                  technologies and deep biological expertise, empowers us to protect lives, preserve nature, and prevent loss.
+                </p>
+                <button
+                  onClick={() => window.location.href = '/about'}
+                  className="mt-3 bg-white text-blue-800 px-4 py-2 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors"
+                >
+                  LEARN MORE
+                </button>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg mb-2">Committed to a Sustainable Future</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  We're dedicated to building a safer, healthier world that thrives today and for generations to come. As Australia's trusted pest
+                  control provider, we help businesses achieve their sustainability goals while empowering households to reduce
+                  their environmental impact through eco-friendly pest management solutions.
+                </p>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <div className="bg-white/10 p-2 rounded text-xs">
+                    <div className="font-semibold">🌱 Eco-Friendly</div>
+                    <div className="opacity-80">Non-toxic treatments</div>
+                  </div>
+                  <div className="bg-white/10 p-2 rounded text-xs">
+                    <div className="font-semibold">♻️ Sustainable</div>
+                    <div className="opacity-80">Minimal waste practices</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg mb-2">Eco-Friendly Pest Solutions</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  Our innovative approach combines traditional expertise with modern, environmentally conscious methods. We prioritize
+                  non-toxic treatments, integrated pest management, and sustainable practices that protect your family, pets, and the environment
+                  while effectively controlling pest populations.
+                </p>
+                <div className="mt-3 space-y-2">
+                  <div className="flex items-center space-x-2 text-xs">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>Organic and natural pest control methods</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-xs">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>Pet and child-safe formulations</span>
+                  </div>
+                  <div className="flex items-center space-x-2 text-xs">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span>Biodegradable treatment options</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg mb-2">Protecting Wildlife & Biodiversity</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  We understand the delicate balance of ecosystems and work to preserve beneficial insects and wildlife while targeting only
+                  harmful pests. Our selective treatment methods ensure that we protect pollinators, natural predators, and other important
+                  species that contribute to a healthy environment.
+                </p>
+                <div className="mt-3 bg-white/10 p-3 rounded">
+                  <div className="text-xs font-semibold mb-2">Protected Species:</div>
+                  <div className="grid grid-cols-3 gap-2 text-xs">
+                    <div>🐝 Bees</div>
+                    <div>🦋 Butterflies</div>
+                    <div>🐞 Ladybugs</div>
+                    <div>🕷️ Spiders</div>
+                    <div>🐦 Birds</div>
+                    <div>🦎 Lizards</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg mb-2">Smart Technology, Green Results</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  Using cutting-edge SMART digital technology, we provide precise, targeted treatments that minimize environmental impact.
+                  Our data-driven approach reduces chemical usage, prevents over-treatment, and delivers more effective results with a smaller
+                  ecological footprint.
+                </p>
+                <div className="mt-3 space-y-2">
+                  <div className="bg-white/10 p-2 rounded text-xs">
+                    <div className="font-semibold flex items-center space-x-1">
+                      <span>📱</span>
+                      <span>Digital Monitoring Systems</span>
+                    </div>
+                    <div className="opacity-80 mt-1">Real-time pest activity tracking</div>
+                  </div>
+                  <div className="bg-white/10 p-2 rounded text-xs">
+                    <div className="font-semibold flex items-center space-x-1">
+                      <span>🎯</span>
+                      <span>Precision Application</span>
+                    </div>
+                    <div className="opacity-80 mt-1">Targeted treatment zones only</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg mb-2">24/7 Sustainable Pest Control</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  Round-the-clock protection doesn't mean round-the-clock environmental impact. Our sustainable 24/7 service model focuses on
+                  prevention, monitoring, and early intervention to reduce the need for intensive treatments while maintaining continuous protection
+                  for your property.
+                </p>
+                <div className="mt-3 grid grid-cols-1 gap-2">
+                  <div className="bg-white/10 p-2 rounded text-xs flex items-center space-x-2">
+                    <span>🕐</span>
+                    <div>
+                      <div className="font-semibold">24/7 Emergency Response</div>
+                      <div className="opacity-80">Immediate assistance when needed</div>
+                    </div>
+                  </div>
+                  <div className="bg-white/10 p-2 rounded text-xs flex items-center space-x-2">
+                    <span>📊</span>
+                    <div>
+                      <div className="font-semibold">Continuous Monitoring</div>
+                      <div className="opacity-80">Preventive approach reduces treatments</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg mb-2">Our Green Certifications & Practices</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  T47 Pest Control is committed to environmental stewardship through certified sustainable practices and continuous improvement
+                  in our green initiatives. We maintain industry-leading certifications and partnerships with environmental organizations.
+                </p>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  <div className="bg-green-600/20 p-2 rounded text-xs">
+                    <div className="font-semibold">🏆 ISO 14001</div>
+                    <div className="opacity-80">Environmental Management</div>
+                  </div>
+                  <div className="bg-green-600/20 p-2 rounded text-xs">
+                    <div className="font-semibold">🌿 Green Certified</div>
+                    <div className="opacity-80">Sustainable Operations</div>
+                  </div>
+                  <div className="bg-green-600/20 p-2 rounded text-xs">
+                    <div className="font-semibold">♻️ Carbon Neutral</div>
+                    <div className="opacity-80">Offset Program</div>
+                  </div>
+                  <div className="bg-green-600/20 p-2 rounded text-xs">
+                    <div className="font-semibold">🌍 EPA Approved</div>
+                    <div className="opacity-80">Compliant Methods</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-bold text-lg mb-2">Community Impact & Education</h3>
+                <p className="text-sm leading-relaxed opacity-90">
+                  Beyond pest control, we're committed to educating communities about sustainable pest management and environmental protection.
+                  Our outreach programs help homeowners and businesses adopt eco-friendly practices.
+                </p>
+                <div className="mt-3 space-y-2">
+                  <div className="bg-white/10 p-2 rounded text-xs">
+                    <div className="font-semibold">📚 Educational Workshops</div>
+                    <div className="opacity-80">Free community seminars on sustainable pest management</div>
+                  </div>
+                  <div className="bg-white/10 p-2 rounded text-xs">
+                    <div className="font-semibold">🤝 School Programs</div>
+                    <div className="opacity-80">Teaching children about environmental responsibility</div>
+                  </div>
+                  <div className="bg-white/10 p-2 rounded text-xs">
+                    <div className="font-semibold">🌱 Tree Planting Initiative</div>
+                    <div className="opacity-80">One tree planted for every service completed</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/20 space-y-3">
+                <button
+                  onClick={() => window.location.href = '/sustainability'}
+                  className="w-full bg-white/20 text-white border border-white px-4 py-2 rounded-full text-sm font-bold hover:bg-white/30 transition-colors"
+                >
+                  READ ABOUT OUR GREEN PRACTICES
+                </button>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => window.location.href = '/services'}
+                    className="bg-green-600 text-white px-3 py-2 rounded-full text-xs font-bold hover:bg-green-700 transition-colors"
+                  >
+                    VIEW SERVICES
+                  </button>
+                  <button
+                    onClick={() => window.location.href = '/contact'}
+                    className="bg-white text-blue-800 px-3 py-2 rounded-full text-xs font-bold hover:bg-gray-100 transition-colors"
+                  >
+                    GET QUOTE
+                  </button>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowMobileBannerDropdown(false)}
+                className="absolute top-2 right-2 text-white hover:opacity-70 transition-opacity"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
       {/* Top header with search, locations and social media icons */}
       <div className="hidden md:flex items-center justify-between py-1.5 px-5 bg-gradient-to-r from-red-500 to-red-700 shadow-sm text-xs text-white">
         {/* Left section with social media icons */}
@@ -246,36 +520,74 @@ export default function MainHeader() {
         </div>
       </div>
 
-      <div className="container mx-auto px-1 sm:px-2 md:px-3 flex items-center justify-between py-1 md:py-2 bg-white shadow-md">
-        {/* Logo and company name - clickable to home page */}
-        <Link
-          href="/"
-          className={`flex items-center group cursor-pointer transition-transform hover:scale-105 duration-200 ${styles.logoHover}`}
-          aria-label="Go to homepage"
-        >
-          <div className="mr-2 flex-shrink-0">
-            <Image
-              src="/logo.png"
-              alt="Company Logo"
-              width={isMobile ? 50 : 70}
-              height={isMobile ? 50 : 70}
-              sizes="(max-width: 768px) 50px, 70px"
-              className="object-contain"
-              style={{ width: isMobile ? '50px' : '70px', height: isMobile ? '50px' : '70px' }}
-              priority
-            />
-          </div>
-          <div className="leading-tight flex-shrink">
-            <h1 className={`${isMobile ? 'text-lg' : 'text-3xl'} whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-[-5px] font-extrabold`} style={{ maxWidth: isMobile ? '100%' : 'auto', overflow: 'visible' }}>
-              T47 PEST CONTROL
-            </h1>
-            <div className="flex justify-end">
-              <p className={`${isMobile ? 'text-[9px]' : 'text-[10px]'} whitespace-nowrap font-extrabold bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent`}>
-                24/7 ROUND THE CLOCK
-              </p>
+      <div className={`container mx-auto px-1 sm:px-2 md:px-3 flex items-center ${isMobile ? 'py-5' : 'py-2'} md:py-2 bg-white shadow-md ${isMobile ? 'relative overflow-visible' : 'justify-between'}`}>
+        {isMobile ? (
+          <>
+            {/* Mobile Logo - Left side */}
+            <Link
+              href="/"
+              className="flex items-center group cursor-pointer absolute left-2 top-1/2 transform -translate-y-1/2 z-20"
+              aria-label="Go to homepage"
+            >
+              <div className="flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Company Logo"
+                  width={40}
+                  height={40}
+                  sizes="40px"
+                  className="object-contain"
+                  style={{ width: '60px', height: '60px' }}
+                  priority
+                />
+              </div>
+            </Link>
+
+            {/* Mobile Company Name and Tagline - Center */}
+            <div className="absolute inset-0 flex justify-center items-center overflow-visible z-10">
+              <div className="leading-tight text-center overflow-visible" style={{ width: 'max-content' }}>
+                <h1 className="whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-1 font-extrabold" style={{ maxWidth: 'none', overflow: 'visible', fontSize: '16rem !important', width: 'max-content', transform: 'scale(1.5)', letterSpacing: '1px' }}>
+                  T47 PEST CONTROL
+                </h1>
+                <div className="flex justify-center">
+                  <p className="text-[10px] whitespace-nowrap font-extrabold bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent" style={{ transform: 'scale(1.1)' }}>
+                    24/7 ROUND THE CLOCK
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        </Link>
+          </>
+        ) : (
+          /* Desktop Logo and company name - clickable to home page */
+          <Link
+            href="/"
+            className={`flex items-center group cursor-pointer transition-transform hover:scale-105 duration-200 ${styles.logoHover}`}
+            aria-label="Go to homepage"
+          >
+            <div className="mr-2 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Company Logo"
+                width={70}
+                height={70}
+                sizes="70px"
+                className="object-contain"
+                style={{ width: '70px', height: '70px' }}
+                priority
+              />
+            </div>
+            <div className="leading-tight flex-shrink">
+              <h1 className="text-3xl whitespace-nowrap t47-header-font bg-gradient-to-r from-[#80D8FF] to-[#004D7F] bg-clip-text text-transparent mb-[-5px] font-extrabold" style={{ maxWidth: 'auto', overflow: 'visible' }}>
+                T47 PEST CONTROL
+              </h1>
+              <div className="flex justify-end">
+                <p className="text-[10px] whitespace-nowrap font-extrabold bg-gradient-to-r from-red-500 to-green-500 bg-clip-text text-transparent">
+                  24/7 ROUND THE CLOCK
+                </p>
+              </div>
+            </div>
+          </Link>
+        )}
 
         {/* Desktop navigation and contact buttons */}
         <div className="hidden md:flex items-center justify-between flex-1">
@@ -325,31 +637,7 @@ export default function MainHeader() {
         </div>
 
         {/* Mobile navigation buttons - right side */}
-        <div className="md:hidden flex items-center space-x-1.5">
-          {/* Phone button with animation */}
-          <button
-            type="button"
-            onClick={() => window.location.href = `tel:${COMPANY_INFO.phone}`}
-            className={`p-2 rounded-full bg-gradient-to-r from-red-600 to-red-800 shadow-md focus:outline-none flex items-center justify-center ${styles.phoneButton}`}
-            aria-label="Call us"
-          >
-            <div className={styles.phoneIcon}>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-            </div>
-          </button>
-
-          {/* Book Now button */}
-          <button
-            type="button"
-            onClick={() => window.location.href = '/contact'}
-            className="py-1.5 px-3.5 rounded-full bg-gradient-to-r from-red-600 to-red-800 text-white font-bold text-xs shadow-md focus:outline-none transition-transform hover:scale-105 active:scale-95"
-            aria-label="Book Now"
-          >
-            BOOK NOW
-          </button>
-
+        <div className="md:hidden absolute right-2 top-1/2 transform -translate-y-1/2 z-20">
           {/* Mobile hamburger menu button - right side */}
           <button
             type="button"
@@ -389,31 +677,7 @@ export default function MainHeader() {
           />
         </div>
 
-        {/* Call buttons */}
-        <div className="flex flex-col space-y-2 p-4 border-t border-gray-200">
-          <button
-            type="button"
-            className="bg-gradient-to-r from-red-600 to-red-800 text-white font-bold py-2 px-4 rounded-full flex items-center justify-center hover:from-red-700 hover:to-red-900 transition-colors text-sm"
-            onClick={() => window.location.href = `tel:${COMPANY_INFO.phone}`}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span>{COMPANY_INFO.phone}</span>
-          </button>
-          <button
-            type="button"
-            className="bg-white text-red-600 font-bold py-2 px-4 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors border-2 border-red-600 text-sm"
-            onClick={() => window.location.href = '/contact'}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-              <polyline points="10 17 15 12 10 7"></polyline>
-              <line x1="15" y1="12" x2="3" y2="12"></line>
-            </svg>
-            <span>Request a Call Back</span>
-          </button>
-        </div>
+
 
         {/* Bottom navigation bar */}
         <div className="fixed bottom-0 left-0 right-0 bg-gray-50 border-t border-gray-200 grid grid-cols-5 py-2 z-50">

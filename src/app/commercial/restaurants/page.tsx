@@ -5,6 +5,7 @@ import RestaurantPestControlBanner from "@/components/banner/RestaurantPestContr
 import RestaurantPestControlContent from "@/components/content/RestaurantPestControlContent";
 import RestaurantPestControlProcedure from "@/components/procedure/RestaurantPestControlProcedure";
 import RestaurantPestGallery from "@/components/species/RestaurantPestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import RestaurantPestControlFAQ from "@/components/faq/RestaurantPestControlFAQ";
 
 export default function RestaurantsPage() {
@@ -15,6 +16,7 @@ export default function RestaurantsPage() {
       <RestaurantPestControlContent />
       <RestaurantPestControlProcedure />
       <RestaurantPestGallery />
+      <ServiceForm />
       <RestaurantPestControlFAQ />
     </main>
   );

@@ -5,6 +5,7 @@ import SchoolPestControlBanner from "@/components/banner/SchoolPestControlBanner
 import SchoolPestControlContent from "@/components/content/SchoolPestControlContent";
 import SchoolPestControlProcedure from "@/components/procedure/SchoolPestControlProcedure";
 import SchoolPestGallery from "@/components/species/SchoolPestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import SchoolPestControlFAQ from "@/components/faq/SchoolPestControlFAQ";
 
 export default function SchoolsPage() {
@@ -15,6 +16,7 @@ export default function SchoolsPage() {
       <SchoolPestControlContent />
       <SchoolPestControlProcedure />
       <SchoolPestGallery />
+      <ServiceForm />
       <SchoolPestControlFAQ />
     </main>
   );

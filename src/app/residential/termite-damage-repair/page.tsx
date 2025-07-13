@@ -4,6 +4,7 @@ import TermiteDamageRepairBanner from "@/components/banner/TermiteDamageRepairBa
 import TermiteDamageRepairContent from "@/components/content/TermiteDamageRepairContent";
 import TermiteDamageRepairProcedure from "@/components/procedure/TermiteDamageRepairProcedure";
 import TermiteDamageAssessment from "@/components/info/TermiteDamageAssessment";
+import ServiceForm from "@/components/forms/ServiceForm";
 import TermiteDamageRepairFAQ from "@/components/faq/TermiteDamageRepairFAQ";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function TermiteDamageRepairPage() {
       <TermiteDamageRepairContent />
       <TermiteDamageRepairProcedure />
       <TermiteDamageAssessment />
+      <ServiceForm />
       <TermiteDamageRepairFAQ />
     </main>
   );

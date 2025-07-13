@@ -5,6 +5,7 @@ import ServiceTiles from "@/components/services/ServiceTiles";
 import PestSolutions from "@/components/solutions/PestSolutions";
 import SafetyFeatures from "@/components/safety/SafetyFeatures";
 import ClientReviews from "@/components/reviews/ClientReviews";
+import ServiceForm from "@/components/forms/ServiceForm";
 import FAQ from "@/components/faq/FAQ";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <ServiceCategories />
       <SafetyFeatures />
       <ClientReviews />
+      <ServiceForm />
       <FAQ />
     </main>
   );

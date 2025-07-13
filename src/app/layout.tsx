@@ -4,6 +4,7 @@ import "./globals.css";
 import "./output.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import StickyQuoteButton from "@/components/common/StickyQuoteButton";
 import LazyLoadInit from "@/components/LazyLoadInit";
 import Script from "next/script";
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -15,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://t47pestcontrol.com'),
   title: "T47 Pest Control | Professional Pest Control Services in Victoria",
   description: "T47 Pest Control offers professional pest management services for residential and commercial properties in Victoria. Fully licensed and insured.",
   keywords: "pest control, Victoria pest control, T47 Pest Control, residential pest control, commercial pest control",
@@ -89,6 +91,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <StickyQuoteButton />
         <Footer />
         <LazyLoadInit />
         <Script src="/lazy-load-polyfill.js" strategy="lazyOnload" />

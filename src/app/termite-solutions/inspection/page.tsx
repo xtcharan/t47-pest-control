@@ -4,6 +4,7 @@ import TermiteInspectionBanner from "@/components/banner/TermiteInspectionBanner
 import TermiteInspectionContent from "@/components/content/TermiteInspectionContent";
 import TermiteInspectionProcedure from "@/components/procedure/TermiteInspectionProcedure";
 import TermiteSpeciesGallery from "@/components/species/TermiteSpeciesGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import TermiteInspectionFAQ from "@/components/faq/TermiteInspectionFAQ";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function TermiteInspectionPage() {
       <TermiteInspectionContent />
       <TermiteInspectionProcedure />
       <TermiteSpeciesGallery />
+      <ServiceForm />
       <TermiteInspectionFAQ />
     </main>
   );

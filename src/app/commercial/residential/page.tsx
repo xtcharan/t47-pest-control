@@ -5,6 +5,7 @@ import ResidentialComplexPestControlBanner from "@/components/banner/Residential
 import ResidentialComplexPestControlContent from "@/components/content/ResidentialComplexPestControlContent";
 import ResidentialComplexPestControlProcedure from "@/components/procedure/ResidentialComplexPestControlProcedure";
 import ResidentialComplexPestGallery from "@/components/species/ResidentialComplexPestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import ResidentialComplexPestControlFAQ from "@/components/faq/ResidentialComplexPestControlFAQ";
 
 export default function ResidentialComplexPage() {
@@ -15,6 +16,7 @@ export default function ResidentialComplexPage() {
       <ResidentialComplexPestControlContent />
       <ResidentialComplexPestControlProcedure />
       <ResidentialComplexPestGallery />
+      <ServiceForm />
       <ResidentialComplexPestControlFAQ />
     </main>
   );

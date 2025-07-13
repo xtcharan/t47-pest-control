@@ -5,6 +5,7 @@ import FoodProcessingPestControlBanner from "@/components/banner/FoodProcessingP
 import FoodProcessingPestControlContent from "@/components/content/FoodProcessingPestControlContent";
 import FoodProcessingPestControlProcedure from "@/components/procedure/FoodProcessingPestControlProcedure";
 import FoodProcessingPestGallery from "@/components/species/FoodProcessingPestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import FoodProcessingPestControlFAQ from "@/components/faq/FoodProcessingPestControlFAQ";
 
 export default function FoodProcessingPage() {
@@ -15,6 +16,7 @@ export default function FoodProcessingPage() {
       <FoodProcessingPestControlContent />
       <FoodProcessingPestControlProcedure />
       <FoodProcessingPestGallery />
+      <ServiceForm />
       <FoodProcessingPestControlFAQ />
     </main>
   );

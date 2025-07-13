@@ -5,6 +5,7 @@ import HospitalPestControlBanner from "@/components/banner/HospitalPestControlBa
 import HospitalPestControlContent from "@/components/content/HospitalPestControlContent";
 import HospitalPestControlProcedure from "@/components/procedure/HospitalPestControlProcedure";
 import HospitalPestGallery from "@/components/species/HospitalPestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import HospitalPestControlFAQ from "@/components/faq/HospitalPestControlFAQ";
 
 export default function HospitalsPage() {
@@ -15,6 +16,7 @@ export default function HospitalsPage() {
       <HospitalPestControlContent />
       <HospitalPestControlProcedure />
       <HospitalPestGallery />
+      <ServiceForm />
       <HospitalPestControlFAQ />
     </main>
   );

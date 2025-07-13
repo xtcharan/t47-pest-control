@@ -3,6 +3,7 @@ import FlyControlBanner from "@/components/banner/FlyControlBanner";
 import FlyControlContent from "@/components/content/FlyControlContent";
 import FlyControlProcedure from "@/components/procedure/FlyControlProcedure";
 import FlySpeciesGuide from "@/components/species/FlySpeciesGuide";
+import ServiceForm from "@/components/forms/ServiceForm";
 import FlyControlFAQ from "@/components/faq/FlyControlFAQ";
 import type { Metadata } from "next";
 
@@ -20,6 +21,7 @@ export default function FliesPage() {
       <FlyControlContent />
       <FlyControlProcedure />
       <FlySpeciesGuide />
+      <ServiceForm />
       <FlyControlFAQ />
     </main>
   );

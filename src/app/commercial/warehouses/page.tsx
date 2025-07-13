@@ -5,6 +5,7 @@ import WarehousePestControlBanner from "@/components/banner/WarehousePestControl
 import WarehousePestControlContent from "@/components/content/WarehousePestControlContent";
 import WarehousePestControlProcedure from "@/components/procedure/WarehousePestControlProcedure";
 import WarehousePestGallery from "@/components/species/WarehousePestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import WarehousePestControlFAQ from "@/components/faq/WarehousePestControlFAQ";
 
 export default function WarehousesPage() {
@@ -15,6 +16,7 @@ export default function WarehousesPage() {
       <WarehousePestControlContent />
       <WarehousePestControlProcedure />
       <WarehousePestGallery />
+      <ServiceForm />
       <WarehousePestControlFAQ />
     </main>
   );

@@ -3,6 +3,7 @@ import BirdControlBanner from "@/components/banner/BirdControlBanner";
 import BirdControlContent from "@/components/content/BirdControlContent";
 import BirdControlSolutions from "@/components/solutions/BirdControlSolutions";
 import BirdSpeciesGuide from "@/components/species/BirdSpeciesGuide";
+import ServiceForm from "@/components/forms/ServiceForm";
 import BirdControlFAQ from "@/components/faq/BirdControlFAQ";
 import type { Metadata } from "next";
 
@@ -20,6 +21,7 @@ export default function BirdControlPage() {
       <BirdControlContent />
       <BirdControlSolutions />
       <BirdSpeciesGuide />
+      <ServiceForm />
       <BirdControlFAQ />
     </main>
   );

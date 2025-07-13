@@ -5,6 +5,7 @@ import BeeControlBanner from "@/components/banner/BeeControlBanner";
 import BeeControlContent from "@/components/content/BeeControlContent";
 import BeeManagementProcedure from "@/components/procedure/BeeManagementProcedure";
 import BeeSpeciesGallery from "@/components/species/BeeSpeciesGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import BeeControlFAQ from "@/components/faq/BeeControlFAQ";
 
 export default function BeesPage() {
@@ -15,6 +16,7 @@ export default function BeesPage() {
       <BeeControlContent />
       <BeeManagementProcedure />
       <BeeSpeciesGallery />
+      <ServiceForm />
       <BeeControlFAQ />
     </main>
   );

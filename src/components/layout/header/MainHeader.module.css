@@ -131,6 +131,45 @@
   z-index: -1;
 }
 
+/* Enhanced mobile call icon with multiple effects */
+.mobileCallIcon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: mobileCallBounce 1.5s ease-in-out infinite;
+}
+
+/* Pulsing glow effect */
+.mobileCallIcon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: mobileCallGlow 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Ripple effect */
+.mobileCallIcon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: mobileCallRipple 2s infinite;
+  z-index: 0;
+}
+
 /* Modern call button with shimmer effect */
 .callButton {
   position: relative;
@@ -164,6 +203,50 @@
   }
   100% {
     transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Mobile call icon bounce animation */
+@keyframes mobileCallBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-2px) scale(1.05);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+  }
+  75% {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+/* Mobile call icon glow animation */
+@keyframes mobileCallGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Mobile call icon ripple animation */
+@keyframes mobileCallRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
     opacity: 0;
   }
 }
@@ -353,9 +436,19 @@
   .logoHover {
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: flex-start;
-    width: auto;
-    max-width: 70%;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    transition: none;
+    transform: none;
+  }
+
+  .logoHover:hover {
+    transform: none;
+  }
+
+  .logoHover::after {
+    display: none;
   }
 }
 

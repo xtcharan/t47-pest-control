@@ -5,6 +5,7 @@ import ConstructionSitePestControlBanner from "@/components/banner/ConstructionS
 import ConstructionSitePestControlContent from "@/components/content/ConstructionSitePestControlContent";
 import ConstructionSitePestControlProcedure from "@/components/procedure/ConstructionSitePestControlProcedure";
 import ConstructionSitePestGallery from "@/components/species/ConstructionSitePestGallery";
+import ServiceForm from "@/components/forms/ServiceForm";
 import ConstructionSitePestControlFAQ from "@/components/faq/ConstructionSitePestControlFAQ";
 
 export default function ConstructionSitesPage() {
@@ -15,6 +16,7 @@ export default function ConstructionSitesPage() {
       <ConstructionSitePestControlContent />
       <ConstructionSitePestControlProcedure />
       <ConstructionSitePestGallery />
+      <ServiceForm />
       <ConstructionSitePestControlFAQ />
     </main>
   );
