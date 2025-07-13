@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import OptimizedImage from '../common/OptimizedImage';
+import { COMPANY_INFO } from '../lib/constants';
 
 interface ServiceCategory {
   title: string;
@@ -176,10 +177,10 @@ export default function ServiceCategories() {
                 Get Free Quote
               </Link>
               <Link
-                href="tel:+61434900216"
+                href={`tel:${COMPANY_INFO.phone}`}
                 className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-8 rounded-full transition-colors text-lg"
               >
-                Call Now: (043) 490-0216
+                Call Now: {COMPANY_INFO.phone}
               </Link>
             </div>
           </div>

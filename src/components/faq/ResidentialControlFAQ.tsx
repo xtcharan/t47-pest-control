@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { COMPANY_INFO } from '../lib/constants';
 
 export default function ResidentialControlFAQ() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -117,10 +118,10 @@ export default function ResidentialControlFAQ() {
                 Contact Us
               </a>
               <a
-                href="tel:+61434900216"
+                href={`tel:${COMPANY_INFO.phone}`}
                 className="border-2 border-white text-white hover:bg-white hover:text-green-dark font-bold py-3 px-8 rounded-full transition-colors text-lg"
               >
-                Call: +61 434 900 216
+                Call: {COMPANY_INFO.phone}
               </a>
             </div>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function PrePurchaseTermiteInspectionProcedure() {
   const [activeStep, setActiveStep] = useState(0);
@@ -124,11 +125,11 @@ export default function PrePurchaseTermiteInspectionProcedure() {
                         <div className="text-gray-600">Duration: {procedureSteps[activeStep].duration}</div>
                       </div>
                     </div>
-                    
+
                     <p className="text-gray-600 mb-6 text-lg">
                       {procedureSteps[activeStep].description}
                     </p>
-                    
+
                     <div className="mb-6">
                       <h4 className="font-semibold text-gray-900 mb-3">Equipment Used:</h4>
                       <div className="grid grid-cols-2 gap-2">
@@ -140,7 +141,7 @@ export default function PrePurchaseTermiteInspectionProcedure() {
                         ))}
                       </div>
                     </div>
-                    
+
                     <button
                       onClick={() => setIsExpanded(!isExpanded)}
                       className="text-red-dark hover:text-red-light font-semibold transition-colors"
@@ -148,60 +149,81 @@ export default function PrePurchaseTermiteInspectionProcedure() {
                       {isExpanded ? 'Show Less' : 'Show More Details'} →
                     </button>
                   </div>
-                  
-                  <div className="bg-red-light/10 p-6 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-4">What We Look For:</h4>
-                    <ul className="space-y-2 text-gray-600 text-sm">
-                      {activeStep === 0 && (
-                        <>
-                          <li>• Property construction details</li>
-                          <li>• Previous termite history</li>
-                          <li>• Environmental risk factors</li>
-                          <li>• Access requirements</li>
-                        </>
-                      )}
-                      {activeStep === 1 && (
-                        <>
-                          <li>• Foundation cracks and gaps</li>
-                          <li>• Moisture sources and drainage</li>
-                          <li>• Timber structures and decking</li>
-                          <li>• Garden beds and landscaping</li>
-                        </>
-                      )}
-                      {activeStep === 2 && (
-                        <>
-                          <li>• Active termite signs</li>
-                          <li>• Timber damage indicators</li>
-                          <li>• Moisture problems</li>
-                          <li>• Conducive conditions</li>
-                        </>
-                      )}
-                      {activeStep === 3 && (
-                        <>
-                          <li>• Structural timber condition</li>
-                          <li>• Termite mud tubes</li>
-                          <li>• Moisture accumulation</li>
-                          <li>• Ventilation adequacy</li>
-                        </>
-                      )}
-                      {activeStep === 4 && (
-                        <>
-                          <li>• Damage extent mapping</li>
-                          <li>• Risk level assessment</li>
-                          <li>• Treatment requirements</li>
-                          <li>• Cost implications</li>
-                        </>
-                      )}
-                      {activeStep === 5 && (
-                        <>
-                          <li>• Comprehensive findings summary</li>
-                          <li>• Treatment recommendations</li>
-                          <li>• Negotiation support data</li>
-                          <li>• Future monitoring advice</li>
-                        </>
-                      )}
-                    </ul>
+
+                  {/* Process Image */}
+                  <div className="relative">
+                    <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                      <Image
+                        src={procedureSteps[activeStep].image}
+                        alt={procedureSteps[activeStep].title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4">
+                          <h4 className="font-bold text-gray-900 mb-1">{procedureSteps[activeStep].title}</h4>
+                          <p className="text-sm text-gray-700">Professional {procedureSteps[activeStep].title.toLowerCase()} using industry-leading equipment</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                {/* What We Look For Section - moved below the main grid */}
+                <div className="mt-8 bg-red-light/10 p-6 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 mb-4">What We Look For:</h4>
+                  <ul className="space-y-2 text-gray-600 text-sm">
+                    {activeStep === 0 && (
+                      <>
+                        <li>• Property construction details</li>
+                        <li>• Previous termite history</li>
+                        <li>• Environmental risk factors</li>
+                        <li>• Access requirements</li>
+                      </>
+                    )}
+                    {activeStep === 1 && (
+                      <>
+                        <li>• Foundation cracks and gaps</li>
+                        <li>• Moisture sources and drainage</li>
+                        <li>• Timber structures and decking</li>
+                        <li>• Garden beds and landscaping</li>
+                      </>
+                    )}
+                    {activeStep === 2 && (
+                      <>
+                        <li>• Active termite signs</li>
+                        <li>• Timber damage indicators</li>
+                        <li>• Moisture problems</li>
+                        <li>• Conducive conditions</li>
+                      </>
+                    )}
+                    {activeStep === 3 && (
+                      <>
+                        <li>• Structural timber condition</li>
+                        <li>• Termite mud tubes</li>
+                        <li>• Moisture accumulation</li>
+                        <li>• Ventilation adequacy</li>
+                      </>
+                    )}
+                    {activeStep === 4 && (
+                      <>
+                        <li>• Damage extent mapping</li>
+                        <li>• Risk level assessment</li>
+                        <li>• Treatment requirements</li>
+                        <li>• Cost implications</li>
+                      </>
+                    )}
+                    {activeStep === 5 && (
+                      <>
+                        <li>• Comprehensive findings summary</li>
+                        <li>• Treatment recommendations</li>
+                        <li>• Negotiation support data</li>
+                        <li>• Future monitoring advice</li>
+                      </>
+                    )}
+                  </ul>
                 </div>
                 
                 {isExpanded && (

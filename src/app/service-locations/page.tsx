@@ -257,7 +257,7 @@ export default function ServiceLocationsPage() {
               Get Free Quote
             </Link>
             <Link
-              href="tel:+61434300216"
+              href={`tel:${COMPANY_INFO.phone}`}
               className="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-primary transition-colors font-bold text-lg"
             >
               Call Now: {COMPANY_INFO.phone}

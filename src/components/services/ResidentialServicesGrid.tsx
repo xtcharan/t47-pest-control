@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import OptimizedImage from '../common/OptimizedImage';
 import { useState } from 'react';
+import { COMPANY_INFO } from '../lib/constants';
 
 export default function ResidentialServicesGrid() {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
@@ -178,10 +179,10 @@ export default function ResidentialServicesGrid() {
                 Get Free Quote
               </Link>
               <Link
-                href="tel:+61434900216"
+                href={`tel:${COMPANY_INFO.phone}`}
                 className="border-2 border-white text-white hover:bg-white hover:text-green-dark font-bold py-3 px-8 rounded-full transition-colors text-lg"
               >
-                Call Now: +61 434 900 216
+                Call Now: {COMPANY_INFO.phone}
               </Link>
             </div>
           </div>

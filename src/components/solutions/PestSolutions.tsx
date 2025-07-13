@@ -28,7 +28,6 @@ export default function PestSolutions() {
     { name: 'Wasps', scientificName: 'Vespidae', icon: '/wasps.svg', href: '/residential/wasps' },
     { name: 'Cockroaches', scientificName: 'Blattodea', icon: '/cockroaches.svg', href: '/residential/cockroaches' },
     { name: 'Mice & Rats', scientificName: 'Muridae', icon: '/mice.svg', href: '/residential/rats-mice' },
-    { name: 'Rodents', scientificName: 'Rodentia', icon: '/rodents.svg', href: '/residential/rodents' },
     { name: 'Spiders', scientificName: 'Araneae', icon: '/spiders.svg', href: '/residential/spiders' },
     { name: 'Possum', scientificName: 'Phalangeridae', icon: '/possum.svg', href: '/residential/possums' },
     { name: 'Ants', scientificName: 'Formicidae', icon: '/ants.svg', href: '/residential/ants' },
@@ -37,6 +36,7 @@ export default function PestSolutions() {
     { name: 'Mosquitoes', scientificName: 'Culicidae', icon: '/mosquitoes.svg', href: '/residential/mosquitoes' },
     { name: 'Flies', scientificName: 'Diptera', icon: '/flies.svg', href: '/residential/flies' },
     { name: 'Moths', scientificName: 'Lepidoptera', icon: '/moths.svg', href: '/residential/moths' },
+    { name: 'Rodents', scientificName: 'Rodentia', icon: '/mice.svg', href: '/residential/rodents' },
     { name: 'Silverfish', scientificName: 'Lepisma saccharina', icon: '/silverfish.svg', href: '/residential/silverfish' },
     { name: 'Bird Control', scientificName: 'Aves', icon: '/birds.svg', href: '/residential/bird-control' },
   ];

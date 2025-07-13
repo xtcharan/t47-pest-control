@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function ServiceForm() {
   const [formData, setFormData] = useState({
@@ -17,6 +17,34 @@ export default function ServiceForm() {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+
+  // Track if form was accessed via offer redemption
+  const [offerContext, setOfferContext] = useState<{
+    isFromOffer: boolean;
+    offerTitle?: string;
+    offerPrice?: string;
+  }>({ isFromOffer: false });
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Listen for offer redemption events
+  useEffect(() => {
+    const handleOfferRedemption = (event: CustomEvent) => {
+      const { title, price } = event.detail;
+      setOfferContext({
+        isFromOffer: true,
+        offerTitle: title,
+        offerPrice: price
+      });
+    };
+
+    // Add event listener for offer redemption
+    window.addEventListener('offerRedeemed', handleOfferRedemption as EventListener);
+
+    return () => {
+      window.removeEventListener('offerRedeemed', handleOfferRedemption as EventListener);
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -43,12 +71,22 @@ export default function ServiceForm() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
+      // Include offer context in submission
+      const submissionData = {
+        ...formData,
+        offerContext: offerContext.isFromOffer ? {
+          offerTitle: offerContext.offerTitle,
+          offerPrice: offerContext.offerPrice,
+          redeemedAt: new Date().toISOString()
+        } : null
+      };
+
       const response = await fetch('/api/service', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
 
       const result = await response.json();
@@ -88,12 +126,56 @@ export default function ServiceForm() {
     <section id="service-form" className="py-16 bg-gradient-to-r from-green-light to-green-dark">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
+          {/* Offer Redemption Confirmation Badge */}
+          {offerContext.isFromOffer && (
+            <div className="mb-8">
+              <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500 max-w-2xl mx-auto">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <h3 className="text-lg font-bold text-green-700">Offer Successfully Redeemed!</h3>
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        ACTIVE
+                      </span>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-4 mb-3">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <p className="font-semibold text-gray-900">{offerContext.offerTitle}</p>
+                          <p className="text-sm text-gray-600">Starting from <span className="font-bold text-green-600">${offerContext.offerPrice}</span></p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-xs text-gray-500">Offer ID</p>
+                          <p className="text-sm font-mono text-gray-700">#{Date.now().toString().slice(-6)}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-600">
+                      <span className="font-medium">Great choice!</span> This offer has been applied to your quote request.
+                      Please fill out the form below with your specific pest concerns and contact details.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Book A Service Now
+              {offerContext.isFromOffer ? 'Complete Your Quote Request' : 'Book A Service Now'}
             </h2>
             <p className="text-white text-lg">
-              Book us for an inspection today and safeguard your home!
+              {offerContext.isFromOffer
+                ? 'Fill out your details below and describe your specific pest concerns'
+                : 'Book us for an inspection today and safeguard your home!'
+              }
             </p>
           </div>
 
@@ -152,13 +234,29 @@ export default function ServiceForm() {
 
             {/* Third Row - Tell us about your home, office, workplace */}
             <div>
+              <label className="block text-white text-sm font-medium mb-2">
+                Tell us about your pest concerns
+                {offerContext.isFromOffer && (
+                  <span className="ml-2 text-xs bg-white/20 px-2 py-1 rounded">
+                    Offer: {offerContext.offerTitle} (${offerContext.offerPrice})
+                  </span>
+                )}
+              </label>
               <textarea
                 name="pestConcern"
                 value={formData.pestConcern}
                 onChange={handleChange}
-                placeholder="Tell us about Your Home, Office, Workplace..."
+                placeholder={offerContext.isFromOffer
+                  ? `Describe your specific pest concerns for the ${offerContext.offerTitle} service...`
+                  : "Tell us about Your Home, Office, Workplace..."
+                }
                 className="w-full p-3 rounded-md bg-white border-none focus:outline-none focus:ring-2 focus:ring-white h-20 text-black resize-none"
               ></textarea>
+              {offerContext.isFromOffer && (
+                <p className="text-xs text-white/70 mt-1">
+                  💡 Your {offerContext.offerTitle} offer is already applied. Just describe your specific pest issues above.
+                </p>
+              )}
             </div>
 
             {/* Service Type Checkboxes */}

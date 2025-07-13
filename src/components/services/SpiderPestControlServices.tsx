@@ -2,6 +2,7 @@
 
 import OptimizedImage from '@/components/common/OptimizedImage';
 import Link from 'next/link';
+import { COMPANY_INFO } from '../lib/constants';
 
 export default function SpiderPestControlServices() {
   return (
@@ -70,7 +71,7 @@ export default function SpiderPestControlServices() {
               <Link href="/contact" className="bg-white text-red-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-full transition-colors">
                 Book a Treatment
               </Link>
-              <Link href="tel:+61434300216" className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-6 rounded-full transition-colors">
+              <Link href={`tel:${COMPANY_INFO.phone}`} className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-6 rounded-full transition-colors">
                 Call Us Now
               </Link>
             </div>

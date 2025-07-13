@@ -8,33 +8,56 @@ import { COMPANY_INFO } from '../lib/constants';
 export default function Footer() {
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     // Check if we're on the client side
     if (typeof window !== 'undefined') {
       // Set initial state
       setIsMobile(window.innerWidth < 768);
+      setLastScrollY(window.scrollY);
 
       // Add event listener for window resize
       const handleResize = () => {
         setIsMobile(window.innerWidth < 768);
       };
 
-      window.addEventListener('resize', handleResize);
+      // Add scroll event listener to auto-collapse sections when scrolling down
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
 
-      // Clean up event listener
+        // If scrolling down and on mobile, collapse all sections
+        if (currentScrollY > lastScrollY && isMobile && openSection) {
+          setOpenSection(null);
+        }
+
+        setLastScrollY(currentScrollY);
+      };
+
+      window.addEventListener('resize', handleResize);
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      // Clean up event listeners
       return () => {
         window.removeEventListener('resize', handleResize);
+        window.removeEventListener('scroll', handleScroll);
       };
     }
-  }, []);
+  }, [lastScrollY, isMobile, openSection]);
 
   const toggleSection = (section: string) => {
+    // Prevent double tap issues on mobile
     if (openSection === section) {
       setOpenSection(null);
     } else {
       setOpenSection(section);
     }
+  };
+
+  // Handle touch events to prevent double tap
+  const handleTouchStart = (e: React.TouchEvent, section: string) => {
+    e.preventDefault();
+    toggleSection(section);
   };
 
   return (
@@ -124,9 +147,11 @@ export default function Footer() {
               <h3 className="text-lg font-semibold">Quick Links</h3>
               <button
                 type="button"
-                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full"
+                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full touch-manipulation"
                 onClick={() => toggleSection('quickLinks')}
+                onTouchStart={(e) => handleTouchStart(e, 'quickLinks')}
                 aria-label="Toggle Quick Links"
+                style={{ touchAction: 'manipulation' }}
               >
                 {openSection === 'quickLinks' ? '-' : '+'}
               </button>
@@ -148,9 +173,11 @@ export default function Footer() {
               <h3 className="text-lg font-semibold">Service Locations</h3>
               <button
                 type="button"
-                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full"
+                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full touch-manipulation"
                 onClick={() => toggleSection('locations')}
+                onTouchStart={(e) => handleTouchStart(e, 'locations')}
                 aria-label="Toggle Service Locations"
+                style={{ touchAction: 'manipulation' }}
               >
                 {openSection === 'locations' ? '-' : '+'}
               </button>
@@ -173,9 +200,11 @@ export default function Footer() {
               <h3 className="text-lg font-semibold">Our Services</h3>
               <button
                 type="button"
-                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full"
+                className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full touch-manipulation"
                 onClick={() => toggleSection('services')}
+                onTouchStart={(e) => handleTouchStart(e, 'services')}
                 aria-label="Toggle Our Services"
+                style={{ touchAction: 'manipulation' }}
               >
                 {openSection === 'services' ? '-' : '+'}
               </button>

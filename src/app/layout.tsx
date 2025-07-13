@@ -5,6 +5,7 @@ import "./output.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import StickyQuoteButton from "@/components/common/StickyQuoteButton";
+// import MobileScrollToTop from "@/components/common/MobileScrollToTop"; // Uncomment if you want mobile scroll-to-top
 import LazyLoadInit from "@/components/LazyLoadInit";
 import Script from "next/script";
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -92,6 +93,7 @@ export default function RootLayout({
         <Header />
         {children}
         <StickyQuoteButton />
+        {/* <MobileScrollToTop /> */} {/* Uncomment if you want mobile scroll-to-top */}
         <Footer />
         <LazyLoadInit />
         <Script src="/lazy-load-polyfill.js" strategy="lazyOnload" />

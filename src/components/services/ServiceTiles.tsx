@@ -1,6 +1,9 @@
 "use client";
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
+
+// Animation state types for better type safety
+type OfferRedemptionState = 'idle' | 'processing' | 'redeemed' | 'navigating';
 
 interface ServiceTileProps {
   title: string;
@@ -9,7 +12,231 @@ interface ServiceTileProps {
   reportOnly?: boolean;
 }
 
+// Animation configuration constants
+const ANIMATION_TIMINGS = {
+  PROCESSING_DURATION: 1000,
+  REDEEMED_DISPLAY_DURATION: 1500,
+  NAVIGATION_DELAY: 500,
+} as const;
+
 const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: ServiceTileProps) => {
+  // Animation state management
+  const [redemptionState, setRedemptionState] = useState<OfferRedemptionState>('idle');
+  const [isAnimating, setIsAnimating] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Scroll to service form with proper focus management and enhanced fallbacks
+  const scrollToServiceForm = useCallback(() => {
+    // Primary target: service form by ID
+    let targetElement = document.getElementById('service-form');
+
+    // Fallback 1: Look for ServiceForm component by class
+    if (!targetElement) {
+      targetElement = document.querySelector('section[class*="bg-gradient-to-r from-green-light to-green-dark"]');
+    }
+
+    // Fallback 2: Look for any form element
+    if (!targetElement) {
+      targetElement = document.querySelector('form');
+    }
+
+    // Fallback 3: Look for contact section
+    if (!targetElement) {
+      targetElement = document.querySelector('#contact, [id*="contact"], [class*="contact"]');
+    }
+
+    if (targetElement) {
+      // Calculate offset for better positioning (account for fixed headers)
+      const headerHeight = 80; // Approximate header height
+      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
+
+      // Smooth scroll with custom offset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      // Add highlight effect to form
+      targetElement.classList.add('offer-redeemed-highlight');
+
+      // Enhanced focus management
+      setTimeout(() => {
+        // Try to find the first focusable input
+        const focusableSelectors = [
+          'input:not([disabled]):not([type="hidden"])',
+          'select:not([disabled])',
+          'textarea:not([disabled])',
+          'button:not([disabled])'
+        ];
+
+        let firstInput: HTMLElement | null = null;
+
+        for (const selector of focusableSelectors) {
+          firstInput = targetElement!.querySelector(selector) as HTMLElement;
+          if (firstInput) break;
+        }
+
+        if (firstInput) {
+          // Ensure element is visible and focusable
+          firstInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          firstInput.focus();
+
+          // Add visual indication that this field is focused due to offer redemption
+          firstInput.classList.add('offer-focus-highlight');
+          setTimeout(() => {
+            firstInput!.classList.remove('offer-focus-highlight');
+          }, 3000);
+        }
+
+        // Remove highlight after animation
+        setTimeout(() => {
+          targetElement!.classList.remove('offer-redeemed-highlight');
+        }, 2000);
+      }, 1000); // Increased delay to ensure scroll completes
+    } else {
+      // Ultimate fallback: scroll to bottom of page where forms typically are
+      window.scrollTo({
+        top: document.body.scrollHeight - window.innerHeight,
+        behavior: 'smooth'
+      });
+
+      // Announce fallback to screen readers
+      announceToScreenReader('Form not found. Scrolled to bottom of page. Please look for the contact form.');
+    }
+  }, []);
+
+  // Announce state changes to screen readers
+  const announceToScreenReader = useCallback((message: string) => {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
+    announcement.textContent = message;
+    document.body.appendChild(announcement);
+
+    // Remove after announcement
+    setTimeout(() => {
+      document.body.removeChild(announcement);
+    }, 1000);
+  }, []);
+
+  // Handle offer redemption with animation sequence
+  const handleRedeemOffer = useCallback(async () => {
+    if (isAnimating) return; // Prevent double clicks
+
+    setIsAnimating(true);
+
+    // Phase 1: Processing state
+    setRedemptionState('processing');
+    announceToScreenReader(`Processing offer redemption for ${title}`);
+
+    // Phase 2: Success state after processing
+    timeoutRef.current = setTimeout(() => {
+      setRedemptionState('redeemed');
+      announceToScreenReader(`Offer successfully redeemed for ${title}! Taking you to the quote form.`);
+
+      // Phase 3: Navigate to form
+      timeoutRef.current = setTimeout(() => {
+        setRedemptionState('navigating');
+        announceToScreenReader('Navigating to quote form');
+
+        // Dispatch offer redemption event for form integration
+        const offerEvent = new CustomEvent('offerRedeemed', {
+          detail: {
+            title,
+            price,
+            timestamp: new Date().toISOString()
+          }
+        });
+        window.dispatchEvent(offerEvent);
+
+        scrollToServiceForm();
+
+        // Reset state after navigation
+        timeoutRef.current = setTimeout(() => {
+          setRedemptionState('idle');
+          setIsAnimating(false);
+        }, ANIMATION_TIMINGS.NAVIGATION_DELAY);
+      }, ANIMATION_TIMINGS.REDEEMED_DISPLAY_DURATION);
+    }, ANIMATION_TIMINGS.PROCESSING_DURATION);
+  }, [isAnimating, scrollToServiceForm, title, announceToScreenReader]);
+
+  // Get button content based on state
+  const getButtonContent = () => {
+    switch (redemptionState) {
+      case 'processing':
+        return (
+          <span className="flex items-center justify-center gap-2">
+            <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            PROCESSING...
+          </span>
+        );
+      case 'redeemed':
+        return (
+          <span className="flex items-center justify-center gap-2">
+            <svg className="h-4 w-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            OFFER REDEEMED!
+          </span>
+        );
+      case 'navigating':
+        return (
+          <span className="flex items-center justify-center gap-2">
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+            TAKING YOU TO FORM...
+          </span>
+        );
+      default:
+        return 'REDEEM OFFER';
+    }
+  };
+
+  // Get button styling based on state with mobile optimizations
+  const getButtonClassName = () => {
+    const baseClasses = `py-2.5 px-4 rounded-lg text-sm font-bold transition-all duration-300 relative overflow-hidden w-full ${
+      isTouch ? 'touch-manipulation' : ''
+    }`;
+
+    switch (redemptionState) {
+      case 'processing':
+        return `${baseClasses} bg-blue-600 text-white cursor-wait ${!prefersReducedMotion ? 'transform scale-95' : ''}`;
+      case 'redeemed':
+        return `${baseClasses} bg-green-600 text-white ${!prefersReducedMotion ? 'success-pulse' : ''}`;
+      case 'navigating':
+        return `${baseClasses} bg-purple-600 text-white`;
+      default:
+        return `${baseClasses} bg-black/80 text-white group-hover:bg-black cursor-pointer ${
+          !prefersReducedMotion && !isMobile ? 'hover:scale-105' : ''
+        } ${isTouch ? 'active:scale-95' : ''}`;
+    }
+  };
+
+  // Check if user prefers reduced motion and device capabilities
+  const prefersReducedMotion = typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const isMobile = typeof window !== 'undefined' &&
+    window.matchMedia('(max-width: 768px)').matches;
+
+  const isTouch = typeof window !== 'undefined' &&
+    ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
   return (
     <div className="min-w-[300px] h-[250px] rounded-xl shadow-xl overflow-hidden relative flex flex-col modern-card group transform transition-all duration-300 hover:-translate-y-2">
       {/* Gradient background with subtle pattern */}
@@ -40,14 +267,49 @@ const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: 
         {/* Offer text */}
         <p className="text-white/70 text-xs mt-auto mb-4 italic">Limited time offer - Includes full inspection</p>
 
-        {/* Enhanced button with hover effect */}
-        <button
-          type="button"
-          className="bg-black/80 text-white py-2.5 px-4 rounded-lg text-sm font-bold group-hover:bg-black transition-all duration-300 relative overflow-hidden w-full"
-        >
-          <span className="relative z-10">REDEEM OFFER</span>
-          <div className="absolute inset-0 h-full w-full bg-white/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-        </button>
+        {/* Enhanced button with animation states and accessibility */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={handleRedeemOffer}
+            disabled={isAnimating}
+            className={getButtonClassName()}
+            aria-label={`Redeem offer for ${title} starting from $${price}. Current status: ${
+              redemptionState === 'idle' ? 'Ready to redeem' :
+              redemptionState === 'processing' ? 'Processing your offer' :
+              redemptionState === 'redeemed' ? 'Offer successfully redeemed' :
+              'Taking you to the quote form'
+            }`}
+            aria-live="polite"
+            aria-describedby={`offer-description-${title.replace(/\s+/g, '-').toLowerCase()}`}
+            onKeyDown={(e) => {
+              // Enhanced keyboard support
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleRedeemOffer();
+              }
+            }}
+          >
+            <span className="relative z-10">{getButtonContent()}</span>
+            {redemptionState === 'idle' && !prefersReducedMotion && (
+              <div className="absolute inset-0 h-full w-full bg-white/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+            )}
+          </button>
+
+          {/* Hidden description for screen readers */}
+          <div
+            id={`offer-description-${title.replace(/\s+/g, '-').toLowerCase()}`}
+            className="sr-only"
+          >
+            {title} service offer starting from ${price}. Limited time offer includes full inspection.
+            Clicking this button will process your offer redemption and take you to the quote form.
+          </div>
+
+          {/* Celebration particles for success state */}
+          {redemptionState === 'redeemed' && !prefersReducedMotion && !isMobile && (
+            <div className="celebration-particles" />
+          )}
+        </div>
       </div>
     </div>
   );

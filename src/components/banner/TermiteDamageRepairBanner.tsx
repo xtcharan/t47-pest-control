@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { COMPANY_INFO } from '../lib/constants';
 
 export default function TermiteDamageRepairBanner() {
   const [currentFeature, setCurrentFeature] = useState(0);
@@ -291,9 +292,9 @@ export default function TermiteDamageRepairBanner() {
               <button type="button" className="px-8 py-4 bg-white text-red-600 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
                 Emergency Assessment
               </button>
-              <button type="button" className="px-8 py-4 border-2 border-white rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300">
-                Call (04) 3430 0216
-              </button>
+              <a href={`tel:${COMPANY_INFO.phone}`} className="px-8 py-4 border-2 border-white rounded-full font-bold text-lg hover:bg-white/10 transition-all duration-300 inline-block">
+                Call {COMPANY_INFO.phone}
+              </a>
             </div>
           </div>
         </div>

@@ -29,7 +29,8 @@ export async function POST(request: NextRequest) {
       email,
       suburb,
       pestConcern,
-      serviceTypes
+      serviceTypes,
+      offerContext
     } = body;
 
     // Validate required fields
@@ -41,25 +42,52 @@ export async function POST(request: NextRequest) {
     }
 
     // Format service types
-    const servicesRequested = Array.isArray(serviceTypes) && serviceTypes.length > 0 
-      ? serviceTypes.join(', ') 
+    const servicesRequested = Array.isArray(serviceTypes) && serviceTypes.length > 0
+      ? serviceTypes.join(', ')
       : 'Not specified';
 
-    // Create email content
-    const emailSubject = `New Service Booking from ${name}`;
+    // Check if this is from an offer redemption
+    const isOfferRedemption = offerContext && offerContext.offerTitle;
+
+    // Create email content with offer tracking
+    const emailSubject = isOfferRedemption
+      ? `🎯 OFFER REDEEMED: ${offerContext.offerTitle} - ${name}`
+      : `New Service Booking from ${name}`;
+
+    const offerSection = isOfferRedemption ? `
+      <div style="background-color: #f0f9ff; border-left: 4px solid #10b981; padding: 16px; margin: 16px 0;">
+        <h3 style="color: #10b981; margin: 0 0 8px 0;">🎯 OFFER REDEMPTION ALERT</h3>
+        <p style="margin: 4px 0;"><strong>Offer:</strong> ${offerContext.offerTitle}</p>
+        <p style="margin: 4px 0;"><strong>Price:</strong> Starting from $${offerContext.offerPrice}</p>
+        <p style="margin: 4px 0;"><strong>Redeemed At:</strong> ${new Date(offerContext.redeemedAt).toLocaleString()}</p>
+        <p style="margin: 4px 0; font-size: 12px; color: #666;">This customer clicked the "REDEEM OFFER" button for this specific service.</p>
+      </div>
+    ` : '';
+
     const emailHtml = `
-      <h2>New Service Booking Request</h2>
+      <h2>${isOfferRedemption ? '🎯 Offer Redemption - Service Booking Request' : 'New Service Booking Request'}</h2>
+
+      ${offerSection}
+
+      <h3>Customer Details:</h3>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Mobile:</strong> ${mobile}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Suburb:</strong> ${suburb || 'Not specified'}</p>
+
+      <h3>Service Information:</h3>
       <p><strong>Services Requested:</strong> ${servicesRequested}</p>
-      <p><strong>Pest Concern Details:</strong> ${pestConcern || 'Not specified'}</p>
+      <p><strong>Customer's Pest Concerns:</strong> ${pestConcern || 'Not specified'}</p>
+
       <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+
+      ${isOfferRedemption ? '<p style="color: #10b981; font-weight: bold;">⚡ Priority: This is an offer redemption - follow up promptly!</p>' : ''}
     `;
 
-    // Create SMS content
-    const smsMessage = `New Service Booking: ${name} (${mobile}) from ${suburb || 'Unknown suburb'} - Services: ${servicesRequested}. Email: ${email}`;
+    // Create SMS content with offer tracking
+    const smsMessage = isOfferRedemption
+      ? `🎯 OFFER REDEEMED: ${offerContext.offerTitle} ($${offerContext.offerPrice}) - ${name} (${mobile}) from ${suburb || 'Unknown suburb'}. Email: ${email}`
+      : `New Service Booking: ${name} (${mobile}) from ${suburb || 'Unknown suburb'} - Services: ${servicesRequested}. Email: ${email}`;
 
     let emailSent = false;
     let smsSent = false;

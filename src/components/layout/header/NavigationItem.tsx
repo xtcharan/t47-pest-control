@@ -39,6 +39,12 @@ export default function NavigationItem({
     }
   };
 
+  // Handle touch events to prevent double tap
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleToggle();
+  };
+
   const hasDropdown = DROPDOWN_MENU_ITEMS[menuKey as keyof typeof DROPDOWN_MENU_ITEMS]?.length > 0;
 
   return (
@@ -57,9 +63,11 @@ export default function NavigationItem({
             {hasDropdown && (
               <button
                 type="button"
-                className={`p-2 rounded-md border ${isActive ? 'bg-red-100 text-red-600 border-red-300' : 'text-gray-700 border-gray-300 hover:bg-gray-100'}`}
+                className={`p-2 rounded-md border touch-manipulation ${isActive ? 'bg-red-100 text-red-600 border-red-300' : 'text-gray-700 border-gray-300 hover:bg-gray-100'}`}
                 onClick={handleToggle}
+                onTouchStart={handleTouchStart}
                 aria-label={`${isActive ? 'Collapse' : 'Expand'} ${name} menu`}
+                style={{ touchAction: 'manipulation' }}
               >
                 {isActive ? (
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

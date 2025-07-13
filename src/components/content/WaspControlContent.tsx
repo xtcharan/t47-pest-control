@@ -1,5 +1,7 @@
 "use client";
 
+import { COMPANY_INFO } from '../lib/constants';
+
 export default function WaspControlContent() {
   return (
     <section className="py-16 bg-white">
@@ -99,7 +101,7 @@ export default function WaspControlContent() {
               <a href="/contact" className="bg-white text-green-dark hover:bg-gray-100 font-bold py-3 px-6 rounded-full transition-colors">
                 Book a Treatment
               </a>
-              <a href="tel:+61434300216" className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-6 rounded-full transition-colors">
+              <a href={`tel:${COMPANY_INFO.phone}`} className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-6 rounded-full transition-colors">
                 Call Us Now
               </a>
             </div>

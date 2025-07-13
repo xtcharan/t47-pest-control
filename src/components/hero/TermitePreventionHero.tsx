@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import NewQuoteForm from './NewQuoteForm';
+import { COMPANY_INFO } from '../lib/constants';
 
 export default function TermitePreventionHero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -123,14 +124,14 @@ export default function TermitePreventionHero() {
                 <span className="relative z-10">Get Free Prevention Quote</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </button>
-              <button type="button" className="px-8 py-4 border-2 border-white/30 rounded-full font-bold text-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
+              <a href={`tel:${COMPANY_INFO.phone}`} className="px-8 py-4 border-2 border-white/30 rounded-full font-bold text-lg backdrop-blur-sm hover:bg-white/10 transition-all duration-300 inline-block">
                 <span className="flex items-center justify-center">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                   </svg>
-                  Call (04) 3430 0216
+                  Call {COMPANY_INFO.phone}
                 </span>
-              </button>
+              </a>
             </div>
 
             {/* Trust Indicators */}

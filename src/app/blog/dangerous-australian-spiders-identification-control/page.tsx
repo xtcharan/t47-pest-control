@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/common/OptimizedImage';
+import { COMPANY_INFO } from '@/components/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Dangerous Australian Spiders: Identification & Professional Control | T47',
@@ -444,11 +445,11 @@ export default function SpiderIdentificationGuidePage() {
               >
                 Spider Control Service
               </Link>
-              <Link 
-                href="tel:+61434300216"
+              <Link
+                href={`tel:${COMPANY_INFO.phone}`}
                 className="border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-[#1a365d] transition-colors font-bold"
               >
-                Emergency: +61 434 300 216
+                Emergency: {COMPANY_INFO.phone}
               </Link>
             </div>
           </section>

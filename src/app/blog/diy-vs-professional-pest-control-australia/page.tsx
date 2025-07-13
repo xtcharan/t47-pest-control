@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import OptimizedImage from '@/components/common/OptimizedImage';
+import { COMPANY_INFO } from '@/components/lib/constants';
 
 export const metadata: Metadata = {
   title: 'DIY vs Professional Pest Control: When to Call Experts | T47 Australia',
@@ -609,10 +610,10 @@ export default function DIYvsProfessionalPestControlPage() {
                   Free Consultation
                 </Link>
                 <Link
-                  href="tel:+61434300216"
+                  href={`tel:${COMPANY_INFO.phone}`}
                   className="border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-[#ed8936] transition-colors font-bold"
                 >
-                  Call: +61 434 300 216
+                  Call: {COMPANY_INFO.phone}
                 </Link>
               </div>
             </div>
