@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://t47pestcontrol.com'),
+  metadataBase: new URL('https://t47pestcontrol.com.au'),
   title: "T47 Pest Control | Professional Pest Control Services in Victoria",
   description: "T47 Pest Control offers professional pest management services for residential and commercial properties in Victoria. Fully licensed and insured.",
   keywords: "pest control, Victoria pest control, T47 Pest Control, residential pest control, commercial pest control",

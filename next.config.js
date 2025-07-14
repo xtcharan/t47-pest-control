@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
   images: {
-    domains: ['localhost', '127.0.0.1', 't47pestcontrol.com'],
+    domains: ['localhost', '127.0.0.1', 't47pestcontrol.com.au', 't47pestcontrol.com'],
     unoptimized: true,
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
