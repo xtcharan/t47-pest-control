@@ -2,7 +2,7 @@ export const COMPANY_INFO = {
   name: 'T47 PEST CONTROL',
   tagline: '24/7 ROUND THE CLOCK',
   phone: '+61 434300216',
-  email: 't47pestcontrol@gmail.com',
+  email: 't47pest@gmail.com',
   social: {
     facebook: 'https://facebook.com/t47pestcontrol',
     instagram: 'https://instagram.com/t47pestcontrol',

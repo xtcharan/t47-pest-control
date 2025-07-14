@@ -134,10 +134,10 @@ export default function FAQPage() {
                 <h3 className="text-lg font-bold mb-2">📧 Email Support</h3>
                 <p className="text-sm mb-3">Get detailed written responses</p>
                 <Link
-                  href="mailto:t47pestcontrol@gmail.com"
+                  href={`mailto:${COMPANY_INFO.email}`}
                   className="text-white font-bold hover:underline"
                 >
-                  t47pestcontrol@gmail.com
+                  {COMPANY_INFO.email}
                 </Link>
               </div>
 

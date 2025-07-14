@@ -741,10 +741,10 @@ export default function AboutPage() {
                 <h3 className="text-lg font-bold mb-2">📧 Email Us</h3>
                 <p className="text-sm mb-3">Get a detailed quote</p>
                 <Link
-                  href="mailto:t47pestcontrol@gmail.com"
+                  href={`mailto:${COMPANY_INFO.email}`}
                   className="text-white font-bold hover:underline"
                 >
-                  t47pestcontrol@gmail.com
+                  {COMPANY_INFO.email}
                 </Link>
               </div>
 
