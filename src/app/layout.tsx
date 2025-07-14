@@ -26,6 +26,28 @@ export const metadata: Metadata = {
   keywords: "pest control, Victoria pest control, T47 Pest Control, residential pest control, commercial pest control",
   authors: [{ name: "T47 Pest Control" }],
   robots: "index, follow",
+  openGraph: {
+    title: "T47 Pest Control | Professional Pest Control Services in Victoria",
+    description: "T47 Pest Control offers professional pest management services for residential and commercial properties in Victoria. Fully licensed and insured.",
+    url: "https://t47pestcontrol.com.au",
+    siteName: "T47 Pest Control",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "T47 Pest Control Logo",
+      },
+    ],
+    locale: "en_AU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "T47 Pest Control | Professional Pest Control Services in Victoria",
+    description: "T47 Pest Control offers professional pest management services for residential and commercial properties in Victoria. Fully licensed and insured.",
+    images: ["/logo.png"],
+  },
 };
 
 export const viewport = {
