@@ -34,75 +34,78 @@ const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: 
     };
   }, []);
 
-  // Scroll to service form with proper focus management and enhanced fallbacks
+  // Optimized scroll to service form with cached selectors
   const scrollToServiceForm = useCallback(() => {
-    // Primary target: service form by ID
-    let targetElement = document.getElementById('service-form');
+    // Use cached selectors to reduce DOM queries
+    const selectors = [
+      '#service-form',
+      'section[class*="bg-gradient-to-r from-green-light to-green-dark"]',
+      'form',
+      '#contact, [id*="contact"], [class*="contact"]'
+    ];
 
-    // Fallback 1: Look for ServiceForm component by class
-    if (!targetElement) {
-      targetElement = document.querySelector('section[class*="bg-gradient-to-r from-green-light to-green-dark"]');
-    }
+    let targetElement: Element | null = null;
 
-    // Fallback 2: Look for any form element
-    if (!targetElement) {
-      targetElement = document.querySelector('form');
-    }
-
-    // Fallback 3: Look for contact section
-    if (!targetElement) {
-      targetElement = document.querySelector('#contact, [id*="contact"], [class*="contact"]');
+    // Find first matching element
+    for (const selector of selectors) {
+      targetElement = document.querySelector(selector);
+      if (targetElement) break;
     }
 
     if (targetElement) {
-      // Calculate offset for better positioning (account for fixed headers)
-      const headerHeight = 80; // Approximate header height
-      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight;
+      // Use requestAnimationFrame for smooth DOM operations
+      requestAnimationFrame(() => {
+        if (!targetElement) return;
 
-      // Smooth scroll with custom offset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+        // Calculate offset for better positioning (account for fixed headers)
+        const headerHeight = 80;
+        const rect = targetElement.getBoundingClientRect();
+        const offsetPosition = rect.top + window.pageYOffset - headerHeight;
 
-      // Add highlight effect to form
-      targetElement.classList.add('offer-redeemed-highlight');
+        // Smooth scroll with custom offset
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
 
-      // Enhanced focus management
-      setTimeout(() => {
-        // Try to find the first focusable input
-        const focusableSelectors = [
-          'input:not([disabled]):not([type="hidden"])',
-          'select:not([disabled])',
-          'textarea:not([disabled])',
-          'button:not([disabled])'
-        ];
+        // Add highlight effect to form with optimized class manipulation
+        targetElement.classList.add('offer-redeemed-highlight');
 
-        let firstInput: HTMLElement | null = null;
-
-        for (const selector of focusableSelectors) {
-          firstInput = targetElement!.querySelector(selector) as HTMLElement;
-          if (firstInput) break;
-        }
-
-        if (firstInput) {
-          // Ensure element is visible and focusable
-          firstInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          firstInput.focus();
-
-          // Add visual indication that this field is focused due to offer redemption
-          firstInput.classList.add('offer-focus-highlight');
-          setTimeout(() => {
-            firstInput!.classList.remove('offer-focus-highlight');
-          }, 3000);
-        }
-
-        // Remove highlight after animation
+        // Enhanced focus management
         setTimeout(() => {
-          targetElement!.classList.remove('offer-redeemed-highlight');
-        }, 2000);
-      }, 1000); // Increased delay to ensure scroll completes
+          // Try to find the first focusable input
+          const focusableSelectors = [
+            'input:not([disabled]):not([type="hidden"])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            'button:not([disabled])'
+          ];
+
+          let firstInput: HTMLElement | null = null;
+
+          for (const selector of focusableSelectors) {
+            firstInput = targetElement!.querySelector(selector) as HTMLElement;
+            if (firstInput) break;
+          }
+
+          if (firstInput) {
+            // Ensure element is visible and focusable
+            firstInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstInput.focus();
+
+            // Add visual indication that this field is focused due to offer redemption
+            firstInput.classList.add('offer-focus-highlight');
+            setTimeout(() => {
+              firstInput!.classList.remove('offer-focus-highlight');
+            }, 3000);
+          }
+
+          // Remove highlight after animation
+          setTimeout(() => {
+            targetElement!.classList.remove('offer-redeemed-highlight');
+          }, 2000);
+        }, 1000); // Increased delay to ensure scroll completes
+      });
     } else {
       // Ultimate fallback: scroll to bottom of page where forms typically are
       window.scrollTo({
@@ -317,6 +320,7 @@ const ServiceTile = ({ title, price, startingFrom = true, reportOnly = false }: 
 
 export default function ServiceTiles() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const animationRef = useRef<number>();
   const scrollPosition = useRef(0);
   const scrollDirection = useRef(1); // 1 for right, -1 for left
@@ -325,6 +329,7 @@ export default function ServiceTiles() {
   const scrollLeft = useRef(0);
   const isPaused = useRef(false);
   const isHovering = useRef(false);
+  const isVisible = useRef(true);
 
   // Services data
   const services = [
@@ -371,26 +376,47 @@ export default function ServiceTiles() {
     }, 1000);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  // Throttled mouse move handler to reduce performance impact
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isDragging.current || !scrollContainerRef.current) return;
 
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX.current) * 2; // Scroll speed multiplier
-    scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
-    // Update the scroll position for auto-scrolling
-    scrollPosition.current = scrollContainerRef.current.scrollLeft;
-  };
+    // Use requestAnimationFrame to throttle updates
+    if (!animationRef.current) {
+      animationRef.current = requestAnimationFrame(() => {
+        if (!scrollContainerRef.current) return;
 
-  const handleTouchMove = (e: React.TouchEvent) => {
+        const x = e.pageX - scrollContainerRef.current.offsetLeft;
+        const walk = (x - startX.current) * 1.5; // Reduced multiplier for smoother scrolling
+        const newScrollLeft = scrollLeft.current - walk;
+
+        scrollContainerRef.current.scrollLeft = newScrollLeft;
+        scrollPosition.current = newScrollLeft;
+
+        animationRef.current = undefined;
+      });
+    }
+  }, []);
+
+  // Throttled touch move handler
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
     if (!isDragging.current || !scrollContainerRef.current || e.touches.length !== 1) return;
-    // Note: We're not calling preventDefault() to avoid issues with passive event listeners
 
-    const x = e.touches[0].clientX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX.current) * 2; // Scroll speed multiplier
-    scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
-    // Update the scroll position for auto-scrolling
-    scrollPosition.current = scrollContainerRef.current.scrollLeft;
-  };
+    // Use requestAnimationFrame to throttle updates
+    if (!animationRef.current) {
+      animationRef.current = requestAnimationFrame(() => {
+        if (!scrollContainerRef.current) return;
+
+        const x = e.touches[0].clientX - scrollContainerRef.current.offsetLeft;
+        const walk = (x - startX.current) * 1.5; // Reduced multiplier for smoother scrolling
+        const newScrollLeft = scrollLeft.current - walk;
+
+        scrollContainerRef.current.scrollLeft = newScrollLeft;
+        scrollPosition.current = newScrollLeft;
+
+        animationRef.current = undefined;
+      });
+    }
+  }, []);
 
   const handleMouseLeave = () => {
     isHovering.current = false;
@@ -414,18 +440,66 @@ export default function ServiceTiles() {
     isPaused.current = true; // Pause auto-scrolling when mouse enters
   };
 
-  // Auto-scroll animation
+  // Intersection Observer to pause animations when not visible
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible.current = entry.isIntersecting;
+          // Pause animation when not visible to save CPU
+          if (!entry.isIntersecting) {
+            isPaused.current = true;
+          } else if (!isHovering.current && !isDragging.current) {
+            isPaused.current = false;
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% visible
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Optimized auto-scroll animation with performance improvements
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
 
-    const scrollWidth = scrollContainer.scrollWidth;
-    const clientWidth = scrollContainer.clientWidth;
+    // Cache dimensions to avoid repeated DOM queries
+    let scrollWidth = scrollContainer.scrollWidth;
+    let clientWidth = scrollContainer.clientWidth;
+    let lastTime = 0;
+    const targetFPS = 30; // Reduced FPS for better performance
+    const frameInterval = 1000 / targetFPS;
 
-    const animate = () => {
-      if (!scrollContainer || isPaused.current) {
-        // If paused, just continue the animation loop without scrolling
-        animationRef.current = requestAnimationFrame(animate);
+    // Recalculate dimensions on resize
+    const updateDimensions = () => {
+      if (scrollContainer) {
+        scrollWidth = scrollContainer.scrollWidth;
+        clientWidth = scrollContainer.clientWidth;
+      }
+    };
+
+    const animate = (currentTime: number) => {
+      // Throttle to target FPS to reduce CPU usage
+      if (currentTime - lastTime < frameInterval) {
+        if (isVisible.current) {
+          animationRef.current = requestAnimationFrame(animate);
+        }
+        return;
+      }
+      lastTime = currentTime;
+
+      // Only animate if visible, not paused, and container exists
+      if (!scrollContainer || isPaused.current || !isVisible.current) {
+        if (isVisible.current) {
+          animationRef.current = requestAnimationFrame(animate);
+        }
         return;
       }
 
@@ -436,15 +510,25 @@ export default function ServiceTiles() {
         scrollDirection.current = 1; // scroll right
       }
 
-      // Update scroll position
-      scrollPosition.current += scrollDirection.current * 1.0;
-      scrollContainer.scrollLeft = scrollPosition.current;
+      // Update scroll position with smaller increment for smoother animation
+      scrollPosition.current += scrollDirection.current * 0.5;
+
+      // Use transform instead of scrollLeft for better performance
+      // But fallback to scrollLeft for compatibility
+      if (scrollContainer.style.transform !== undefined) {
+        scrollContainer.style.transform = `translateX(-${scrollPosition.current}px)`;
+      } else {
+        scrollContainer.scrollLeft = scrollPosition.current;
+      }
 
       // Continue animation
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    // Start animation
+    // Add resize listener to update dimensions
+    window.addEventListener('resize', updateDimensions);
+
+    // Start animation with initial timestamp
     animationRef.current = requestAnimationFrame(animate);
 
     // Cleanup
@@ -452,11 +536,15 @@ export default function ServiceTiles() {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
+      window.removeEventListener('resize', updateDimensions);
     };
   }, [])
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-100 to-white relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="py-16 bg-gradient-to-b from-gray-100 to-white relative overflow-hidden"
+    >
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-gray-200 to-transparent opacity-50"></div>
       <div className="absolute -top-10 -right-10 w-40 h-40 bg-red-light/10 rounded-full blur-3xl"></div>

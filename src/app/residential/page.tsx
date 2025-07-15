@@ -4,6 +4,7 @@ import ResidentialControlContent from "@/components/content/ResidentialControlCo
 import ResidentialServicesGrid from "@/components/services/ResidentialServicesGrid";
 import ServiceForm from "@/components/forms/ServiceForm";
 import ResidentialControlFAQ from "@/components/faq/ResidentialControlFAQ";
+import HeroImagePreload from "@/components/preload/HeroImagePreload";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -55,6 +56,7 @@ export const metadata: Metadata = {
 export default function ResidentialPage() {
   return (
     <main className="min-h-screen">
+      <HeroImagePreload imagePath="/residential-pest-control.webp" priority={true} />
       <ResidentialControlHero />
       <ResidentialControlBanner />
       <ResidentialServicesGrid />

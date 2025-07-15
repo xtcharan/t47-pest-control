@@ -200,7 +200,7 @@ export const searchData: SearchItem[] = [
     keywords: ['hospital pest control', 'healthcare facility pest control', 'medical center pest control', 'sterile environment', 'healthcare hygiene'],
     url: '/commercial/hospitals',
     category: 'commercial',
-    image: '/hospital.svg'
+    image: '/hospitals.svg'
   },
   {
     id: 'childcare',

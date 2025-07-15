@@ -1,0 +1,82 @@
+{
+  "name": "T47 Pest Control - Professional Pest Control Services",
+  "short_name": "T47 Pest Control",
+  "description": "Professional pest control services for residential and commercial properties. Expert solutions for all your pest problems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-AU",
+  "dir": "ltr",
+  "categories": ["business", "utilities"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Get Free Quote",
+      "short_name": "Quote",
+      "description": "Get a free pest control quote",
+      "url": "/#quote-form",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Residential Services",
+      "short_name": "Residential",
+      "description": "Residential pest control services",
+      "url": "/residential",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Commercial Services",
+      "short_name": "Commercial",
+      "description": "Commercial pest control services",
+      "url": "/commercial",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Contact T47 Pest Control",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}

@@ -1,0 +1,29 @@
+# Modern browsers only - reduces polyfills and legacy JavaScript
+# This configuration targets browsers that support modern JavaScript features
+# reducing the need for polyfills and transpilation
+
+# Production browsers
+> 0.5%
+last 2 versions
+not dead
+not ie 11
+not op_mini all
+
+# Mobile browsers
+ios >= 12
+android >= 67
+samsung >= 8.2
+
+# Desktop browsers
+chrome >= 67
+firefox >= 60
+safari >= 12
+edge >= 79
+
+# Exclude legacy browsers
+not ie <= 11
+not chrome < 67
+not firefox < 60
+not safari < 12
+not ios < 12
+not android < 67

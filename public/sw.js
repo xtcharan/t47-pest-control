@@ -1,14 +1,18 @@
-const CACHE_NAME = 't47-pest-control-v1';
-const STATIC_CACHE = 't47-static-v1';
-const DYNAMIC_CACHE = 't47-dynamic-v1';
+const CACHE_NAME = 't47-pest-control-v2'; // Updated version for performance improvements
+const STATIC_CACHE = 't47-static-v2';
+const DYNAMIC_CACHE = 't47-dynamic-v2';
 
-// Critical resources to cache immediately
+// Critical resources to cache immediately - optimized list
 const STATIC_ASSETS = [
   '/',
   '/critical.css',
   '/pest-control-hero.webp',
-  '/safe-home-business.webp',
-  '/fonts/nes_controller_mrshrike.ttf'
+  '/logo.png',
+  '/manifest.json',
+  // Preload critical pages
+  '/residential',
+  '/commercial',
+  '/contact'
 ];
 
 // Install event - cache critical resources
