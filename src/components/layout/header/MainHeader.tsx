@@ -8,8 +8,12 @@ import DropdownMenu from './DropdownMenu';
 import LocationsDropdown from './LocationsDropdown';
 import { useState, useEffect, useRef } from 'react';
 import styles from './MainHeader.module.css';
-import SearchResults from '../../search/SearchResults';
-import SearchModal from '../../search/SearchModal';
+import dynamic from 'next/dynamic';
+
+const LazySearchResults = dynamic(() => import('../../search/LazySearchComponents').then(mod => ({ default: mod.LazySearchResults })), { ssr: false });
+const LazySearchModal = dynamic(() => import('../../search/LazySearchComponents').then(mod => ({ default: mod.LazySearchModal })), { ssr: false });
+const LazyDropdownMenu = dynamic(() => import('../../search/LazySearchComponents').then(mod => ({ default: mod.LazyDropdownMenu })), { ssr: false });
+const LazyLocationsDropdown = dynamic(() => import('../../search/LazySearchComponents').then(mod => ({ default: mod.LazyLocationsDropdown })), { ssr: false });
 import { SearchItem } from '@/data/searchData';
 
 export default function MainHeader() {
@@ -470,7 +474,7 @@ export default function MainHeader() {
 
           {/* Search Results Dropdown */}
           {showSearchResults && (
-            <SearchResults
+            <LazySearchResults
               results={searchResults}
               query={searchQuery}
               isLoading={isSearching}
@@ -609,28 +613,28 @@ export default function MainHeader() {
             <div className="h-8 w-[1px] bg-gray-300 mx-2"></div>
 
             {/* Contact buttons */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 flex-nowrap">
               <button
                 type="button"
-                className="bg-gradient-to-r from-red-600 to-red-800 text-white font-bold py-1.5 px-3.5 rounded-full flex items-center hover:from-red-700 hover:to-red-900 transition-colors text-sm"
+                className="bg-gradient-to-r from-red-600 to-red-800 text-white font-semibold py-1 px-2.5 rounded-full flex items-center hover:from-red-700 hover:to-red-900 transition-colors text-xs whitespace-nowrap"
                 onClick={() => window.location.href = `tel:${COMPANY_INFO.phone}`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
                 <span>{COMPANY_INFO.phone}</span>
               </button>
               <button
                 type="button"
-                className="bg-white text-red-600 font-bold py-1.5 px-3.5 rounded-full flex items-center hover:bg-gray-100 transition-colors border border-red-600 text-sm"
+                className="bg-white text-red-600 font-semibold py-1 px-2.5 rounded-full flex items-center hover:bg-gray-100 transition-colors border border-red-600 text-xs whitespace-nowrap"
                 onClick={() => window.location.href = '/contact'}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
                   <polyline points="10 17 15 12 10 7"></polyline>
                   <line x1="15" y1="12" x2="3" y2="12"></line>
                 </svg>
-                <span>Request a Call Back</span>
+                <span>Request Call Back</span>
               </button>
             </div>
           </div>
@@ -641,11 +645,7 @@ export default function MainHeader() {
           {/* Mobile hamburger menu button - right side */}
           <button
             type="button"
-            onClick={() => {
-              requestAnimationFrame(() => {
-                setMobileMenuOpen(!mobileMenuOpen);
-              });
-            }}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 focus:outline-none"
             aria-label="Toggle mobile menu"
           >
@@ -815,7 +815,7 @@ export default function MainHeader() {
       )}
 
       {/* Mobile Search Modal */}
-      <SearchModal
+      <LazySearchModal
         isOpen={showMobileSearch}
         onClose={() => setShowMobileSearch(false)}
       />
