@@ -8,42 +8,25 @@ import { COMPANY_INFO } from '../lib/constants';
 export default function Footer() {
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
   useEffect(() => {
     // Check if we're on the client side
     if (typeof window !== 'undefined') {
       // Set initial state
       setIsMobile(window.innerWidth < 768);
-      setLastScrollY(window.scrollY);
 
       // Add event listener for window resize
       const handleResize = () => {
         setIsMobile(window.innerWidth < 768);
       };
 
-      // Add scroll event listener to auto-collapse sections when scrolling down
-      const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-
-        // If scrolling down and on mobile, collapse all sections
-        if (currentScrollY > lastScrollY && isMobile && openSection) {
-          setOpenSection(null);
-        }
-
-        setLastScrollY(currentScrollY);
-      };
-
       window.addEventListener('resize', handleResize);
-      window.addEventListener('scroll', handleScroll, { passive: true });
 
       // Clean up event listeners
       return () => {
         window.removeEventListener('resize', handleResize);
-        window.removeEventListener('scroll', handleScroll);
       };
     }
-  }, [lastScrollY, isMobile, openSection]);
+  }, []);
 
   const toggleSection = (section: string) => {
     // Prevent double tap issues on mobile

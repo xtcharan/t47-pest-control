@@ -3,11 +3,11 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "dev": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next dev",
-    "build": "npx tailwindcss -i src/app/globals.css -o src/app/output.css && next build",
+    "dev": "npx tailwindcss -i src/app/globals.css -o src/app/output.css --minify && next dev",
+    "build": "npx tailwindcss -i src/app/globals.css -o src/app/output.css --minify && next build",
     "start": "next start",
     "lint": "next lint",
-    "css": "npx tailwindcss -i src/app/globals.css -o src/app/output.css --watch",
+    "css": "npx tailwindcss -i src/app/globals.css -o src/app/output.css --watch --minify",
     "optimize-image": "node scripts/optimize-image.js",
     "strapi:dev": "cd strapi-backend && npm run develop",
     "strapi:build": "cd strapi-backend && npm run build",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@types/nodemailer": "^6.4.17",
     "@vercel/speed-insights": "^1.2.0",
+    "critters": "^0.0.23",
     "framer-motion": "^12.9.2",
     "next": "14.1.0",
     "nodemailer": "^7.0.5",

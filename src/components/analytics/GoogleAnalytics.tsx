@@ -137,7 +137,7 @@ export const trackServiceBooking = (serviceDetails: {
 // Declare gtag function for TypeScript
 declare global {
   interface Window {
-    gtag: (
+    gtag?: (
       command: 'config' | 'event' | 'js' | 'consent',
       targetId: string | Date | 'update',
       config?: Record<string, any>

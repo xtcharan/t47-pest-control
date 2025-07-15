@@ -9,17 +9,6 @@ import Image from 'next/image';
 // Force dynamic rendering for this page
 export const dynamic = 'force-dynamic';
 
-// Custom hook to safely use search params
-function useSafeSearchParams() {
-  // Use try-catch to handle potential errors with useSearchParams
-  try {
-    return useSearchParams();
-  } catch (error) {
-    console.error('Error using search params:', error);
-    return null;
-  }
-}
-
 // Loading fallback component
 function SearchLoading() {
   return (
@@ -41,8 +30,8 @@ function SearchLoading() {
 // Search content component that uses useSearchParams
 function SearchContent() {
   // Always initialize hooks at the top level
-  const searchParams = useSafeSearchParams();
-  const query = searchParams ? searchParams.get('q') || '' : '';
+  const searchParams = useSearchParams();
+  const query = searchParams.get('q') || '';
   const [results, setResults] = useState<SearchItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState<Record<string, number>>({});

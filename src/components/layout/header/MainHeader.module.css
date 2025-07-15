@@ -329,12 +329,9 @@
 /* Mobile menu styles - optimized for performance */
 .mobileMenu {
   background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: visible;
-  transform-origin: top center;
-  will-change: opacity, transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  border-top: 1px solid #e5e7eb;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 
 .mobileMenuContainer {

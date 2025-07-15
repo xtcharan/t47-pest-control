@@ -1,6 +1,8 @@
 "use client";
-import QuoteForm from './NewQuoteForm';
-import AlertBanner from './AlertBanner';
+import dynamic from 'next/dynamic';
+
+const QuoteForm = dynamic(() => import('./NewQuoteForm'), { ssr: false });
+const AlertBanner = dynamic(() => import('./AlertBanner'), { ssr: false });
 import OptimizedImage from '../common/OptimizedImage';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -53,7 +55,7 @@ export default function Hero() {
 
         {/* Content below image for mobile - with card-like appearance */}
         <div className={`w-full bg-[#0a0a0a] px-6 py-10 -mt-10 rounded-t-3xl shadow-lg transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h1 className="text-3xl sm:text-4xl font-bold mb-5 leading-tight text-center">
+          <h1 className="text-3xl sm:text-4xl font-sans font-bold mb-5 leading-tight text-center">
             <span className="text-accent block mb-2">PEST DONT SLEEP</span>
             <span className="text-white block">NEITHER DO WE</span>
           </h1>
@@ -129,7 +131,7 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold mb-6 leading-tight">
               <span className="text-accent block mb-2">PEST DONT SLEEP</span>
               <span className="text-white block">NEITHER DO WE</span>
             </h1>

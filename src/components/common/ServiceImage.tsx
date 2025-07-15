@@ -31,24 +31,19 @@ export default function ServiceImage({
 }: ServiceImageProps) {
   const [isLoading, setIsLoading] = useState(true);
 
-  // Use JPG images as primary source due to WebP issues
-  const jpgSrc = `/${serviceName}.jpg`;
-  const webpSrc = `/${serviceName}.webp`;
+  // Let Next.js handle image optimization automatically
+  const optimizedSrc = `/${serviceName}.jpg`;
 
   const handleLoad = () => {
     setIsLoading(false);
     if (onLoad) onLoad();
   };
 
-  // Fallback to original image paths if optimized images don't exist
-  const fallbackSrc = `/${serviceName}.jpg`;
-
   // Use LazyImage for non-critical images
   if (lazyLoad) {
     return (
       <LazyImage
-        src={jpgSrc}
-        fallbackSrc={fallbackSrc}
+        src={optimizedSrc}
         alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
         onLoad={handleLoad}
         threshold={threshold}
@@ -59,30 +54,15 @@ export default function ServiceImage({
     );
   }
 
-  // Use regular Image for critical above-the-fold images
+  // Use Next.js Image with optimization for critical images
   return (
-    <>
-      <Image
-        src={jpgSrc}
-        alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
-        onLoad={handleLoad}
-        onError={(e) => {
-          // If JPG fails, try fallback
-          const imgElement = e.currentTarget as HTMLImageElement;
-          if (imgElement.src !== fallbackSrc) {
-            imgElement.src = fallbackSrc;
-          }
-        }}
-        className={`${props.className || ''} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
-        {...props}
-      />
-      <noscript>
-        <img
-          src={jpgSrc}
-          alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
-          className={`${props.className || ''} ${props.objectFit === 'contain' ? styles.fallbackImageContain : styles.fallbackImage}`}
-        />
-      </noscript>
-    </>
+    <Image
+      src={optimizedSrc}
+      alt={alt || `${serviceName.replace(/-/g, ' ')} image`}
+      onLoad={handleLoad}
+      loading={props.priority ? 'eager' : 'lazy'}
+      className={`${props.className || ''} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+      {...props}
+    />
   );
 }

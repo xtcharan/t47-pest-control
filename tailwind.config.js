@@ -5,6 +5,8 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  // Enable JIT mode for better performance
+  mode: 'jit',
   theme: {
     extend: {
       colors: {
@@ -35,6 +37,13 @@ module.exports = {
         'xl': '1rem',
         '2xl': '1.5rem',
         '3xl': '2rem',
+      },
+      fontFamily: {
+        'sans': ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        'inter': ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        'roboto': ['var(--font-roboto)', 'system-ui', 'sans-serif'],
+        'poppins': ['var(--font-poppins)', 'system-ui', 'sans-serif'],
+        'nes': ['var(--font-nes-controller)', 'Arial Black', 'Impact', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

@@ -1,22 +1,48 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins, Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./output.css";
+import dynamic from 'next/dynamic';
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import StickyQuoteButton from "@/components/common/StickyQuoteButton";
+
+const Footer = dynamic(() => import("@/components/layout/Footer"), { ssr: false });
+const StickyQuoteButton = dynamic(() => import("@/components/common/StickyQuoteButton"), { ssr: false });
 // import MobileScrollToTop from "@/components/common/MobileScrollToTop"; // Uncomment if you want mobile scroll-to-top
 import LazyLoadInit from "@/components/LazyLoadInit";
 import Script from "next/script";
+import { trackWebVitals, registerServiceWorker } from "@/lib/performance";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { GA_MEASUREMENT_ID, shouldLoadAnalytics } from "@/lib/analytics";
 import SchemaMarkup from "@/components/seo/SchemaMarkup";
 
+// Optimized font loading with Next.js
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-roboto",
+  display: "swap",
+});
+
+const nesController = localFont({
+  src: "./fonts/nes_controller_mrshrike.ttf",
+  variable: "--font-nes-controller",
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -90,44 +116,29 @@ export default function RootLayout({
           type="image/jpeg"
           fetchPriority="high"
         />
+        {/* Critical CSS preload */}
+        <link rel="preload" href="/critical.css" as="style" />
+        <noscript><link rel="stylesheet" href="/critical.css" /></noscript>
+
+        {/* Resource hints for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          as="style"
-          precedence="default"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-          precedence="default"
-        />
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-          as="style"
-          precedence="default"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-          precedence="default"
-        />
-        <link
-          rel="preload"
-          href="/fonts/nes_controller_mrshrike.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
+
+        {/* Preload critical resources */}
+        <link rel="prefetch" href="/residential" />
+        <link rel="prefetch" href="/commercial" />
+        <link rel="prefetch" href="/contact" />
+
+        {/* Fonts are now optimized with Next.js font loading */}
         <link rel="preload" as="script" href="/lazy-load-polyfill.js" />
 
         {/* Schema Markup for SEO */}
         <SchemaMarkup type="organization" />
       </head>
       <body
-        className={`${inter.variable} antialiased bg-white text-black`}
+        className={`${inter.variable} ${poppins.variable} ${roboto.variable} ${nesController.variable} antialiased bg-white text-black`}
       >
         {/* Google Analytics */}
         {shouldLoadAnalytics() && <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />}
@@ -138,8 +149,20 @@ export default function RootLayout({
         {/* <MobileScrollToTop /> */} {/* Uncomment if you want mobile scroll-to-top */}
         <Footer />
         <LazyLoadInit />
-        <Script src="/lazy-load-polyfill.js" strategy="lazyOnload" />
+        <Script src="/lazy-load-polyfill.js" strategy="afterInteractive" />
         <SpeedInsights />
+
+        {/* Performance monitoring */}
+        <Script id="performance-init" strategy="afterInteractive">
+          {`
+            if (typeof window !== 'undefined') {
+              // Register service worker
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js');
+              }
+            }
+          `}
+        </Script>
       </body>
     </html>
   );

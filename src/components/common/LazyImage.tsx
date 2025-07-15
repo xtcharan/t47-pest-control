@@ -33,8 +33,9 @@ export default function LazyImage({
   const [shouldLoad, setShouldLoad] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  // Use JPG images as primary source due to WebP issues
-  const jpgSrc = fallbackSrc || src;
+  // Let Next.js handle format optimization
+  const optimizedSrc = src;
+  const errorFallbackSrc = fallbackSrc || src;
 
   // WebP as secondary option
   const webpSrc = src.endsWith('.webp')
@@ -84,24 +85,16 @@ export default function LazyImage({
       }}
     >
       {shouldLoad ? (
-        <>
-          <Image
-            src={jpgSrc}
-            alt={alt || ''}
-            onLoad={handleLoad}
-            className={`${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}
-            placeholder={blurDataURL ? "blur" : "empty"}
-            blurDataURL={blurDataURL}
-            {...props}
-          />
-          <noscript>
-            <img
-              src={jpgSrc}
-              alt={alt || ''}
-              className={`${props.objectFit === 'contain' ? styles.fallbackImageContain : styles.fallbackImage}`}
-            />
-          </noscript>
-        </>
+        <Image
+          src={optimizedSrc}
+          alt={alt || ''}
+          onLoad={handleLoad}
+          loading="lazy"
+          className={`${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+          placeholder={blurDataURL ? "blur" : "empty"}
+          blurDataURL={blurDataURL}
+          {...props}
+        />
       ) : (
         // Placeholder while image is not yet in viewport
         <div
