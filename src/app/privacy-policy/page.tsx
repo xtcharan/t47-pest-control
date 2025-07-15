@@ -170,7 +170,7 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-2 text-gray-600">
                 <p><strong>Phone:</strong> <a href={`tel:${COMPANY_INFO.phone}`} className="text-green-dark hover:underline">{COMPANY_INFO.phone}</a></p>
                 <p><strong>Email:</strong> <a href={`mailto:${COMPANY_INFO.email}`} className="text-green-dark hover:underline">{COMPANY_INFO.email}</a></p>
-                <p><strong>Privacy Officer:</strong> privacy@t47pestcontrol.com</p>
+                <p><strong>Privacy Officer:</strong> privacy@t47pestcontrol.com.au</p>
               </div>
             </div>
 

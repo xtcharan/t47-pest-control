@@ -366,15 +366,7 @@ export const searchData: SearchItem[] = [
     category: 'termite',
     image: '/termite-baiting.svg'
   },
-  {
-    id: 'termite-monitoring',
-    title: 'Termite Monitoring',
-    description: 'Ongoing termite monitoring services to detect termite activity early and prevent major damage.',
-    keywords: ['termite monitoring', 'termite detection', 'termite surveillance', 'early warning system', 'termite activity detection'],
-    url: '/termite-solutions/monitoring',
-    category: 'termite',
-    image: '/termite-monitoring.svg'
-  },
+
   {
     id: 'commercial-termite',
     title: 'Commercial Termite Control',

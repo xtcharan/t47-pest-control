@@ -2,7 +2,7 @@ export const COMPANY_INFO = {
   name: 'T47 PEST CONTROL',
   tagline: '24/7 ROUND THE CLOCK',
   phone: '+61 434300216',
-  email: 't47pest@gmail.com',
+  email: 'contact@t47pestcontrol.com.au',
   social: {
     facebook: 'https://facebook.com/t47pestcontrol',
     instagram: 'https://instagram.com/t47pestcontrol',
@@ -59,7 +59,7 @@ export const DROPDOWN_MENU_ITEMS = {
   termite: [
     { name: 'Termite Inspection', href: '/termite-solutions/inspection' },
     { name: 'Termite Prevention', href: '/termite-solutions/prevention' },
-    { name: 'Termite Damage Repair', href: '/termite-solutions/damage-repair' },
+    { name: 'Termite Treatment', href: '/termite-solutions/damage-repair' },
     { name: 'Pre-Purchase Inspection', href: '/termite-solutions/pre-purchase' },
     { name: 'Annual Inspection', href: '/termite-solutions/annual' },
     { name: 'Termites for Homes', href: '/termite-solutions/homes' },

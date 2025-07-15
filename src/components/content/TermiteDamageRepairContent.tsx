@@ -79,7 +79,7 @@ export default function TermiteDamageRepairContent() {
     {
       title: "Future Prevention Integration",
       description: "Advanced termite prevention systems installed during repair to prevent future damage",
-      features: ["Chemical barrier installation", "Physical barrier integration", "Monitoring system setup", "Ongoing protection plan"],
+      features: ["Chemical barrier installation", "Physical barrier integration", "Regular inspection schedule", "Ongoing protection plan"],
       image: "/prevention-integration.jpg",
       timeframe: "1-2 Days",
       warranty: "25 Years"

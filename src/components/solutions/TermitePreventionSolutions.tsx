@@ -66,33 +66,7 @@ export default function TermitePreventionSolutions() {
         </svg>
       )
     },
-    {
-      id: 2,
-      title: "Smart Monitoring Systems",
-      subtitle: "24/7 Digital Protection",
-      description: "Advanced monitoring technology with real-time alerts, mobile app integration, and professional oversight for continuous protection.",
-      features: [
-        "24/7 monitoring",
-        "Real-time alerts",
-        "Mobile app access",
-        "Professional oversight",
-        "Data analytics",
-        "Predictive technology"
-      ],
-      benefits: [
-        "Early detection",
-        "Peace of mind",
-        "Remote monitoring",
-        "Professional support"
-      ],
-      image: "/smart-monitoring-system.jpg",
-      warranty: "10 Years",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      )
-    },
+
     {
       id: 3,
       title: "Hybrid Protection Systems",
@@ -123,12 +97,12 @@ export default function TermitePreventionSolutions() {
   ];
 
   const comparisonData = [
-    { feature: "Protection Duration", chemical: "25 Years", physical: "Lifetime", smart: "10 Years", hybrid: "30 Years" },
-    { feature: "Effectiveness Rate", chemical: "99.9%", physical: "100%", smart: "99.8%", hybrid: "99.99%" },
-    { feature: "Environmental Impact", chemical: "Low", physical: "None", smart: "Minimal", hybrid: "Low" },
-    { feature: "Maintenance Required", chemical: "Minimal", physical: "None", smart: "Regular", hybrid: "Minimal" },
-    { feature: "Installation Time", chemical: "1-2 Days", physical: "2-3 Days", smart: "1 Day", hybrid: "3-4 Days" },
-    { feature: "Monitoring Included", chemical: "Optional", physical: "Optional", smart: "Yes", hybrid: "Yes" }
+    { feature: "Protection Duration", chemical: "25 Years", physical: "Lifetime", hybrid: "30 Years" },
+    { feature: "Effectiveness Rate", chemical: "99.9%", physical: "100%", hybrid: "99.99%" },
+    { feature: "Environmental Impact", chemical: "Low", physical: "None", hybrid: "Low" },
+    { feature: "Maintenance Required", chemical: "Minimal", physical: "None", hybrid: "Minimal" },
+    { feature: "Installation Time", chemical: "1-2 Days", physical: "2-3 Days", hybrid: "3-4 Days" },
+    { feature: "Monitoring Included", chemical: "Optional", physical: "Optional", hybrid: "Yes" }
   ];
 
   return (
@@ -266,7 +240,6 @@ export default function TermitePreventionSolutions() {
                     <th className="px-6 py-4 text-left font-semibold">Feature</th>
                     <th className="px-6 py-4 text-center font-semibold">Chemical</th>
                     <th className="px-6 py-4 text-center font-semibold">Physical</th>
-                    <th className="px-6 py-4 text-center font-semibold">Smart</th>
                     <th className="px-6 py-4 text-center font-semibold">Hybrid</th>
                   </tr>
                 </thead>
@@ -276,7 +249,6 @@ export default function TermitePreventionSolutions() {
                       <td className="px-6 py-4 font-semibold text-gray-900">{row.feature}</td>
                       <td className="px-6 py-4 text-center text-gray-700">{row.chemical}</td>
                       <td className="px-6 py-4 text-center text-gray-700">{row.physical}</td>
-                      <td className="px-6 py-4 text-center text-gray-700">{row.smart}</td>
                       <td className="px-6 py-4 text-center text-gray-700 font-semibold">{row.hybrid}</td>
                     </tr>
                   ))}

@@ -78,18 +78,7 @@ export default function TermitePreventionProcedure() {
       tools: ["Barrier integrity testers", "Chemical concentration meters", "Coverage verification tools", "Digital documentation systems"],
       image: "/termite-testing.jpg"
     },
-    {
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: "Smart Monitoring Setup",
-      description: "We install state-of-the-art monitoring systems that provide 24/7 surveillance of your property's termite protection status. You'll receive real-time alerts and regular status updates via our mobile app.",
-      duration: "1-2 hours",
-      tools: ["Smart monitoring stations", "Wireless sensors", "Mobile app integration", "Cloud-based monitoring platform"],
-      image: "/termite-monitoring.jpg"
-    }
+
   ];
 
   return (

@@ -20,10 +20,10 @@ Replace these values in your `.env.local` file:
 ```
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
-EMAIL_USER=your-actual-email@gmail.com
+EMAIL_USER=t47pest@gmail.com
 EMAIL_PASS=your-16-character-app-password
-EMAIL_FROM=your-actual-email@gmail.com
-EMAIL_TO=t47pestcontrol@gmail.com
+EMAIL_FROM=contact@t47pestcontrol.com.au
+EMAIL_TO=t47pest@gmail.com
 ```
 
 ## 2. SMS Configuration (Twilio)
@@ -71,7 +71,7 @@ EMAIL_PASS=your-app-password
 ### Test Quote Form
 1. Fill out the "GET A FAST QUOTE NOW" form
 2. Check for success/error messages
-3. Verify email received at t47pestcontrol@gmail.com
+3. Verify email received at t47pest@gmail.com
 4. Verify SMS received at +61434300216
 
 ### Test Service Form

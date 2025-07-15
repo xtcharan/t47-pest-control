@@ -31,17 +31,9 @@ export default function TermitePreventionContent() {
         </svg>
       )
     },
+
     {
       id: 2,
-      title: "Monitoring Systems",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      )
-    },
-    {
-      id: 3,
       title: "Eco Solutions",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,14 +60,7 @@ export default function TermitePreventionContent() {
       effectiveness: "100%",
       duration: "Lifetime"
     },
-    {
-      title: "Smart Monitoring Technology",
-      description: "24/7 digital monitoring systems with real-time alerts and professional oversight",
-      features: ["Real-time monitoring", "Instant alerts", "Professional oversight", "Mobile app access"],
-      image: "/termite-monitoring-system.jpg",
-      effectiveness: "99.8%",
-      duration: "Ongoing"
-    },
+
     {
       title: "Eco-Friendly Solutions",
       description: "Environmentally conscious prevention methods safe for families, pets, and the ecosystem",

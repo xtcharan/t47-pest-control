@@ -82,28 +82,7 @@ export default function TermitePreventionFAQ() {
         }
       ]
     },
-    {
-      category: "Smart Monitoring",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-        </svg>
-      ),
-      questions: [
-        {
-          question: "How do smart termite monitoring systems work?",
-          answer: "Smart monitoring systems use strategically placed sensors and monitoring stations around your property that detect termite activity 24/7. These systems use advanced technology including acoustic sensors, moisture detection, and movement sensors to identify termite presence. When activity is detected, you receive instant alerts via mobile app, and our technicians respond immediately."
-        },
-        {
-          question: "What happens when the monitoring system detects termites?",
-          answer: "When termites are detected, you receive immediate alerts through our mobile app and SMS. Our emergency response team is automatically notified and will contact you within hours to schedule immediate treatment. The system provides precise location data, allowing for targeted treatment that eliminates the colony quickly and effectively."
-        },
-        {
-          question: "Can I monitor my property remotely?",
-          answer: "Yes, our smart monitoring systems include mobile app access that allows you to check your property's protection status anytime, anywhere. You can view real-time data, receive alerts, schedule inspections, and access historical reports. The system also provides predictive analytics to identify potential risk factors before they become problems."
-        }
-      ]
-    },
+
     {
       category: "Cost & Value",
       icon: (
@@ -114,7 +93,7 @@ export default function TermitePreventionFAQ() {
       questions: [
         {
           question: "How much does termite prevention cost?",
-          answer: "Prevention costs vary based on property size, system type, and specific requirements: Chemical barriers typically range from $2,500-$4,500, physical barriers from $3,500-$6,000, smart monitoring from $1,800-$3,000, and hybrid systems from $5,500-$8,500. While this may seem significant, it's 80-90% less expensive than repairing termite damage, which averages $15,000-$50,000+."
+          answer: "Prevention costs vary based on property size, system type, and specific requirements: Chemical barriers typically range from $2,500-$4,500, physical barriers from $3,500-$6,000, and hybrid systems from $5,500-$8,500. While this may seem significant, it's 80-90% less expensive than repairing termite damage, which averages $15,000-$50,000+."
         },
         {
           question: "Is termite prevention tax deductible?",

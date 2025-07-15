@@ -32,7 +32,7 @@ export default function TermiteSolutionsContent() {
           'Thermal imaging cameras for hidden detection',
           'Moisture meters and acoustic detection devices',
           'Advanced chemical and physical barrier systems',
-          'Smart monitoring stations with real-time alerts',
+
           'Eco-friendly treatment options available'
         ]
       }
