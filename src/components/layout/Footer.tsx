@@ -37,11 +37,7 @@ export default function Footer() {
     }
   };
 
-  // Handle touch events to prevent double tap
-  const handleTouchStart = (e: React.TouchEvent, section: string) => {
-    e.preventDefault();
-    toggleSection(section);
-  };
+
 
   return (
     <footer className="bg-gray-900 text-white pt-10 pb-6">
@@ -132,7 +128,6 @@ export default function Footer() {
                 type="button"
                 className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full touch-manipulation"
                 onClick={() => toggleSection('quickLinks')}
-                onTouchStart={(e) => handleTouchStart(e, 'quickLinks')}
                 aria-label="Toggle Quick Links"
                 style={{ touchAction: 'manipulation' }}
               >
@@ -158,7 +153,6 @@ export default function Footer() {
                 type="button"
                 className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full touch-manipulation"
                 onClick={() => toggleSection('locations')}
-                onTouchStart={(e) => handleTouchStart(e, 'locations')}
                 aria-label="Toggle Service Locations"
                 style={{ touchAction: 'manipulation' }}
               >
@@ -185,7 +179,6 @@ export default function Footer() {
                 type="button"
                 className="md:hidden text-xl font-bold text-white w-6 h-6 flex items-center justify-center bg-red-500 rounded-full touch-manipulation"
                 onClick={() => toggleSection('services')}
-                onTouchStart={(e) => handleTouchStart(e, 'services')}
                 aria-label="Toggle Our Services"
                 style={{ touchAction: 'manipulation' }}
               >
