@@ -1,6 +1,6 @@
 /* Performance optimizations for animations and scrolling */
 
-/* Enable hardware acceleration for smooth animations */
+/* Enable hardware acceleration for smooth animations - MOBILE SAFE */
 .modern-card,
 .horizontal-scroll-container,
 .service-tile {
@@ -9,18 +9,29 @@
   backface-visibility: hidden;
 }
 
+/* Mobile scrolling fixes */
+@media (max-width: 768px) {
+  .modern-card,
+  .horizontal-scroll-container,
+  .service-tile {
+    will-change: auto; /* Disable on mobile to prevent scroll issues */
+    transform: none; /* Remove transforms on mobile */
+    backface-visibility: visible;
+  }
+}
+
 /* Optimize scrolling performance */
 .horizontal-scroll-container {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  contain: layout style paint;
+  /* Removed contain property that was causing mobile scroll issues */
 }
 
 /* Reduce paint operations during animations */
 .celebration-particles,
 .success-pulse {
   will-change: opacity, transform;
-  contain: layout style paint;
+  /* Removed contain property that was causing mobile scroll issues */
 }
 
 /* Optimize hover effects */
@@ -153,18 +164,61 @@
   }
 }
 
-/* Performance optimizations for mobile */
+/* Performance optimizations for mobile - FIXED SCROLLING ISSUES */
 @media (max-width: 768px) {
+  /* Reduce GPU usage and fix scrolling on mobile */
   .modern-card {
-    will-change: auto; /* Reduce GPU usage on mobile */
+    will-change: auto;
+    transform: none; /* Remove hardware acceleration that can cause scroll issues */
   }
-  
+
   .horizontal-scroll-container {
-    scroll-snap-type: x mandatory;
+    /* Removed scroll-snap that was causing issues */
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
-  
+
   .service-tile {
-    scroll-snap-align: center;
+    /* Removed scroll-snap-align that was causing issues */
+    will-change: auto;
+    transform: none; /* Remove transforms on mobile */
+  }
+
+  /* Fix body scrolling on mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+  }
+
+  /* Ensure main content scrolls properly */
+  main {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Remove problematic CSS properties on mobile */
+  * {
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+  }
+
+  /* Critical mobile scrolling fixes */
+  html, body {
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+
+  /* Ensure main content areas scroll properly */
+  main, section, div {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix any fixed positioning issues */
+  .fixed, .sticky {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 }
 
@@ -199,15 +253,15 @@
   transform: translateZ(0);
 }
 
-/* Optimize gradient rendering */
+/* Optimize gradient rendering - Fixed for mobile */
 .bg-gradient-to-br,
 .bg-gradient-to-r {
-  background-attachment: fixed;
+  /* Removed background-attachment: fixed - causes mobile scroll issues */
   will-change: auto;
 }
 
-/* Reduce repaints during scrolling */
+/* Reduce repaints during scrolling - Fixed for mobile */
 .diagonal-pattern-bg {
-  background-attachment: fixed;
+  /* Removed background-attachment: fixed - causes mobile scroll issues */
   will-change: auto;
 }

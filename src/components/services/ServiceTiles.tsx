@@ -358,6 +358,14 @@ export default function ServiceTiles() {
   const handleTouchStart = (e: React.TouchEvent) => {
     if (!scrollContainerRef.current || e.touches.length !== 1) return;
 
+    // Check if touch is within our horizontal scroll container
+    const rect = scrollContainerRef.current.getBoundingClientRect();
+    const touchY = e.touches[0].clientY;
+    if (touchY < rect.top || touchY > rect.bottom) {
+      // Touch is outside our container, don't interfere
+      return;
+    }
+
     isDragging.current = true;
     isPaused.current = true; // Pause auto-scrolling
     startX.current = e.touches[0].clientX - scrollContainerRef.current.offsetLeft;
@@ -397,9 +405,18 @@ export default function ServiceTiles() {
     }
   }, []);
 
-  // Throttled touch move handler
+  // Throttled touch move handler - FIXED FOR MOBILE SCROLLING
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    // Only handle touch events for horizontal scrolling container, not general page scrolling
     if (!isDragging.current || !scrollContainerRef.current || e.touches.length !== 1) return;
+
+    // Check if this is actually within our horizontal scroll container
+    const rect = scrollContainerRef.current.getBoundingClientRect();
+    const touchY = e.touches[0].clientY;
+    if (touchY < rect.top || touchY > rect.bottom) {
+      // Touch is outside our container, don't interfere with page scrolling
+      return;
+    }
 
     // Use requestAnimationFrame to throttle updates
     if (!animationRef.current) {
