@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export default function AnnualTermiteInspectionProcedure() {
   const [activeStep, setActiveStep] = useState(0);
-  const [isExpanded, setIsExpanded] = useState(false);
+
 
   const procedureSteps = [
     {
@@ -185,12 +185,7 @@ export default function AnnualTermiteInspectionProcedure() {
                       </div>
                     </div>
                     
-                    <button
-                      onClick={() => setIsExpanded(!isExpanded)}
-                      className="text-green-dark hover:text-green-light font-semibold transition-colors"
-                    >
-                      {isExpanded ? 'Show Less' : 'Show More Details'} →
-                    </button>
+
                   </div>
                   
                   <div className="bg-green-light/10 p-6 rounded-lg">
@@ -248,14 +243,7 @@ export default function AnnualTermiteInspectionProcedure() {
                   </div>
                 </div>
                 
-                {isExpanded && (
-                  <div className="mt-8 pt-8 border-t border-gray-200">
-                    <h4 className="font-semibold text-gray-900 mb-4">Detailed Process:</h4>
-                    <p className="text-gray-600 leading-relaxed">
-                      {procedureSteps[activeStep].details}
-                    </p>
-                  </div>
-                )}
+
               </div>
             </div>
           </div>

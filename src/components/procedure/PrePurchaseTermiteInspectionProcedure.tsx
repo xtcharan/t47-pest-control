@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function PrePurchaseTermiteInspectionProcedure() {
   const [activeStep, setActiveStep] = useState(0);
-  const [isExpanded, setIsExpanded] = useState(false);
+
 
   const procedureSteps = [
     {
@@ -142,12 +142,7 @@ export default function PrePurchaseTermiteInspectionProcedure() {
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => setIsExpanded(!isExpanded)}
-                      className="text-red-dark hover:text-red-light font-semibold transition-colors"
-                    >
-                      {isExpanded ? 'Show Less' : 'Show More Details'} →
-                    </button>
+
                   </div>
 
                   {/* Process Image */}
@@ -226,14 +221,7 @@ export default function PrePurchaseTermiteInspectionProcedure() {
                   </ul>
                 </div>
                 
-                {isExpanded && (
-                  <div className="mt-8 pt-8 border-t border-gray-200">
-                    <h4 className="font-semibold text-gray-900 mb-4">Detailed Process:</h4>
-                    <p className="text-gray-600 leading-relaxed">
-                      {procedureSteps[activeStep].details}
-                    </p>
-                  </div>
-                )}
+
               </div>
             </div>
           </div>

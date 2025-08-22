@@ -38,7 +38,7 @@ export default function PrePurchaseTermiteInspectionHero() {
         <div className={`w-full bg-[#0a0a0a] px-6 py-10 -mt-10 rounded-t-3xl shadow-lg transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-3xl sm:text-4xl font-bold mb-5 leading-tight text-center">
             <span className="text-red-light block mb-2">PRE-PURCHASE</span>
-            <span className="text-white block">TERMITE INSPECTION</span>
+            <span className="text-white block">TERMITE INSPECTION MELBOURNE</span>
           </h1>
 
           <div className="w-24 h-1 bg-red-light mb-6 mx-auto"></div>
@@ -87,7 +87,7 @@ export default function PrePurchaseTermiteInspectionHero() {
           <div className={`w-1/2 px-8 lg:px-16 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
               <span className="text-red-light block mb-2">PRE-PURCHASE</span>
-              <span className="text-white block">TERMITE INSPECTION</span>
+              <span className="text-white block">TERMITE INSPECTION MELBOURNE</span>
             </h1>
 
             <div className="w-32 h-1 bg-red-light mb-8"></div>

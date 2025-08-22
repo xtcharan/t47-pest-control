@@ -174,41 +174,7 @@ export default function PrePurchaseInspectionInfoGraphic() {
             </div>
           </div>
 
-          {/* Cost Comparison */}
-          <div className="mt-16 bg-gradient-to-r from-red-light/10 to-red-dark/10 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">
-              Investment <span className="text-red-dark">Protection</span>
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-3xl font-bold text-green-600 mb-2">$500-800</div>
-                <div className="text-lg font-semibold text-gray-900 mb-2">Inspection Cost</div>
-                <p className="text-gray-600 text-sm">Professional pre-purchase inspection</p>
-              </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-3xl font-bold text-red-dark mb-2">$15,000+</div>
-                <div className="text-lg font-semibold text-gray-900 mb-2">Average Damage Cost</div>
-                <p className="text-gray-600 text-sm">Typical termite damage repairs</p>
-              </div>
-              
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-3xl font-bold text-blue-600 mb-2">$50,000+</div>
-                <div className="text-lg font-semibold text-gray-900 mb-2">Severe Damage</div>
-                <p className="text-gray-600 text-sm">Extensive structural repairs</p>
-              </div>
-            </div>
-            
-            <div className="text-center mt-8">
-              <p className="text-lg font-semibold text-gray-900 mb-2">
-                ROI: <span className="text-green-600">1,875% - 6,250%</span>
-              </p>
-              <p className="text-gray-600">
-                Every dollar spent on inspection can save $18-62 in potential damage costs
-              </p>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>

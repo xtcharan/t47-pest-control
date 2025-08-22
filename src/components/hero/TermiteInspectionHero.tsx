@@ -53,14 +53,13 @@ export default function TermiteInspectionHero() {
         {/* Content below image for mobile - with card-like appearance */}
         <div className={`w-full bg-[#0a0a0a] px-6 py-10 -mt-10 rounded-t-3xl shadow-lg transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-3xl sm:text-4xl font-bold mb-5 leading-tight text-center">
-            <span className="text-accent block mb-2">COMPREHENSIVE</span>
-            <span className="text-white block">TERMITE INSPECTIONS</span>
+            <span className="text-white block">Termite Inspection Melbourne</span>
           </h1>
 
           <div className="w-24 h-1 bg-green-light mb-6 mx-auto"></div>
 
           <p className="text-lg mb-8 text-white text-center max-w-md mx-auto">
-            Early detection is your best defense against costly termite damage. Our thorough inspections identify termite activity before it becomes a major problem.
+            T47 delivers Melbourne's most trusted termite inspection services. Professional detection solutions to protect your property from costly damage.
           </p>
 
           <div className="flex justify-center gap-4 mt-2 mb-12">
@@ -122,14 +121,13 @@ export default function TermiteInspectionHero() {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-accent block mb-2">COMPREHENSIVE</span>
-              <span className="text-white block">TERMITE INSPECTIONS</span>
+              <span className="text-white block">Termite Inspection Melbourne</span>
             </h1>
 
             <div className="w-20 h-1 bg-green-light mb-6"></div>
 
             <p className="text-xl md:text-2xl mb-8 text-white max-w-lg">
-              Early detection is your best defense against costly termite damage. Our thorough inspections identify termite activity before it becomes a major problem.
+              T47 delivers Melbourne's most trusted termite inspection services. Professional detection solutions to protect your property from costly damage.
             </p>
 
             <div className="flex flex-wrap gap-4 mt-2">

@@ -24,7 +24,7 @@ export default function TermiteSolutionsGrid() {
       description: 'Expert elimination of active termite infestations'
     },
     {
-      name: 'Termite Prevention',
+      name: 'Termite Baiting',
       href: '/termite-solutions/prevention',
       image: '/termite-chemical-barrier.jpg',
       fallback: '/termite-physical-barrier.jpg',
@@ -38,28 +38,28 @@ export default function TermiteSolutionsGrid() {
       description: 'Essential property inspections before buying'
     },
     {
-      name: 'Annual Inspection',
+      name: 'Termite Nest Removal',
       href: '/termite-solutions/annual',
       image: '/termite-monitoring.jpg',
       fallback: '/termite-monitoring-system.jpg',
       description: 'Regular monitoring for ongoing protection'
     },
     {
-      name: 'Business Inspection',
+      name: 'Termite Monitors',
       href: '/termite-solutions/business',
       image: '/termites-construction.jpg',
       fallback: '/termite-inspection.jpg',
       description: 'Commercial property termite assessments'
     },
     {
-      name: 'Home Protection',
+      name: 'Free Assessment',
       href: '/termite-solutions/homes',
       image: '/termite-solutions-optimized.jpg',
       fallback: '/termite-solutions.jpg',
       description: 'Residential termite management solutions'
     },
     {
-      name: 'Damage Repair',
+      name: 'Contact Us',
       href: '/termite-solutions/damage-repair',
       image: '/termite-testing.jpg',
       fallback: '/termite-installation.jpg',

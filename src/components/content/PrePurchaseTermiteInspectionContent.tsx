@@ -10,7 +10,7 @@ export default function PrePurchaseTermiteInspectionContent() {
               PRE-PURCHASE TERMITE INSPECTIONS
             </span>
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              Why Choose Our <span className="text-red-dark">Pre-Purchase Inspection</span> Services?
+              Melbourne <span className="text-red-dark">Pre-Purchase Timber Pest</span> Inspection Specialists
             </h2>
             <div className="w-24 h-1 bg-red-light mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
@@ -93,14 +93,10 @@ export default function PrePurchaseTermiteInspectionContent() {
           <div className="bg-gradient-to-r from-red-light/10 to-red-dark/10 p-8 rounded-lg mb-12">
             <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Pre-Purchase Inspection Statistics</h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-red-dark mb-2">1 in 4</div>
                 <p className="text-gray-600">Properties have termite activity or damage</p>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-red-dark mb-2">$15,000+</div>
-                <p className="text-gray-600">Average cost of termite damage repairs</p>
               </div>
               <div>
                 <div className="text-3xl font-bold text-red-dark mb-2">90%</div>
@@ -140,15 +136,15 @@ export default function PrePurchaseTermiteInspectionContent() {
             
             <div className="space-y-6">
               <p className="text-gray-600">
-                In Australia, termites cause over $1.5 billion in property damage annually. Most insurance policies <strong>do not cover termite damage</strong>, making pre-purchase inspections your first line of defense.
+                Purchasing property in Melbourne? Our specialized <strong>pre-purchase timber pest inspections</strong> provide comprehensive termite detection and prevention strategies. With 1 in 5 Melbourne homes affected by termite damage, professional inspection is essential before making your investment.
               </p>
-              
+
               <p className="text-gray-600">
-                Our certified inspectors use the latest technology including thermal imaging, moisture meters, and acoustic detection devices to identify even the smallest signs of termite activity.
+                Our Melbourne termite specialists detect active infestations, timber borers, decay, and conditions that attract timber pests. Using advanced thermal imaging and acoustic detection technology, we identify even hidden termite activity that could cost thousands in future repairs.
               </p>
-              
+
               <p className="text-gray-600">
-                Don't let termites turn your dream home into a nightmare. Book your pre-purchase inspection today.
+                Since home insurance doesn't cover termite damage, our expert assessments give you negotiating power and peace of mind. We'll determine if the property is a sound investment or recommend termite-proofing solutions for your new home.
               </p>
             </div>
           </div>

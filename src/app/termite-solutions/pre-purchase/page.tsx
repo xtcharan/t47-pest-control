@@ -4,6 +4,9 @@ import PrePurchaseTermiteInspectionBanner from "@/components/banner/PrePurchaseT
 import PrePurchaseTermiteInspectionContent from "@/components/content/PrePurchaseTermiteInspectionContent";
 import PrePurchaseTermiteInspectionProcedure from "@/components/procedure/PrePurchaseTermiteInspectionProcedure";
 import PrePurchaseInspectionInfoGraphic from "@/components/info/PrePurchaseInspectionInfoGraphic";
+import PrePurchaseTermiteSpecialists from "@/components/specialists/PrePurchaseTermiteSpecialists";
+import ClientReviews from "@/components/reviews/ClientReviews";
+import ServiceForm from "@/components/forms/ServiceForm";
 import PrePurchaseTermiteInspectionFAQ from "@/components/faq/PrePurchaseTermiteInspectionFAQ";
 
 export const metadata: Metadata = {
@@ -20,6 +23,9 @@ export default function PrePurchaseTermiteInspectionPage() {
       <PrePurchaseTermiteInspectionContent />
       <PrePurchaseInspectionInfoGraphic />
       <PrePurchaseTermiteInspectionProcedure />
+      <PrePurchaseTermiteSpecialists />
+      <ClientReviews />
+      <ServiceForm />
       <PrePurchaseTermiteInspectionFAQ />
     </main>
   );
