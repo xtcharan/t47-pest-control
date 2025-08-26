@@ -4,12 +4,13 @@ import SoilTreatmentBanner from "@/components/banner/SoilTreatmentBanner";
 import SoilTreatmentContent from "@/components/content/SoilTreatmentContent";
 import SoilTreatmentProcedure from "@/components/procedure/SoilTreatmentProcedure";
 import ClientReviews from "@/components/reviews/ClientReviews";
+import TermiteSpeciesGallery from "@/components/species/TermiteSpeciesGallery";
 import ServiceForm from "@/components/forms/ServiceForm";
 import SoilTreatmentFAQ from "@/components/faq/SoilTreatmentFAQ";
 
 export const metadata: Metadata = {
-  title: 'Professional Chemical Soil Treatment | T47 Pest Control - Foundation Protection',
-  description: 'Advanced chemical soil treatment in Australia. Foundation protection, barrier creation, and long-term prevention. Same-day service, 7-day availability.',
+  title: 'Chemical Soil Treatments Melbourne | Continuous Treated Zones',
+  description: 'Create a continuous termite treated zone around your Melbourne home to block concealed entry. Repellent and non‑repellent options. Book an inspection.',
 };
 
 export default function SoilTreatmentPage() {
@@ -20,6 +21,7 @@ export default function SoilTreatmentPage() {
       <SoilTreatmentContent />
       <SoilTreatmentProcedure />
       <ClientReviews />
+      <TermiteSpeciesGallery />
       <ServiceForm />
       <SoilTreatmentFAQ />
     </main>

@@ -129,11 +129,11 @@ export default function TermiteInspectionProcedure() {
       description: 'Essential property inspections before buying'
     },
     {
-      name: 'Termite Treatments',
-      href: '/termite-solutions/treatment',
+      name: 'Termite Baiting',
+      href: '/termite-solutions/baiting',
       image: '/termite-treatment.jpg',
       fallback: '/termite-solutions.jpg',
-      description: 'Expert elimination of active termite infestations'
+      description: 'Colony elimination through targeted baiting systems'
     },
     {
       name: 'Free Assessment',

@@ -14,10 +14,10 @@ export default function SoilTreatmentBanner() {
         {/* Title section */}
         <div className="flex flex-col items-center justify-center mb-8">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-wide text-center drop-shadow-md">
-            Chemical Soil Treatment for Termite Protection
+            Chemical Soil Treatments in Melbourne & Victoria
           </h2>
           <p className="text-xl md:text-2xl text-white max-w-4xl mx-auto text-center font-light">
-            Foundation protection and barrier creation technology for complete termite protection
+            Create a continuous treated zone that blocks concealed termite entry and protects the structure long‑term
           </p>
         </div>
 

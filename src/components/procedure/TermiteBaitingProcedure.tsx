@@ -69,8 +69,8 @@ export default function TermiteBaitingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
         </svg>
       ),
-      title: "Strategic Station Placement",
-      description: "Our trained technicians strategically place bait stations around your property perimeter and in areas of high termite activity. We use specialized knowledge of termite behavior to position stations for maximum effectiveness and colony interception."
+      title: "Comprehensive Inspection",
+      description: "Licensed technicians assess activity, moisture, construction joins/slab edges, and likely foraging routes to design a site‑specific plan."
     },
     {
       icon: (
@@ -78,8 +78,8 @@ export default function TermiteBaitingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       ),
-      title: "Monitor for Activity",
-      description: "We conduct regular inspections of all bait stations to detect termite activity. Our technicians check each station systematically, looking for signs of termite feeding, colony presence, and population levels to determine optimal baiting timing."
+      title: "Strategic Bait Placement",
+      description: "Internal: discreet stations at confirmed feeding sites. External: in‑ground monitors around the perimeter to intercept foragers."
     },
     {
       icon: (
@@ -87,17 +87,17 @@ export default function TermiteBaitingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
         </svg>
       ),
-      title: "Deploy Active Bait",
-      description: "When termites are detected, we replace the monitoring material with active termite bait. The bait is specially formulated to be highly attractive to termites while containing slow-acting ingredients that allow for colony-wide distribution."
+      title: "Nurture the Feed",
+      description: "Early visitation is protected from disturbance to establish consistent feeding. Once stable, transfer through the colony accelerates."
     },
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
         </svg>
       ),
-      title: "Colony Elimination",
-      description: "Termites consume the bait and carry it back to their colony, sharing it with other members including the queen. The slow-acting nature ensures widespread distribution throughout the colony before taking effect, achieving complete elimination."
+      title: "Colony Elimination Milestones",
+      description: "Service visits record visible changes (caste mix, body condition, feeding intensity, mudding behaviour) to demonstrate progressive decline."
     },
     {
       icon: (
@@ -105,8 +105,8 @@ export default function TermiteBaitingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: "Ongoing Protection",
-      description: "After colony elimination, we continue monitoring the bait stations to detect any new termite activity. This ongoing surveillance ensures your property remains protected against future termite threats and provides early warning of any new infestations."
+      title: "Verification and Handover",
+      description: "When elimination criteria are met, provide documentation and remove internal stations. Continue perimeter monitoring to intercept new colonies."
     }
   ];
 
@@ -120,13 +120,13 @@ export default function TermiteBaitingProcedure() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-3">
+            <span className="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full mb-3">
               COMPREHENSIVE BAITING PROCESS
             </span>
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              Our Professional Termite <span className="text-blue-600">Baiting</span> Process
+              Our Professional Termite <span className="text-purple-600">Baiting</span> Process
             </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-purple-600 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
               Our comprehensive 5-step termite baiting process ensures complete elimination for your property, 
               from strategic placement through colony elimination and ongoing protection.
@@ -135,7 +135,7 @@ export default function TermiteBaitingProcedure() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="relative rounded-xl overflow-hidden shadow-xl h-[400px] md:h-[500px] group">
-              <div className="absolute inset-0 p-0.5 rounded-xl bg-blue-500 z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 p-0.5 rounded-xl bg-purple-500 z-10 opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               <div className="absolute inset-0.5 rounded-xl overflow-hidden z-20">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
@@ -170,14 +170,14 @@ export default function TermiteBaitingProcedure() {
           </div>
 
           <div className="mt-12 text-center">
-            <div className="bg-blue-600 text-white p-6 rounded-xl shadow-lg max-w-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
+            <div className="bg-purple-600 text-white p-6 rounded-xl shadow-lg max-w-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl -mr-20 -mt-20"></div>
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/5 rounded-full blur-2xl -ml-20 -mb-20"></div>
 
               <div className="relative z-10">
                 <h3 className="text-xl font-semibold mb-3">Protect your property with strategic baiting systems</h3>
                 <p className="text-white/80 mb-4">Colony elimination is your best defense against termite threats. Get our baiting system today.</p>
-                <a href="/contact" className="inline-block bg-white text-blue-600 hover:text-blue-700 font-bold py-3 px-8 rounded-full transition-all duration-300 border-2 border-white hover:border-opacity-80 hover:shadow-lg">
+                <a href="/contact" className="inline-block bg-white text-purple-600 hover:text-purple-700 font-bold py-3 px-8 rounded-full transition-all duration-300 border-2 border-white hover:border-opacity-80 hover:shadow-lg">
                   Get Your Baiting System
                 </a>
               </div>

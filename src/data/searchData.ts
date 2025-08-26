@@ -303,33 +303,8 @@ export const searchData: SearchItem[] = [
     category: 'termite',
     image: '/termite-inspection.svg'
   },
-  {
-    id: 'termite-treatment',
-    title: 'Termite Treatment',
-    description: 'Effective termite treatment solutions to eliminate existing termite infestations and protect your property.',
-    keywords: ['termite treatment', 'termite control', 'termite extermination', 'termite elimination', 'termite colony destruction'],
-    url: '/termite-solutions/treatment',
-    category: 'termite',
-    image: '/termite-treatment.svg'
-  },
-  {
-    id: 'termite-prevention',
-    title: 'Termite Prevention',
-    description: 'Proactive termite prevention measures to protect your property from future termite infestations.',
-    keywords: ['termite prevention', 'termite protection', 'termite proofing', 'termite deterrent', 'termite barrier'],
-    url: '/termite-solutions/prevention',
-    category: 'termite',
-    image: '/termite-prevention.svg'
-  },
-  {
-    id: 'termite-damage-repair',
-    title: 'Termite Damage Repair',
-    description: 'Professional repair services for termite-damaged structures to restore the integrity of your property.',
-    keywords: ['termite damage repair', 'termite damage restoration', 'structural repair', 'timber replacement', 'termite damage assessment'],
-    url: '/termite-solutions/damage-repair',
-    category: 'termite',
-    image: '/termite-repair.svg'
-  },
+
+
   {
     id: 'pre-purchase-inspection',
     title: 'Pre-Purchase Termite Inspection',

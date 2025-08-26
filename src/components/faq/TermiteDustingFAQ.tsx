@@ -49,24 +49,24 @@ export default function TermiteDustingFAQ() {
 
   const faqItems = [
     {
-      question: "How much does termite dusting treatment cost in Australia?",
-      answer: "Many homeowners want to know the average price of termite dusting treatment in Melbourne and other cities. Costs usually depend on the extent of infestation, accessibility of affected areas, and amount of dust required. Generally, dusting treatments range from $500-$1,500 per treatment. While this may seem like a significant investment, it's minimal compared to the potential cost of termite damage, which can reach tens of thousands of dollars."
+      question: "Is termite dusting enough on its own?",
+      answer: "Generally no. It's designed to suppress active termites quickly but usually needs baiting or a chemical soil treatment to achieve elimination or long‑term prevention."
     },
     {
-      question: "Is termite dusting treatment better than liquid treatments?",
-      answer: "This is one of the most common comparisons people search for in Australia. Both treatments have their pros and cons, and many homeowners want to know which provides the best elimination results. Dusting treatments offer targeted application and deep penetration into galleries, while liquid treatments provide broader coverage. Dusting is particularly effective for localized infestations and hard-to-reach areas."
+      question: "Does dusting kill the Queen?",
+      answer: "Not reliably as a stand‑alone. Non‑repellent dusts spread within workings but a predictable Queen/colony kill is better achieved with a baiting program."
     },
     {
-      question: "How long does termite dusting treatment take to work?",
-      answer: "Australians frequently ask about treatment effectiveness timelines. Termite dusting typically begins working within 24-48 hours, with complete colony elimination occurring over 2-4 weeks. The dust is carried back to the colony by worker termites, ensuring widespread distribution throughout the nest before taking effect."
+      question: "Is dusting safe inside homes?",
+      answer: "We use professional products and targeted application according to Australian standards and product labels to minimise exposure and maximise efficacy."
     },
     {
-      question: "Is termite dusting treatment safe for my family and pets?",
-      answer: "A big concern for property owners is the safety of dusting treatments around children and animals. Professional-grade termite dusts are specifically formulated to target termites while being safe for humans and pets when applied correctly. Our technicians use precise application methods to minimize exposure and ensure treatments are contained within termite pathways."
+      question: "Dusting or foaming—how do you choose?",
+      answer: "Dusting suits dry, accessible galleries; foaming excels in damp or tight voids. Both are tactical steps ahead of a long‑term management system."
     },
     {
-      question: "Can I apply termite dust myself, or do I need a professional?",
-      answer: "Many Australians search whether DIY termite dusting is effective or if professional application is necessary. The truth is, professional application is more effective because technicians know proper application techniques, safety protocols, and optimal dust placement for maximum effectiveness. Professional treatment ensures proper coverage, safety compliance, and guaranteed results that DIY alternatives cannot match."
+      question: "How soon will termite activity drop?",
+      answer: "Often within days to weeks at the treated strike points, followed by installation of baiting or soil treatment for lasting protection."
     }
   ];
 
@@ -83,7 +83,7 @@ export default function TermiteDustingFAQ() {
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Get answers to common questions about our advanced termite dusting treatments and how they eliminate termite colonies.
+              Get answers to common questions about our termite dusting treatments and how they work as part of a comprehensive management system.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function TermiteDustingFAQ() {
             <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Still Have Questions?</h3>
               <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                Our termite dusting specialists are here to help. Contact us for personalized advice and a free property assessment.
+                Our termite dusting specialists are here to help. Contact us for personalized advice and a free assessment with same‑week inspection in Melbourne.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 

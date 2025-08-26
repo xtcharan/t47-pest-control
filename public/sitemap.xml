@@ -191,18 +191,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.t47pestcontrol.com/termite-solutions/treatment</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.t47pestcontrol.com/termite-solutions/prevention</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://www.t47pestcontrol.com/termite-solutions/homes</loc>
     <lastmod>2025-01-15</lastmod>
@@ -215,12 +204,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://www.t47pestcontrol.com/termite-solutions/damage-repair</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
   <url>
     <loc>https://www.t47pestcontrol.com/termite-solutions/pre-purchase</loc>
     <lastmod>2025-01-15</lastmod>

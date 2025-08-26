@@ -14,10 +14,10 @@ export default function TermiteDustingBanner() {
         {/* Title section */}
         <div className="flex flex-col items-center justify-center mb-8">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-wide text-center drop-shadow-md">
-            Termite Dusting Treatment in Melbourne
+            Termite Dusting Treatment in Melbourne and Across Victoria
           </h2>
           <p className="text-xl md:text-2xl text-white max-w-4xl mx-auto text-center font-light">
-            Targeted application and effective elimination technology for complete termite protection
+            Modern, targeted dusting to suppress active termites fast—then lock in long‑term protection with baiting or soil treatments
           </p>
         </div>
 

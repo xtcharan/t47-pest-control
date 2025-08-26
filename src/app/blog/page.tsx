@@ -42,27 +42,7 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-secondary to-nav-dark text-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              T47 Pest Control
-              <span className="block text-green-light mt-2">Expert Blog</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Your comprehensive resource for Australian pest identification, prevention strategies,
-              and professional control methods from industry experts.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base">
-              <span className="bg-green-light text-black px-4 py-2 rounded-full font-medium">Expert Guides</span>
-              <span className="bg-green-light text-black px-4 py-2 rounded-full font-medium">Pest Identification</span>
-              <span className="bg-green-light text-black px-4 py-2 rounded-full font-medium">Prevention Tips</span>
-              <span className="bg-green-light text-black px-4 py-2 rounded-full font-medium">Professional Advice</span>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Featured Posts */}
       {featuredPosts.length > 0 && (

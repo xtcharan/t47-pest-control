@@ -69,8 +69,8 @@ export default function NestEliminationProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
         </svg>
       ),
-      title: "Locate Termite Nests",
-      description: "Our trained technicians use advanced detection equipment and techniques to locate all termite nests on your property. We identify primary and secondary nests, assess colony size, and map termite pathways to ensure comprehensive treatment planning."
+      title: "AS 3660.2 Visual Inspection",
+      description: "Establish the extent of attack, conducive conditions, and likely habitat."
     },
     {
       icon: (
@@ -78,8 +78,8 @@ export default function NestEliminationProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       ),
-      title: "Assess Colony Structure",
-      description: "We conduct a detailed assessment of the termite colony structure, identifying the queen's chamber, worker populations, and soldier distributions. This analysis helps us develop the most effective elimination strategy for complete colony destruction."
+      title: "Intrusive Tree/Stump Probing",
+      description: "Drill and temperature‑probe selected targets around the infested structure; follow heat trails consistent with a true nest."
     },
     {
       icon: (
@@ -87,8 +87,8 @@ export default function NestEliminationProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
         </svg>
       ),
-      title: "Apply Elimination Treatment",
-      description: "We apply specialized treatments directly to the nest sites using professional-grade equipment and techniques. Multiple treatment methods may be used to ensure complete elimination of all colony members including the queen, workers, and soldiers."
+      title: "Evidence and Confirmation",
+      description: "Capture thermal/temperature readings and photos to distinguish a Queen‑right nest from incidental feeding."
     },
     {
       icon: (
@@ -96,8 +96,8 @@ export default function NestEliminationProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       ),
-      title: "Complete Nest Removal",
-      description: "We physically remove accessible nest structures and treat all surrounding areas to eliminate any remaining termites. This comprehensive approach ensures no colony members survive to rebuild or establish new nests in the vicinity."
+      title: "Treatment Decision",
+      description: "Choose direct nest treatment for soil protection or delay for baiting programs."
     },
     {
       icon: (
@@ -105,8 +105,8 @@ export default function NestEliminationProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: "Prevention & Monitoring",
-      description: "After nest elimination, we implement prevention measures and establish ongoing monitoring to protect against future infestations. Our follow-up inspections ensure complete elimination success and provide early detection of any new termite activity."
+      title: "Post‑Control Management",
+      description: "Install an ongoing system and schedule regular inspections to prevent re‑attack."
     }
   ];
 

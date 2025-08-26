@@ -49,24 +49,36 @@ export default function SoilTreatmentFAQ() {
 
   const faqItems = [
     {
-      question: "How much does chemical soil treatment cost in Australia?",
-      answer: "Many homeowners want to know the average price of soil treatment in Melbourne and other cities. Costs usually depend on property size, foundation perimeter, and soil conditions. Generally, soil treatments range from $1,500-$4,000 for complete barrier installation. While this may seem like a significant investment, it's minimal compared to the potential cost of termite damage, which can reach tens of thousands of dollars."
+      question: "Will a soil treatment kill the nest?",
+      answer: "No. It blocks concealed soil entry to the treated structure. Off‑site nests may persist unless directly targeted or eliminated via baiting."
     },
     {
-      question: "How long does chemical soil treatment last?",
-      answer: "This is one of the most common questions people search for in Australia. Professional soil treatments typically provide protection for 5-8 years, depending on soil conditions, chemical type, and environmental factors. The treatment creates a long-lasting barrier that continues to repel termites throughout its effective period, providing excellent long-term value."
+      question: "Can termites still get in after treatment?",
+      answer: "They can sometimes bridge the zone using soil build‑up, garden timbers, or services. Regular inspections identify and correct these risks early."
     },
     {
-      question: "Is chemical soil treatment safe for my family and garden?",
-      answer: "Australians frequently ask about safety concerns regarding soil treatments. Modern termiticides are specifically designed to target termites while being safe for humans, pets, and plants when applied correctly. Our technicians use precise application methods and follow strict safety protocols to ensure treatments are contained within the treatment zone."
+      question: "Is a partial treated zone better than nothing?",
+      answer: "We don't recommend partial barriers. Any gap can be exploited and creates false reassurance. If continuity isn't achievable, consider a monitoring/baiting system."
     },
     {
-      question: "Will soil treatment affect my landscaping or garden?",
-      answer: "A big concern for property owners is potential impact on existing landscaping. Professional soil treatment is applied using injection methods that minimize disruption to gardens and landscaping. Our technicians work carefully around plants and restore any disturbed areas, ensuring your property maintains its appearance while gaining termite protection."
+      question: "Which is better, repellent or non‑repellent?",
+      answer: "It depends on construction, soil moisture, durability goals, environmental sensitivities, and budget. We'll recommend the best fit for the site."
     },
     {
-      question: "Can I install soil treatment myself, or do I need a professional?",
-      answer: "Many Australians search whether DIY soil treatment is effective or if professional installation is necessary. The truth is, professional installation is essential because it requires specialized equipment, proper chemical mixing, precise application techniques, and compliance with Australian standards. Professional treatment ensures complete barrier integrity, safety compliance, and warranty protection that DIY alternatives cannot provide."
+      question: "How long does a soil treatment last?",
+      answer: "Service life depends on product, soil type, moisture, and application quality. Repellents like bifenthrin are known for longevity; non‑repellents vary by label and conditions."
+    },
+    {
+      question: "What's the difference between a barrier and treated zone?",
+      answer: "Historically, repellent chemicals created an invisible 'barrier' that termites avoided. Modern non‑repellent products create a 'treated zone' termites can enter without detecting—becoming affected and transferring the active to nestmates."
+    },
+    {
+      question: "How do you ensure the treated zone is continuous?",
+      answer: "We map construction details, footings/slab interfaces, soil type, moisture, and services to design a continuous treated zone. High‑volume application ensures saturation and continuity, integrating with footings and slab edges."
+    },
+    {
+      question: "What precautions should I take during and after treatment?",
+      answer: "Advise us of pets, allergies, or sensitivities. Keep pets secured during application. Avoid contact with treated soil until dry. Follow technician advice on landscaping levels, weep holes, and timber‑to‑ground separation."
     }
   ];
 
@@ -83,7 +95,7 @@ export default function SoilTreatmentFAQ() {
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Get answers to common questions about our chemical soil treatments and how they create protective barriers around your property.
+              Get answers to common questions about chemical soil treatments, continuous treated zones, and termite protection in Melbourne and Victoria.
             </p>
           </div>
 

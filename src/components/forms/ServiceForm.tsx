@@ -123,63 +123,35 @@ export default function ServiceForm() {
   };
 
   return (
-    <section id="service-form" className="py-16 bg-gradient-to-r from-green-light to-green-dark">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+    <section id="service-form" className="py-12 bg-gradient-to-r from-green-light to-green-dark w-full">
+      <div className="w-full px-4">
+        <div className="max-w-2xl mx-auto">
           {/* Offer Redemption Confirmation Badge */}
           {offerContext.isFromOffer && (
-            <div className="mb-8">
-              <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500 max-w-2xl mx-auto">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                      <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
+            <div className="mb-6">
+              <div className="bg-white rounded-lg shadow-lg p-4 border-l-4 border-green-500">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <h3 className="text-lg font-bold text-green-700">Offer Successfully Redeemed!</h3>
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                        ACTIVE
-                      </span>
-                    </div>
-                    <div className="bg-gray-50 rounded-lg p-4 mb-3">
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <p className="font-semibold text-gray-900">{offerContext.offerTitle}</p>
-                          <p className="text-sm text-gray-600">Starting from <span className="font-bold text-green-600">${offerContext.offerPrice}</span></p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-xs text-gray-500">Offer ID</p>
-                          <p className="text-sm font-mono text-gray-700">#{Date.now().toString().slice(-6)}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">Great choice!</span> This offer has been applied to your quote request.
-                      Please fill out the form below with your specific pest concerns and contact details.
-                    </p>
+                  <div>
+                    <h3 className="text-sm font-bold text-green-700">Offer Redeemed: {offerContext.offerTitle} (${offerContext.offerPrice})</h3>
+                    <p className="text-xs text-gray-600">Complete the form below to get your quote</p>
                   </div>
                 </div>
               </div>
             </div>
           )}
 
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {offerContext.isFromOffer ? 'Complete Your Quote Request' : 'Book A Service Now'}
-            </h2>
-            <p className="text-white text-lg">
-              {offerContext.isFromOffer
-                ? 'Fill out your details below and describe your specific pest concerns'
-                : 'Book us for an inspection today and safeguard your home!'
-              }
-            </p>
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold text-white mb-2">Book A Service Now</h2>
+            <p className="text-white/90">Book us for an inspection today and safeguard your home!</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
             {/* First Row - Name and Email */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -189,7 +161,7 @@ export default function ServiceForm() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Name"
-                  className="w-full p-3 rounded-md bg-white border-none focus:outline-none focus:ring-2 focus:ring-white text-black"
+                  className="w-full p-3 rounded-md bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                   required
                 />
               </div>
@@ -200,7 +172,7 @@ export default function ServiceForm() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="w-full p-3 rounded-md bg-white border-none focus:outline-none focus:ring-2 focus:ring-white text-black"
+                  className="w-full p-3 rounded-md bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                   required
                 />
               </div>
@@ -215,7 +187,7 @@ export default function ServiceForm() {
                   value={formData.mobile}
                   onChange={handleChange}
                   placeholder="Mobile"
-                  className="w-full p-3 rounded-md bg-white border-none focus:outline-none focus:ring-2 focus:ring-white text-black"
+                  className="w-full p-3 rounded-md bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                   required
                 />
               </div>
@@ -226,7 +198,7 @@ export default function ServiceForm() {
                   value={formData.suburb}
                   onChange={handleChange}
                   placeholder="Suburb"
-                  className="w-full p-3 rounded-md bg-white border-none focus:outline-none focus:ring-2 focus:ring-white text-black"
+                  className="w-full p-3 rounded-md bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
                   required
                 />
               </div>
@@ -234,92 +206,78 @@ export default function ServiceForm() {
 
             {/* Third Row - Tell us about your home, office, workplace */}
             <div>
-              <label className="block text-white text-sm font-medium mb-2">
+              <label className="block text-gray-700 text-sm font-medium mb-2">
                 Tell us about your pest concerns
-                {offerContext.isFromOffer && (
-                  <span className="ml-2 text-xs bg-white/20 px-2 py-1 rounded">
-                    Offer: {offerContext.offerTitle} (${offerContext.offerPrice})
-                  </span>
-                )}
               </label>
               <textarea
                 name="pestConcern"
                 value={formData.pestConcern}
                 onChange={handleChange}
-                placeholder={offerContext.isFromOffer
-                  ? `Describe your specific pest concerns for the ${offerContext.offerTitle} service...`
-                  : "Tell us about Your Home, Office, Workplace..."
-                }
-                className="w-full p-3 rounded-md bg-white border-none focus:outline-none focus:ring-2 focus:ring-white h-20 text-black resize-none"
+                placeholder="Tell us about Your Home, Office, Workplace..."
+                className="w-full p-3 rounded-md bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 h-20 text-black resize-none"
               ></textarea>
-              {offerContext.isFromOffer && (
-                <p className="text-xs text-white/70 mt-1">
-                  💡 Your {offerContext.offerTitle} offer is already applied. Just describe your specific pest issues above.
-                </p>
-              )}
             </div>
 
             {/* Service Type Checkboxes */}
             <div className="flex flex-wrap gap-4 items-center">
-              <label className="flex items-center text-white cursor-pointer">
+              <label className="flex items-center text-gray-700 cursor-pointer">
                 <input
                   type="checkbox"
                   name="serviceTypes"
                   value="residential"
-                  className="mr-2 w-4 h-4 text-green-light bg-white border-white rounded focus:ring-green-light focus:ring-2"
+                  className="mr-2 w-4 h-4 text-green-500 bg-gray-50 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
                 />
-                <span className="text-sm md:text-base">Residential Pest</span>
+                <span className="text-sm">Residential Pest</span>
               </label>
 
-              <label className="flex items-center text-white cursor-pointer">
+              <label className="flex items-center text-gray-700 cursor-pointer">
                 <input
                   type="checkbox"
                   name="serviceTypes"
                   value="commercial"
-                  className="mr-2 w-4 h-4 text-green-light bg-white border-white rounded focus:ring-green-light focus:ring-2"
+                  className="mr-2 w-4 h-4 text-green-500 bg-gray-50 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
                 />
-                <span className="text-sm md:text-base">Commercial Pest</span>
+                <span className="text-sm">Commercial Pest</span>
               </label>
 
-              <label className="flex items-center text-white cursor-pointer">
+              <label className="flex items-center text-gray-700 cursor-pointer">
                 <input
                   type="checkbox"
                   name="serviceTypes"
                   value="termite"
-                  className="mr-2 w-4 h-4 text-green-light bg-white border-white rounded focus:ring-green-light focus:ring-2"
+                  className="mr-2 w-4 h-4 text-green-500 bg-gray-50 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
                 />
-                <span className="text-sm md:text-base">Termite Solutions</span>
+                <span className="text-sm">Termite Solutions</span>
               </label>
             </div>
 
-            {/* Submit Button */}
             {/* Status Message */}
             {submitStatus.type && (
-              <div className={`p-4 rounded-lg text-sm mb-6 font-medium shadow-lg ${
+              <div className={`p-4 rounded-lg text-sm font-medium ${
                 submitStatus.type === 'success'
-                  ? 'bg-green-500/20 text-green-100 border border-green-500/40 shadow-green-500/20'
-                  : 'bg-red-500/20 text-red-100 border border-red-500/40 shadow-red-500/20'
+                  ? 'bg-green-100 text-green-800 border border-green-200'
+                  : 'bg-red-100 text-red-800 border border-red-200'
               }`}>
-                <div className="leading-relaxed">
-                  {submitStatus.message}
-                </div>
+                {submitStatus.message}
               </div>
             )}
 
-            <div className="text-left">
+            {/* Submit Button */}
+            <div className="text-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`font-bold py-3 px-8 rounded-full transition-colors text-lg ${
+                className={`font-bold py-3 px-8 rounded-lg transition-colors text-lg shadow-lg ${
                   isSubmitting
                     ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
-                    : 'bg-white text-green-dark hover:bg-gray-100'
+                    : 'bg-white text-green-800 hover:bg-gray-100 hover:text-green-900 border-2 border-white'
                 }`}
               >
                 {isSubmitting ? 'Submitting...' : 'Get Quote'}
               </button>
             </div>
           </form>
+          </div>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import TermiteMonitoringBanner from "@/components/banner/TermiteMonitoringBanner
 import TermiteMonitoringContent from "@/components/content/TermiteMonitoringContent";
 import TermiteMonitoringProcedure from "@/components/procedure/TermiteMonitoringProcedure";
 import ClientReviews from "@/components/reviews/ClientReviews";
+import TermiteSpeciesGallery from "@/components/species/TermiteSpeciesGallery";
 import ServiceForm from "@/components/forms/ServiceForm";
 import TermiteMonitoringFAQ from "@/components/faq/TermiteMonitoringFAQ";
 
@@ -20,6 +21,7 @@ export default function TermiteMonitoringPage() {
       <TermiteMonitoringContent />
       <TermiteMonitoringProcedure />
       <ClientReviews />
+      <TermiteSpeciesGallery />
       <ServiceForm />
       <TermiteMonitoringFAQ />
     </main>

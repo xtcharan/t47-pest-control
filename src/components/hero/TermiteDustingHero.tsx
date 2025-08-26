@@ -43,15 +43,14 @@ export default function TermiteDustingHero() {
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Termite Dusting Treatment
-                <span className="block text-blue-400">in Melbourne</span>
+                <span className="block text-blue-400">in Melbourne and Across Victoria</span>
                 <span className="block text-2xl md:text-3xl lg:text-4xl font-normal text-gray-300 mt-2">
-                  Precision Application
+                  Modern, Targeted Dusting
                 </span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed">
-                Advanced termite dusting treatment providing targeted application and effective elimination. 
-                Protect your property with precision technology and professional expertise.
+                Modern, targeted dusting to suppress active termites fast—then lock in long‑term protection with baiting or soil treatments.
               </p>
             </div>
 
@@ -59,7 +58,7 @@ export default function TermiteDustingHero() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {[
                 {
-                  text: "Targeted Dust Application",
+                  text: "Targeted Dust Reaches Concealed Galleries",
                   icon: (
                     <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
@@ -67,7 +66,7 @@ export default function TermiteDustingHero() {
                   )
                 },
                 {
-                  text: "Deep Penetration Formula",
+                  text: "Non‑Repellent Action Spreads Through Colony",
                   icon: (
                     <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
@@ -75,7 +74,7 @@ export default function TermiteDustingHero() {
                   )
                 },
                 {
-                  text: "Long-lasting Protection",
+                  text: "Same‑Week Inspection Melbourne",
                   icon: (
                     <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -83,10 +82,10 @@ export default function TermiteDustingHero() {
                   )
                 },
                 {
-                  text: "Expert Application & Follow-up",
+                  text: "Step 1 Before Comprehensive Management",
                   icon: (
                     <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+                      <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.4 16,13V16C16,17.4 15.4,18 14.8,18H9.2C8.6,18 8,17.4 8,16V13C8,12.4 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
                     </svg>
                   )
                 }
@@ -119,16 +118,22 @@ export default function TermiteDustingHero() {
             {/* Trust Indicators */}
             <div className="flex flex-wrap items-center gap-6 pt-6 text-sm text-gray-400">
               <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>Licensed & Insured</span>
               </div>
               <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Same Day Service</span>
+                <span>Same‑Day Service</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>5‑Year Warranty</span>
               </div>
               <div className="flex items-center space-x-2">
                 <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">

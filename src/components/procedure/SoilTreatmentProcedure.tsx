@@ -69,8 +69,8 @@ export default function SoilTreatmentProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
         </svg>
       ),
-      title: "Site Assessment",
-      description: "Our trained technicians conduct a comprehensive assessment of your property's foundation and soil conditions. We identify the optimal treatment zones and determine the appropriate chemical application strategy for maximum barrier effectiveness."
+      title: "Site Assessment and Design",
+      description: "We map construction details, footings/slab interfaces, soil type, moisture, and services to design a continuous treated zone."
     },
     {
       icon: (
@@ -78,8 +78,8 @@ export default function SoilTreatmentProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       ),
-      title: "Prepare Chemical Solution",
-      description: "We prepare the specialized termiticide solution using professional-grade chemicals and precise mixing ratios. The solution is calibrated to provide long-lasting protection while meeting all environmental safety standards."
+      title: "Preparation and Access",
+      description: "Careful trenching/rodding along perimeters and critical entry points; protect weep holes and maintain clearances."
     },
     {
       icon: (
@@ -87,8 +87,8 @@ export default function SoilTreatmentProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
         </svg>
       ),
-      title: "Inject Chemical Barrier",
-      description: "The termiticide is injected into the soil around and beneath your foundation using high-pressure equipment. This creates a continuous chemical barrier that prevents termites from accessing your building through the soil."
+      title: "High‑Volume Application",
+      description: "Apply termiticide to label rates for saturation and continuity, integrating with footings and slab edges."
     },
     {
       icon: (
@@ -96,8 +96,8 @@ export default function SoilTreatmentProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       ),
-      title: "Barrier Formation",
-      description: "The chemical treatment forms a protective barrier in the soil that termites cannot cross. This barrier provides immediate protection and continues to repel termites for years, creating a long-term defense system for your property."
+      title: "Integrate with Physical Measures",
+      description: "Check weep holes, soil levels, timber‑to‑ground contacts, and other bridging risks; rectify where feasible."
     },
     {
       icon: (
@@ -105,8 +105,8 @@ export default function SoilTreatmentProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: "Long-term Prevention",
-      description: "The soil treatment provides years of protection against termite intrusion. Our follow-up inspections ensure the barrier remains effective and we provide ongoing monitoring to maintain your property's protection against future termite threats."
+      title: "Verification and Follow‑Up",
+      description: "Document the installation, mark treatment zones, and schedule inspections to maintain protection and detect bridging."
     }
   ];
 
@@ -121,15 +121,15 @@ export default function SoilTreatmentProcedure() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-3">
-              COMPREHENSIVE SOIL TREATMENT PROCESS
+              5‑STEP CHEMICAL SOIL TREATMENT PROCESS
             </span>
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              Our Professional Chemical <span className="text-blue-600">Soil Treatment</span> Process
+              Our 5‑Step Chemical <span className="text-blue-600">Soil Treatment</span> Process
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive 5-step soil treatment process ensures complete protection for your property, 
-              from foundation assessment through chemical barrier creation and long-term monitoring.
+              From site assessment and design through verification and follow‑up, our comprehensive process ensures
+              a continuous treated zone that blocks concealed termite entry.
             </p>
           </div>
 

@@ -2,9 +2,10 @@ import { Metadata } from 'next';
 import PrePurchaseTermiteInspectionHero from "@/components/hero/PrePurchaseTermiteInspectionHero";
 import PrePurchaseTermiteInspectionBanner from "@/components/banner/PrePurchaseTermiteInspectionBanner";
 import PrePurchaseTermiteInspectionContent from "@/components/content/PrePurchaseTermiteInspectionContent";
-import PrePurchaseTermiteInspectionProcedure from "@/components/procedure/PrePurchaseTermiteInspectionProcedure";
 import PrePurchaseInspectionInfoGraphic from "@/components/info/PrePurchaseInspectionInfoGraphic";
+import PrePurchaseTermiteInspectionProcedure from "@/components/procedure/PrePurchaseTermiteInspectionProcedure";
 import PrePurchaseTermiteSpecialists from "@/components/specialists/PrePurchaseTermiteSpecialists";
+import PrePurchaseTermiteSpeciesGallery from "@/components/species/PrePurchaseTermiteSpeciesGallery";
 import ClientReviews from "@/components/reviews/ClientReviews";
 import ServiceForm from "@/components/forms/ServiceForm";
 import PrePurchaseTermiteInspectionFAQ from "@/components/faq/PrePurchaseTermiteInspectionFAQ";
@@ -24,6 +25,7 @@ export default function PrePurchaseTermiteInspectionPage() {
       <PrePurchaseInspectionInfoGraphic />
       <PrePurchaseTermiteInspectionProcedure />
       <PrePurchaseTermiteSpecialists />
+      <PrePurchaseTermiteSpeciesGallery />
       <ClientReviews />
       <ServiceForm />
       <PrePurchaseTermiteInspectionFAQ />

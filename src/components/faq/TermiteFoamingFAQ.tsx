@@ -49,24 +49,24 @@ export default function TermiteFoamingFAQ() {
 
   const faqItems = [
     {
-      question: "How much does termite foaming treatment cost in Australia?",
-      answer: "Many homeowners want to know the average price of termite foaming treatment in Melbourne and other cities. Costs usually depend on the number of injection points, cavity size, and foam volume required. Generally, foaming treatments range from $600-$2,000 per treatment. While this may seem like a significant investment, it's minimal compared to the potential cost of termite damage, which can reach tens of thousands of dollars."
+      question: "Does foaming eliminate the colony?",
+      answer: "On its own, not reliably. It's designed for local suppression. Colony elimination is best achieved with a baiting program."
     },
     {
-      question: "Is termite foaming treatment better than other methods?",
-      answer: "This is one of the most common comparisons people search for in Australia. Foaming treatments have unique advantages for treating wall cavities and inaccessible areas where other methods cannot reach. The expanding foam fills entire voids completely, ensuring comprehensive coverage that liquid treatments or dusts might miss in confined spaces."
+      question: "Is termite foaming safe indoors?",
+      answer: "We use professional, targeted applications in accordance with Australian standards and product labels to minimise exposure and focus treatment inside concealed galleries."
     },
     {
-      question: "How long does termite foaming treatment take to work?",
-      answer: "Australians frequently ask about treatment effectiveness timelines. Termite foaming typically begins working immediately upon contact, with complete elimination occurring within 24-72 hours. The foam expands to fill all available space, making contact with termites throughout the cavity and providing immediate knockdown effect."
+      question: "How long does foam last?",
+      answer: "The foam collapses after application, leaving a residual on gallery surfaces that continues to impact termites moving through the area."
     },
     {
-      question: "Will termite foaming damage my walls or property?",
-      answer: "A big concern for property owners is potential damage from foam injection. Professional termite foams are specifically formulated to expand and then break down safely without causing structural damage. Our technicians use precise injection techniques and appropriate foam volumes to ensure effective treatment without property damage."
+      question: "Foaming or dusting—how do you choose?",
+      answer: "Foaming excels in damp/void conditions; dusting suits dry, accessible strike points. Both are typically followed by baiting and/or a treated zone for long‑term security."
     },
     {
-      question: "Can I use termite foam myself, or do I need a professional?",
-      answer: "Many Australians search whether DIY termite foaming is effective or if professional application is necessary. The truth is, professional application is essential because technicians have specialized equipment, know proper injection pressures, and understand cavity dynamics for optimal foam distribution. Professional treatment ensures complete coverage, safety compliance, and guaranteed results that DIY alternatives cannot achieve."
+      question: "Will I still need inspections after foaming?",
+      answer: "Yes. Inspections confirm suppression, check for bridging risks, and ensure ongoing protection via baiting or treated zones."
     }
   ];
 
@@ -83,7 +83,7 @@ export default function TermiteFoamingFAQ() {
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Get answers to common questions about our advanced termite foaming treatments and how they eliminate termites in wall cavities.
+              Get answers to common questions about our termite foaming treatments and how they work as part of a comprehensive management system.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function TermiteFoamingFAQ() {
             <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Still Have Questions?</h3>
               <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                Our termite foaming specialists are here to help. Contact us for personalized advice and a free property assessment.
+                Our termite foaming specialists are here to help. Contact us for personalized advice and a same‑week inspection in Melbourne.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a 

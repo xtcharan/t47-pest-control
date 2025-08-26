@@ -70,7 +70,7 @@ export default function TermiteDustingProcedure() {
         </svg>
       ),
       title: "Locate Termite Activity",
-      description: "Our trained technicians conduct a thorough inspection to identify active termite galleries, mud tubes, and infested timber areas. We use specialized detection equipment to locate termite pathways and determine the extent of the infestation."
+      description: "Comprehensive inspection to pinpoint live workings, moisture risks, and entry points."
     },
     {
       icon: (
@@ -79,7 +79,7 @@ export default function TermiteDustingProcedure() {
         </svg>
       ),
       title: "Prepare Dust Application",
-      description: "We prepare the specialized termite dust formulation using professional-grade equipment. The dust is carefully measured and loaded into precision application devices to ensure accurate and effective treatment delivery."
+      description: "Select a suitable non‑repellent dust (commonly fipronil‑based), confirm access points, and establish safety controls."
     },
     {
       icon: (
@@ -88,16 +88,16 @@ export default function TermiteDustingProcedure() {
         </svg>
       ),
       title: "Apply Targeted Dust",
-      description: "The dust is applied directly into termite galleries and pathways using precision equipment. This targeted application ensures maximum contact with termites while minimizing environmental impact and ensuring the dust reaches deep into the colony structure."
+      description: "Introduce dust carefully into galleries and strike points without disturbing termite behavior."
     },
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
         </svg>
       ),
-      title: "Colony Transfer",
-      description: "Termites carry the dust back to their nest through normal grooming and social behaviors. The dust adheres to their bodies and is transferred to other colony members, including workers, soldiers, and ultimately the queen, ensuring comprehensive colony elimination."
+      title: "Monitor Reduction",
+      description: "Re‑inspect to confirm activity drop and ensure transfer has occurred through the workings."
     },
     {
       icon: (
@@ -105,8 +105,8 @@ export default function TermiteDustingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: "Complete Elimination",
-      description: "The dust treatment eliminates the entire termite colony over time. Our follow-up inspections ensure complete elimination and we implement additional protection measures to prevent future infestations and protect your property long-term."
+      title: "Install Long‑Term Protection",
+      description: "Proceed with termite baiting for colony elimination and/or chemical soil treatment to prevent concealed re‑entry. Provide documentation and follow‑up schedule."
     }
   ];
 
@@ -121,15 +121,15 @@ export default function TermiteDustingProcedure() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-3">
-              COMPREHENSIVE DUSTING PROCESS
+              5‑STEP DUSTING PROCESS
             </span>
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              Our Professional Termite <span className="text-blue-600">Dusting</span> Process
+              Our 5‑Step Termite <span className="text-blue-600">Dusting</span> Process
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive 5-step termite dusting process ensures complete elimination for your property, 
-              from initial assessment through targeted application and follow-up monitoring.
+              Our comprehensive 5‑step termite dusting process ensures rapid knockdown and sets up long‑term protection,
+              from initial assessment through targeted application and comprehensive management system installation.
             </p>
           </div>
 

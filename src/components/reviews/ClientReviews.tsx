@@ -47,7 +47,7 @@ interface ReviewCardProps {
 
 const ReviewCard = ({ name, text, profileColor, profileInitial, profileImage }: ReviewCardProps) => {
   return (
-    <div className="min-w-[300px] w-[300px] h-[280px] bg-white rounded-xl shadow-lg p-6 mx-4 flex flex-col review-card modern-card group hover:border-green-light/50 border border-transparent relative">
+    <div className="min-w-[320px] w-[320px] md:min-w-[380px] md:w-[380px] h-[300px] md:h-[320px] bg-white rounded-xl shadow-lg p-6 md:p-8 mx-4 md:mx-6 flex flex-col review-card modern-card group hover:border-green-light/50 border border-transparent relative">
       {/* Quote icon for decoration */}
       <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-green-light flex items-center justify-center shadow-md">
         <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -327,7 +327,7 @@ export default function ClientReviews() {
   // These handlers are now handled by document-level event listeners
 
   return (
-    <section className="py-10 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-100 to-transparent"></div>
       <div className="absolute -top-20 -right-20 w-64 h-64 bg-green-light/5 rounded-full blur-3xl"></div>
@@ -361,8 +361,8 @@ export default function ClientReviews() {
         </p>
       </div>
 
-      {/* Full width review scroll section */}
-      <div className="review-scroll-wrapper">
+      {/* Full width review scroll section with enhanced padding */}
+      <div className="review-scroll-wrapper px-4 md:px-8 lg:px-12">
         {/* First row - scrolls left to right */}
         <div
           className={`review-scroll-track animate-left ${isPaused || autoScrollPaused ? 'paused' : ''} ${isDragging ? 'grabbing' : ''}`}

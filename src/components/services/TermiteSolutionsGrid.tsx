@@ -17,18 +17,18 @@ export default function TermiteSolutionsGrid() {
       description: 'Comprehensive termite detection using advanced technology'
     },
     {
-      name: 'Termite Treatment',
-      href: '/termite-solutions/treatment',
+      name: 'Termite Baiting',
+      href: '/termite-solutions/baiting',
       image: '/termite-treatment.jpg',
       fallback: '/termite-solutions.jpg',
-      description: 'Expert elimination of active termite infestations'
+      description: 'Colony elimination through targeted baiting systems'
     },
     {
-      name: 'Termite Baiting',
-      href: '/termite-solutions/prevention',
+      name: 'Soil Treatment',
+      href: '/termite-solutions/soil-treatment',
       image: '/termite-chemical-barrier.jpg',
       fallback: '/termite-physical-barrier.jpg',
-      description: 'Advanced barrier systems with 25-year warranties'
+      description: 'Chemical soil barriers for long-term protection'
     },
     {
       name: 'Pre-Purchase Inspection',
@@ -59,11 +59,11 @@ export default function TermiteSolutionsGrid() {
       description: 'Residential termite management solutions'
     },
     {
-      name: 'Contact Us',
-      href: '/termite-solutions/damage-repair',
+      name: 'Termite Dusting',
+      href: '/termite-solutions/dusting',
       image: '/termite-testing.jpg',
       fallback: '/termite-installation.jpg',
-      description: 'Professional restoration of termite damage'
+      description: 'Targeted dust treatment for rapid knockdown'
     }
   ];
 

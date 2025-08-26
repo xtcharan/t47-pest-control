@@ -14,10 +14,10 @@ export default function TermiteFoamingBanner() {
         {/* Title section */}
         <div className="flex flex-col items-center justify-center mb-8">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-wide text-center drop-shadow-md">
-            Termite Foaming Solutions for Homes & Businesses
+            Termite Foaming Treatment in Melbourne and Across Victoria
           </h2>
           <p className="text-xl md:text-2xl text-white max-w-4xl mx-auto text-center font-light">
-            Precision application and deep penetration technology for complete termite protection
+            Targeted foam for damp and concealed areas—fast suppression now, long‑term protection next
           </p>
         </div>
 

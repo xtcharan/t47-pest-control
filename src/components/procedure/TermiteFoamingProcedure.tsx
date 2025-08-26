@@ -69,8 +69,8 @@ export default function TermiteFoamingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
         </svg>
       ),
-      title: "Identify Cavity Access",
-      description: "Our trained technicians locate wall cavities, timber voids, and inaccessible areas where termites are active. We use specialized detection equipment to identify the best injection points for maximum foam penetration and coverage."
+      title: "Locate and Map Voids",
+      description: "Thermal imaging and moisture readings to find active galleries and damp pathways."
     },
     {
       icon: (
@@ -78,8 +78,8 @@ export default function TermiteFoamingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       ),
-      title: "Prepare Foam Solution",
-      description: "We prepare the specialized termite foam formulation using professional-grade mixing equipment. The foam is carefully calibrated to ensure proper expansion ratio and active ingredient concentration for maximum effectiveness."
+      title: "Prepare Foam Formulation",
+      description: "Select a non‑repellent termiticide appropriate to construction and moisture conditions."
     },
     {
       icon: (
@@ -88,16 +88,16 @@ export default function TermiteFoamingProcedure() {
         </svg>
       ),
       title: "Inject Expanding Foam",
-      description: "The foam is injected directly into wall cavities and voids using precision equipment. The expanding foam fills the entire cavity space, reaching areas that other treatments cannot access and ensuring comprehensive coverage of termite pathways."
+      description: "Apply via small access points into cavities and galleries to ensure thorough coverage."
     },
     {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
         </svg>
       ),
-      title: "Deep Penetration",
-      description: "The foam expands to fill all available space within the cavity, making contact with termites and their galleries. The active ingredients in the foam eliminate termites on contact and provide residual protection against future infestations."
+      title: "Verify Suppression",
+      description: "Re‑inspect to confirm activity reduction and adequate residual presence on surfaces."
     },
     {
       icon: (
@@ -105,8 +105,8 @@ export default function TermiteFoamingProcedure() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: "Long-term Protection",
-      description: "The foam treatment provides immediate elimination of active termites and creates a protective barrier within treated cavities. Our follow-up inspections ensure complete effectiveness and we monitor for any signs of new termite activity."
+      title: "Install Long‑Term Protection",
+      description: "Proceed with baiting for predictable colony elimination and/or a chemical soil treated zone to prevent concealed re‑entry. Provide documentation and service schedule."
     }
   ];
 
@@ -121,15 +121,15 @@ export default function TermiteFoamingProcedure() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full mb-3">
-              COMPREHENSIVE FOAMING PROCESS
+              5‑STEP FOAMING PROCESS
             </span>
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              Our Professional Termite <span className="text-blue-600">Foaming</span> Process
+              Our 5‑Step Termite <span className="text-blue-600">Foaming</span> Process
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive 5-step termite foaming process ensures complete elimination for your property, 
-              from cavity identification through precision injection and long-term protection.
+              Our comprehensive 5‑step termite foaming process ensures rapid suppression and sets up long‑term protection,
+              from void mapping through precision injection and comprehensive management system installation.
             </p>
           </div>
 
